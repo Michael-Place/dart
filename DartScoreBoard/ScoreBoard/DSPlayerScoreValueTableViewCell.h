@@ -1,5 +1,5 @@
 //
-//  DSViewController.h
+//  DSPlayerScoreValueTableViewCell.h
 //  DartScoreBoard
 //
 //  Created by Michael Place on 11/29/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DSViewController : UIViewController
+@interface DSPlayerScoreValueTableViewCell : UITableViewCell
 
 @end
