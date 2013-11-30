@@ -30,8 +30,8 @@
 		E9C9D55A1849429D0085BC43 /* DSGame.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C9D5591849429D0085BC43 /* DSGame.m */; };
 		E9C9D55D184944370085BC43 /* DSScoreBoardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */; };
 		E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */; };
-		E9F6EFFA184965B400A16A44 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFF8184965B400A16A44 /* NewGameViewController.xib */; };
-		E9F6EFFB184965B400A16A44 /* NewPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFF9184965B400A16A44 /* NewPlayerViewController.xib */; };
+		E9F6EFFA184965B400A16A44 /* DSNewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */; };
+		E9F6EFFB184965B400A16A44 /* DSNewPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFF9184965B400A16A44 /* DSNewPlayerViewController.xib */; };
 		E9F6EFFF184965F400A16A44 /* dart.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFFE184965F400A16A44 /* dart.png */; };
 /* End PBXBuildFile section */
 
@@ -80,8 +80,8 @@
 		E9C9D55B184944370085BC43 /* DSScoreBoardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSScoreBoardCollectionViewCell.h; path = ScoreBoard/DSScoreBoardCollectionViewCell.h; sourceTree = "<group>"; };
 		E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSScoreBoardCollectionViewCell.m; path = ScoreBoard/DSScoreBoardCollectionViewCell.m; sourceTree = "<group>"; };
 		E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSScoreBoardCollectionViewCell.xib; path = ScoreBoard/DSScoreBoardCollectionViewCell.xib; sourceTree = "<group>"; };
-		E9F6EFF8184965B400A16A44 /* NewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewGameViewController.xib; sourceTree = "<group>"; };
-		E9F6EFF9184965B400A16A44 /* NewPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPlayerViewController.xib; sourceTree = "<group>"; };
+		E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSNewGameViewController.xib; sourceTree = "<group>"; };
+		E9F6EFF9184965B400A16A44 /* DSNewPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSNewPlayerViewController.xib; sourceTree = "<group>"; };
 		E9F6EFFE184965F400A16A44 /* dart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dart.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,10 +114,10 @@
 			children = (
 				E98D954018494A0900A02273 /* DSNewGameViewController.h */,
 				E98D954118494A0900A02273 /* DSNewGameViewController.m */,
-				E9F6EFF8184965B400A16A44 /* NewGameViewController.xib */,
+				E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */,
 				E98D954518494AAC00A02273 /* DSAddNewPlayerViewController.h */,
 				E98D954618494AAC00A02273 /* DSAddNewPlayerViewController.m */,
-				E9F6EFF9184965B400A16A44 /* NewPlayerViewController.xib */,
+				E9F6EFF9184965B400A16A44 /* DSNewPlayerViewController.xib */,
 			);
 			name = NewGame;
 			sourceTree = "<group>";
@@ -318,9 +318,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9C9D52F18493E790085BC43 /* Main_iPad.storyboard in Resources */,
-				E9F6EFFA184965B400A16A44 /* NewGameViewController.xib in Resources */,
+				E9F6EFFA184965B400A16A44 /* DSNewGameViewController.xib in Resources */,
 				E9F6EFFF184965F400A16A44 /* dart.png in Resources */,
-				E9F6EFFB184965B400A16A44 /* NewPlayerViewController.xib in Resources */,
+				E9F6EFFB184965B400A16A44 /* DSNewPlayerViewController.xib in Resources */,
 				E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */,
 				E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */,
 				E9C9D53418493E790085BC43 /* Images.xcassets in Resources */,
