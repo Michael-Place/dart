@@ -11,8 +11,9 @@
 #import "DSNewGameViewController.h"
 #import "DSGame.h"
 
-@interface DSScoreBoardCollectionViewController () <StartingGameDelegate>
+@interface DSScoreBoardCollectionViewController () <StartingGameDelegate, UpdatingGameState>
 @property BOOL gameIsInProgress;
+@property (strong, nonatomic) IBOutlet UICollectionView *scoreBoardCollectionView;
 
 @end
 
@@ -35,11 +36,15 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
     [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreBoardCollectionViewCell"
                                                     bundle:[NSBundle mainBundle]]
                                 forCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier];
+    [DSGame sharedGame].delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [self testGameSetup];
+    
     if (!self.gameIsInProgress) {
         [self displayNewGameModal];
     }
@@ -67,6 +72,12 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - Update Game State Delegate
+- (void)updateGameState
+{
+    [self.scoreBoardCollectionView reloadData];
+}
+
 #pragma mark - UICollectionViewDatasource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -85,6 +96,7 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
     DSPlayer *playerForCell = [[[DSGame sharedGame] players] objectAtIndex:indexPath.row];
     [scoreBoardCell setPlayer:playerForCell];
     [scoreBoardCell.playerNameLabel setText:playerForCell.playerName];
+    [scoreBoardCell.playerScoreTableView reloadData];
 
     return scoreBoardCell;
 }
@@ -119,6 +131,15 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
     NSArray *scoreBoardCellNib = [[NSBundle mainBundle] loadNibNamed:@"DSScoreBoardCollectionViewCell" owner:self options:nil];
     DSScoreBoardCollectionViewCell *scoreBoardCell = [scoreBoardCellNib objectAtIndex:0];
     return scoreBoardCell;
+}
+
+#pragma mark - Test Code
+- (void) testGameSetup
+{
+    DSPlayer *player1 = [[DSPlayer alloc]initWithPlayerName:@"George"];
+    DSPlayer *player2 = [[DSPlayer alloc]initWithPlayerName:@"Michael"];
+    [DSGame sharedGame].players = @[player1, player2];
+    self.gameIsInProgress = YES;
 }
 
 @end

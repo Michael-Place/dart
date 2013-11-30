@@ -29,6 +29,13 @@
 
 //UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Blah"];
 //return cell;
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DSPlayerScoreValueTableViewCell *scoreCell = (DSPlayerScoreValueTableViewCell *)cell;
+    NSLog(@"~~Updating Score: %@ : Score Value : %d Score : %d", scoreCell.playerName, scoreCell.scoreValue, scoreCell.score);
+    [scoreCell updateScoreValue];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *PlayerScoreValueCellIdentifier = @"PlayerScoreValueCellIdentifier";
@@ -37,9 +44,14 @@
     if (cell == nil) {
         cell = [self loadPlayerScoreValueCellFromNib];
     }
+    cell.playerName = self.player.playerName;
+    cell.scoreValue = [DSGame scoreValueForIndex:indexPath.row];
+    cell.score = [self.player pointsEarnedForCricketScoreValue:cell.scoreValue];
     
     return cell;
 }
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

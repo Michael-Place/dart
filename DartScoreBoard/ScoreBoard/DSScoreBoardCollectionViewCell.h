@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DSPlayer.h"
 
-@interface DSScoreBoardCollectionViewCell : UICollectionViewCell
+@interface DSScoreBoardCollectionViewCell : UICollectionViewCell <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *playerScoreTableView;
 @property (weak, nonatomic) IBOutlet UILabel *playerNameLabel;
 @property (strong, nonatomic) DSPlayer *player;

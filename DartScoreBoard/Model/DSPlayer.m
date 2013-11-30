@@ -31,22 +31,36 @@ static int const NumberOfStrikesNecessaryBeforeScoringPoints = 3;
     NSNumber *numberOfStrikesForScoreValue = [self.playerStatistics objectForKey:[DSGame keyStringForCricketScoreValue:scoreValue]];
     NSNumber *updatedScore = [NSNumber numberWithInt:numberOfStrikesForScoreValue.intValue + 1];
     
-    [self.playerStatistics setObject:updatedScore forKey:[NSNumber numberWithInt:scoreValue]];
+    [self.playerStatistics setObject:updatedScore forKey:[DSGame keyStringForCricketScoreValue:scoreValue]];
 }
 
 - (void)decrementStrikeCountForScoreValue:(enum CricketScoreValue)scoreValue
 {
     NSNumber *numberOfStrikesForScoreValue = [self.playerStatistics objectForKey:[DSGame keyStringForCricketScoreValue:scoreValue]];
+    
     NSNumber *updatedScore = [NSNumber numberWithInt:numberOfStrikesForScoreValue.intValue - 1];
     
-    [self.playerStatistics setObject:updatedScore forKey:[NSNumber numberWithInt:scoreValue]];
+    if (updatedScore.integerValue >= 0) {
+        [self.playerStatistics setObject:updatedScore forKey:[DSGame keyStringForCricketScoreValue:scoreValue]];
+    }
 }
 
 - (int)pointsEarnedForCricketScoreValue:(enum CricketScoreValue)scoreValue
 {
+    int pointsEarned;
     NSNumber *numberOfStrikesForScoreValue = [self.playerStatistics objectForKey:[DSGame keyStringForCricketScoreValue:scoreValue]];
-    int numberOfPointScoringStrikes = numberOfStrikesForScoreValue.intValue - NumberOfStrikesNecessaryBeforeScoringPoints;
-    int pointsEarned = numberOfPointScoringStrikes * scoreValue;
+    pointsEarned = numberOfStrikesForScoreValue.integerValue;
+    
+//    if (pointsEarned < 0) {
+//        NSLog(@"this is why we initiate");
+//        [self.playerStatistics setObject:[NSNumber numberWithInt:0] forKey:[DSGame keyStringForCricketScoreValue:scoreValue]];
+//        pointsEarned = 0;
+//    }
+    
+    if (pointsEarned > NumberOfStrikesNecessaryBeforeScoringPoints) {
+        int numberOfPointScoringStrikes = numberOfStrikesForScoreValue.intValue - NumberOfStrikesNecessaryBeforeScoringPoints;
+        pointsEarned = numberOfPointScoringStrikes * scoreValue;
+    }
     
     return pointsEarned;
 }

@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *decrementScoreValueButton;
 @property (weak, nonatomic) IBOutlet UIButton *incrementScoreValueButton;
 
+
 - (IBAction)decrementScoreValueButtonTapped:(id)sender;
 - (IBAction)incrementScoreValueButtonTapped:(id)sender;
 
@@ -35,13 +36,32 @@
     // Configure the view for the selected state
 }
 
+- (void)updateScoreValue
+{
+//    NSLog(@"updating score value");
+    if (self.score == 0) {
+        self.incrementScoreValueButton.titleLabel.text = @"+";
+        self.decrementScoreValueButton.titleLabel.text = @"-";
+        NSLog(@"%@ : %i",self.playerName, self.scoreValue);
+    } else if (self.score < 4) {
+        self.incrementScoreValueButton.titleLabel.text = [NSString stringWithFormat:@"%i", self.score];
+        self.decrementScoreValueButton.titleLabel.text = @"-";
+    } else {
+        self.incrementScoreValueButton.titleLabel.text = [NSString stringWithFormat:@"%i", 3];
+        self.decrementScoreValueButton.titleLabel.text = [NSString stringWithFormat:@"%i",self.score];
+    }
+    [self setNeedsDisplay];
+}
+
 - (IBAction)decrementScoreValueButtonTapped:(id)sender
 {
     NSLog(@"Decrementing value");
+    [[DSGame sharedGame] decrementScoreValue:self.scoreValue forPlayerNamed:self.playerName];
 }
 
 - (IBAction)incrementScoreValueButtonTapped:(id)sender
 {
     NSLog(@"Incrementing value");
+    [[DSGame sharedGame] incrementScoreValue:self.scoreValue forPlayerNamed:self.playerName];
 }
 @end

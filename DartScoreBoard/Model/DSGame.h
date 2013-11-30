@@ -20,6 +20,8 @@ enum CricketScoreValue {
     CricketScoreValueFifteen = 15
 };
 
+@protocol UpdatingGameState;
+
 @interface DSGame : NSObject
 // String representations of the enumerated values
 extern NSString *const CricketScoreStringDoubleBullseye;
@@ -33,12 +35,24 @@ extern NSString *const CricketScoreStringFifteen;
 
 // Array of players for the game
 @property (nonatomic, strong) NSArray *players;
+@property (nonatomic, weak) id <UpdatingGameState> delegate;
 
 // Shared instance
 + (DSGame *)sharedGame;
 
 // Returns the key string associated with the score value and vice versa
++ (enum CricketScoreValue)scoreValueForIndex:(int)index;
 + (NSString *)keyStringForCricketScoreValue:(enum CricketScoreValue)scoreValue;
 + (enum CricketScoreValue)scoreValueForKeyString:(NSString *)keyString;
 
+- (void)incrementScoreValue:(enum CricketScoreValue)value forPlayerNamed:(NSString *)playerName;
+- (void)decrementScoreValue:(enum CricketScoreValue)value forPlayerNamed:(NSString *)playerName;
+
 @end
+
+@protocol UpdatingGameState <NSObject>
+
+- (void)updateGameState;
+
+@end
+

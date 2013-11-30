@@ -7,9 +7,11 @@
 //
 
 #import "DSGame.h"
+#import "DSPlayer.h"
 
 @interface DSGame ()
 @property (nonatomic, strong) NSDictionary *scoreValueDictionary;
+@property (nonatomic, strong) NSArray *cricketScoreList;
 
 @end
 
@@ -43,14 +45,60 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
                                   CricketScoreStringNineteen : [NSNumber numberWithInt:CricketScoreValueNineteen],
                                   CricketScoreStringEighteen : [NSNumber numberWithInt:CricketScoreValueEighteen],
                                   CricketScoreStringSeventeen : [NSNumber numberWithInt:CricketScoreValueSeventeen],
-                                  CricketScoreStringSeventeen : [NSNumber numberWithInt:CricketScoreValueSixteen],
-                                  CricketScoreStringSeventeen : [NSNumber numberWithInt:CricketScoreValueFifteen]
+                                  CricketScoreStringSixteen : [NSNumber numberWithInt:CricketScoreValueSixteen],
+                                  CricketScoreStringFifteen : [NSNumber numberWithInt:CricketScoreValueFifteen]
                                   };
     }
     return _scoreValueDictionary;
 }
 
+- (NSArray *)cricketScoreList
+{
+    if (!_cricketScoreList) {
+        _cricketScoreList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CricketScoreValueList" ofType:@"plist"]];
+    }
+    return _cricketScoreList;
+}
+
+#pragma mark - Game state updater
+- (void)incrementScoreValue:(enum CricketScoreValue)value forPlayerNamed:(NSString *)playerName
+{
+    DSPlayer *player = [self playerWithName:playerName];
+    
+    [player incrementStrikeCountForScoreValue:value];
+    
+    [self.delegate updateGameState];
+}
+
+- (void)decrementScoreValue:(enum CricketScoreValue)value forPlayerNamed:(NSString *)playerName
+{
+    DSPlayer *player = [self playerWithName:playerName];
+    
+    [player decrementStrikeCountForScoreValue:value];
+    
+    [self.delegate updateGameState];
+}
+
+
 #pragma mark - Helpers
+- (DSPlayer *)playerWithName:(NSString *)name
+{
+    DSPlayer *playerToReturn;
+    for (DSPlayer *player in self.players) {
+        if ([player.playerName isEqualToString:name]) {
+            playerToReturn = player;
+        }
+    }
+    return playerToReturn;
+}
+
++ (enum CricketScoreValue)scoreValueForIndex:(int)index
+{
+    NSString *cricketValueString = [DSGame sharedGame].cricketScoreList[index];
+    int scoreValue = [self scoreValueForKeyString:cricketValueString];
+    return scoreValue;
+}
+
 + (NSString *)keyStringForCricketScoreValue:(enum CricketScoreValue)scoreValue
 {
     NSString *keyForScoreValue = [[[[DSGame sharedGame] scoreValueDictionary] allKeysForObject:[NSNumber numberWithInt:scoreValue]] lastObject];
