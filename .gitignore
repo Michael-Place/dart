@@ -1,0 +1,27 @@
+# Mac
+.DS_Store
+
+# Eclipse / Java
+*.class
+.settings/
+bin/
+build/
+testgen/
+.sonar/
+target/
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.move2v3
+*.perspectivev3
+*.xcuserstate
+InfoPlist.h
+project.xcworkspace/
+xcuserdata/
+DriverPassenger/
+build/
+
+# Generated
+*.o
+*.pyc
