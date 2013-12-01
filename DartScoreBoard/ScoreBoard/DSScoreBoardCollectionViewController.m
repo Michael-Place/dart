@@ -97,8 +97,12 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
     DSScoreBoardCollectionViewCell *scoreBoardCell = [collectionView dequeueReusableCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier forIndexPath:indexPath];
     DSPlayer *playerForCell = [[[DSGame sharedGame] players] objectAtIndex:indexPath.row];
     [scoreBoardCell setPlayer:playerForCell];
+    UIColor *scoreBackgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"chalk_pallet.png"]];
+    [scoreBoardCell.playerNameLabel setTextColor:scoreBackgroundColor];
     [scoreBoardCell.playerNameLabel setText:playerForCell.playerName];
     [scoreBoardCell.playerScoreTableView reloadData];
+    [scoreBoardCell.totalScoreLabel setTextColor:scoreBackgroundColor];
+    scoreBoardCell.totalScoreLabel.text = [NSString stringWithFormat:@"%d", playerForCell.totalPointsEarned];
 
     return scoreBoardCell;
 }

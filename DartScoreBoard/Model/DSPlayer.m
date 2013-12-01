@@ -71,7 +71,10 @@ static int const NumberOfStrikesNecessaryBeforeScoringPoints = 3;
     int pointsEarned = 0;
     
     for (NSString *key in scoreValueKeys) {
-        pointsEarned += [self pointsEarnedForCricketScoreValue:[DSGame scoreValueForKeyString:key]];
+        int scoreForKey = [self pointsEarnedForCricketScoreValue:[DSGame scoreValueForKeyString:key]];
+        if (scoreForKey > 3) {
+            pointsEarned += scoreForKey;
+        }
     }
     
     return pointsEarned;
