@@ -55,7 +55,8 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
 - (NSArray *)cricketScoreList
 {
     if (!_cricketScoreList) {
-        _cricketScoreList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CricketScoreValueList" ofType:@"plist"]];
+        NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CricketScoreValueList" ofType:@"plist"]];
+        _cricketScoreList = [dictionary objectForKey:@"CricketScoreValueStringList"];
     }
     return _cricketScoreList;
 }
@@ -83,13 +84,45 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
 #pragma mark - Helpers
 - (DSPlayer *)playerWithName:(NSString *)name
 {
+    int playerIndex = 0;
     DSPlayer *playerToReturn;
-    for (DSPlayer *player in self.players) {
-        if ([player.playerName isEqualToString:name]) {
-            playerToReturn = player;
+    
+    while (playerIndex < self.players.count) {
+        if ([self.players[playerIndex] isKindOfClass:[DSPlayer class]]) {
+            DSPlayer *player = (DSPlayer *)self.players[playerIndex];
+            if ([player.playerName isEqualToString:name]) {
+                playerToReturn = player;
+            }
+        }
+        playerIndex++;
+    }
+    
+    return playerToReturn;
+}
+
+- (void)flushPlayerListWithScoreCards
+{
+    NSLog(@"flshing socore table");
+    NSMutableArray *flushedPlayers = [NSMutableArray array];
+    
+    if (self.players.count == 2) {
+        [flushedPlayers addObjectsFromArray:@[self.players[0], @"ScoreList", self.players[1]]];
+    } else {
+        int playerIndex = 0;
+        int playersPerScoreBoard = 2;
+        while (playerIndex < self.players.count) {
+            if (playersPerScoreBoard > 0) {
+                playersPerScoreBoard--;
+                [flushedPlayers addObject:self.players[playerIndex]];
+                playerIndex++;
+            }else {
+                playersPerScoreBoard = 2;
+                [flushedPlayers addObject:@"ScoreList"];
+            }
         }
     }
-    return playerToReturn;
+    self.players = [NSArray arrayWithArray:flushedPlayers];
+    
 }
 
 + (enum CricketScoreValue)scoreValueForIndex:(int)index

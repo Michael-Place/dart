@@ -45,6 +45,7 @@ extern NSString *const CricketScoreStringFifteen;
 + (NSString *)keyStringForCricketScoreValue:(enum CricketScoreValue)scoreValue;
 + (enum CricketScoreValue)scoreValueForKeyString:(NSString *)keyString;
 
+- (void)flushPlayerListWithScoreCards;
 - (void)incrementScoreValue:(enum CricketScoreValue)value forPlayerNamed:(NSString *)playerName;
 - (void)decrementScoreValue:(enum CricketScoreValue)value forPlayerNamed:(NSString *)playerName;
 

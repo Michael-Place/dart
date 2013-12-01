@@ -8,6 +8,7 @@
 
 #import "DSScoreBoardCollectionViewController.h"
 #import "DSScoreBoardCollectionViewCell.h"
+#import "DSScoreCollectionViewCell.h"
 #import "DSNewGameViewController.h"
 #import "DSGame.h"
 
@@ -19,6 +20,7 @@
 
 @implementation DSScoreBoardCollectionViewController
 static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardCollectionViewCellIdentifier";
+static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIdentifier";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,9 +35,8 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreBoardCollectionViewCell"
-                                                    bundle:[NSBundle mainBundle]]
-                                forCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreBoardCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreBoardScoreCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:ScoreBoardScoreCellIdentifier];
     UIImageView *backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Chalkboard.png"]];
     [self.collectionView setBackgroundView:backgroundView];
     [DSGame sharedGame].delegate = self;
@@ -72,6 +73,7 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
 {
     self.gameIsInProgress = YES;
     [self dismissViewControllerAnimated:YES completion:nil];
+    [[DSGame sharedGame]flushPlayerListWithScoreCards];
 }
 
 #pragma mark - Update Game State Delegate
@@ -88,11 +90,26 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    // One cell per player
-    return [[[DSGame sharedGame] players] count];
+    int playerCount = [[[DSGame sharedGame] players] count];
+    return playerCount;
 }
 
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell;
+    
+    if ([[DSGame sharedGame].players[indexPath.row]isKindOfClass:[NSString class]]) {
+        cell = [self scoreBoardScoreCellForCollectionView:collectionView forIndexPath:indexPath];
+    } else {
+        cell = [self scoreBoardCellForCollectionView:collectionView forIndexPath:indexPath];
+    }
+    
+
+    return cell;
+}
+
+- (UICollectionViewCell *)scoreBoardCellForCollectionView:(UICollectionView *)collectionView forIndexPath:(NSIndexPath *)indexPath
 {
     DSScoreBoardCollectionViewCell *scoreBoardCell = [collectionView dequeueReusableCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier forIndexPath:indexPath];
     DSPlayer *playerForCell = [[[DSGame sharedGame] players] objectAtIndex:indexPath.row];
@@ -103,8 +120,15 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
     [scoreBoardCell.playerScoreTableView reloadData];
     [scoreBoardCell.totalScoreLabel setTextColor:scoreBackgroundColor];
     scoreBoardCell.totalScoreLabel.text = [NSString stringWithFormat:@"%d", playerForCell.totalPointsEarned];
-
     return scoreBoardCell;
+}
+
+- (UICollectionViewCell *)scoreBoardScoreCellForCollectionView:(UICollectionView *)collectionView forIndexPath:(NSIndexPath *)indexPath
+{
+    DSScoreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ScoreBoardScoreCellIdentifier forIndexPath:indexPath];
+    
+    [cell setUpScoreValue];
+    return cell;
 }
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -144,8 +168,18 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
 {
     DSPlayer *player1 = [[DSPlayer alloc]initWithPlayerName:@"George"];
     DSPlayer *player2 = [[DSPlayer alloc]initWithPlayerName:@"Michael"];
+//    DSPlayer *player3 = [[DSPlayer alloc]initWithPlayerName:@"test1"];
+//    DSPlayer *player4 = [[DSPlayer alloc]initWithPlayerName:@"test2"];
+//    DSPlayer *player5 = [[DSPlayer alloc]initWithPlayerName:@"George"];
+//    DSPlayer *player6 = [[DSPlayer alloc]initWithPlayerName:@"Michael"];
+//    DSPlayer *player7 = [[DSPlayer alloc]initWithPlayerName:@"test1"];
+//    DSPlayer *player8 = [[DSPlayer alloc]initWithPlayerName:@"test2"];
+
+//    [DSGame sharedGame].players = @[player1, player2, player3, player4, player5, player6, player7, player8];
     [DSGame sharedGame].players = @[player1, player2];
     self.gameIsInProgress = YES;
+    [[DSGame sharedGame]flushPlayerListWithScoreCards];
+
 }
 
 @end
