@@ -11,6 +11,7 @@
 @interface DSPlayerScoreValueTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIButton *decrementScoreValueButton;
 @property (weak, nonatomic) IBOutlet UIButton *incrementScoreValueButton;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 
 - (IBAction)decrementScoreValueButtonTapped:(id)sender;
@@ -38,6 +39,7 @@
 
 - (void)updateScoreValue
 {
+    self.backgroundColor = [UIColor clearColor];
 //    NSLog(@"updating score value");
     if (self.score == 0) {
         self.incrementScoreValueButton.titleLabel.text = @"+";

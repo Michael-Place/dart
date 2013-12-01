@@ -36,6 +36,8 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
     [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreBoardCollectionViewCell"
                                                     bundle:[NSBundle mainBundle]]
                                 forCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier];
+    UIImageView *backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Chalkboard.png"]];
+    [self.collectionView setBackgroundView:backgroundView];
     [DSGame sharedGame].delegate = self;
 }
 
@@ -101,10 +103,10 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
     return scoreBoardCell;
 }
 
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//{
-//    
-//}
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
 
 #pragma mark - UICollectionViewFlowLayout
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
