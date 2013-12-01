@@ -34,6 +34,7 @@
 		E9F6EFFB184965B400A16A44 /* DSNewPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFF9184965B400A16A44 /* DSNewPlayerViewController.xib */; };
 		E9F6EFFF184965F400A16A44 /* dart.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFFE184965F400A16A44 /* dart.png */; };
 		ED176F3C184ADC2100EEEFE7 /* Chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */; };
+		ED176F3E184B00A700EEEFE7 /* chalk_pallet.png in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */; };
 		ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		E9F6EFF9184965B400A16A44 /* DSNewPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSNewPlayerViewController.xib; sourceTree = "<group>"; };
 		E9F6EFFE184965F400A16A44 /* dart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dart.png; sourceTree = "<group>"; };
 		ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chalkboard.png; sourceTree = "<group>"; };
+		ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chalk_pallet.png; sourceTree = "<group>"; };
 		ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CricketScoreValueList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +251,7 @@
 		ED176F3A184ADC0400EEEFE7 /* ScoreBoard */ = {
 			isa = PBXGroup;
 			children = (
+				ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */,
 				ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */,
 			);
 			name = ScoreBoard;
@@ -338,6 +341,7 @@
 				E9F6EFFB184965B400A16A44 /* DSNewPlayerViewController.xib in Resources */,
 				E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */,
 				E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */,
+				ED176F3E184B00A700EEEFE7 /* chalk_pallet.png in Resources */,
 				E9C9D53418493E790085BC43 /* Images.xcassets in Resources */,
 				ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */,
 				E9C9D52C18493E790085BC43 /* Main_iPhone.storyboard in Resources */,

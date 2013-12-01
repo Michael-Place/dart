@@ -8,11 +8,17 @@
 
 #import "DSPlayerScoreValueTableViewCell.h"
 
+const NSString *kStrikeOneSymbol = @"\u29F5";
+const NSString *kStrikeTwoSymbol = @"\u2613";
+const NSString *kStrikeThreeSymbol = @"\u2297";
+
 @interface DSPlayerScoreValueTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIButton *decrementScoreValueButton;
 @property (weak, nonatomic) IBOutlet UIButton *incrementScoreValueButton;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
+@property (weak, nonatomic) IBOutlet UILabel *decrementScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *incrementScoreLabel;
 
 - (IBAction)decrementScoreValueButtonTapped:(id)sender;
 - (IBAction)incrementScoreValueButtonTapped:(id)sender;
@@ -39,18 +45,39 @@
 
 - (void)updateScoreValue
 {
+    UIColor *scoreBackgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"chalk_pallet.png"]];
+    self.incrementScoreLabel.textColor = scoreBackgroundColor;
+    self.decrementScoreLabel.textColor = scoreBackgroundColor;
     self.backgroundColor = [UIColor clearColor];
 //    NSLog(@"updating score value");
     if (self.score == 0) {
-        self.incrementScoreValueButton.titleLabel.text = @"+";
-        self.decrementScoreValueButton.titleLabel.text = @"-";
+        self.incrementScoreLabel.text = @"+";
+        self.decrementScoreLabel.text = @"-";
         NSLog(@"%@ : %i",self.playerName, self.scoreValue);
     } else if (self.score < 4) {
-        self.incrementScoreValueButton.titleLabel.text = [NSString stringWithFormat:@"%i", self.score];
-        self.decrementScoreValueButton.titleLabel.text = @"-";
+        NSString *myString;
+        switch (self.score) {
+            case 1: {
+                myString = [NSString stringWithFormat:@"%@",kStrikeOneSymbol];
+                break;
+            }
+            case 2: {
+                myString = [NSString stringWithFormat:@"%@", kStrikeTwoSymbol];
+                break;
+            }
+            case 3: {
+                myString = [NSString stringWithFormat:@"%@", kStrikeThreeSymbol];
+                break;
+            }
+            default:
+                break;
+        }
+        self.incrementScoreLabel.text = myString;
+        self.decrementScoreLabel.text = @"-";
     } else {
-        self.incrementScoreValueButton.titleLabel.text = [NSString stringWithFormat:@"%i", 3];
-        self.decrementScoreValueButton.titleLabel.text = [NSString stringWithFormat:@"%i",self.score];
+        NSString *myString = [NSString stringWithFormat:@"%@", kStrikeThreeSymbol];
+        self.incrementScoreLabel.text = myString;
+        self.decrementScoreLabel.text = [NSString stringWithFormat:@"%i",self.score];
     }
     [self setNeedsDisplay];
 }
