@@ -8,7 +8,7 @@
             <connections>
                 <outlet property="addPlayerButton" destination="9XW-Vl-6vP" id="yVd-go-zNq"/>
                 <outlet property="collectionView" destination="LTv-jH-nG2" id="83v-6U-Wq4"/>
-                <outlet property="startGameButton" destination="V0b-WB-FU8" id="uJt-UH-tud"/>
+                <outlet property="startGameButton" destination="A7g-sA-tUu" id="pdX-JR-4oj"/>
                 <outlet property="view" destination="1" id="bT4-rv-vn7"/>
             </connections>
         </placeholder>
@@ -17,18 +17,6 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="V0b-WB-FU8">
-                    <rect key="frame" x="453" y="865" width="149" height="77"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" red="0.97870095800000001" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                    <state key="normal" title="Start Game">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="startGameTapped:" destination="-1" eventType="touchUpInside" id="vph-TX-WmY"/>
-                    </connections>
-                </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" id="LTv-jH-nG2">
                     <rect key="frame" x="30" y="273" width="709" height="457"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -69,6 +57,18 @@
                     <fontDescription key="fontDescription" type="system" pointSize="45"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A7g-sA-tUu">
+                    <rect key="frame" x="464" y="865" width="149" height="77"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="0.97870095800000001" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                    <state key="normal" title="Start Game">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="startGameTapped:" destination="-1" eventType="touchUpInside" id="90v-vs-ZND"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
