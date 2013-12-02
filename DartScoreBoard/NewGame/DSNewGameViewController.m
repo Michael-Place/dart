@@ -23,6 +23,7 @@ const int kDartGap = 60;
 
 //Dyanmics
 @property (nonatomic, strong) NSMutableArray *darts;
+@property (nonatomic, strong) NSMutableArray *droppedDarts;
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) UIGravityBehavior *gravity;
 @property (nonatomic, strong) UICollisionBehavior *collision;
@@ -57,6 +58,8 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     
     //UIDynamics
     self.darts = [NSMutableArray array];
+    self.droppedDarts = [NSMutableArray array];
+    
     [self addCollisionBoundaryForView:self.startGameButton];
     
 }
@@ -146,8 +149,16 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 - (void)newPlayerAddedWithName:(NSString *)playerName
 {
     NSLog(@"New Player Added!! Throw Dart");
-    UIImageView *dartView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 15)];
-    [dartView setImage:[UIImage imageNamed:@"dart.png"]];
+    
+    UIImageView *dartView;
+    if (self.darts.count + 1 <= kMaxNumberOfPlayers/2) {
+        dartView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 15)];
+        [dartView setImage:[UIImage imageNamed:@"dart_right.png"]];
+    }
+    else {
+        dartView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width, 0, 100, 15)];
+        [dartView setImage:[UIImage imageNamed:@"dart_left.png"]];
+    }
     
     [self throwDart:dartView];
 }
@@ -155,10 +166,22 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 - (CGPoint)getDartEndPoint
 {
     int minY = 50;
-    int currentDart = (int)self.darts.count - 1;
-    int yOffset = minY + (currentDart * kDartGap);
+    int currentDart;
+    int yOffset;
     
-    CGPoint endPoint = CGPointMake(self.view.bounds.size.width - 100, yOffset);
+    CGPoint endPoint;
+    if (self.darts.count <= kMaxNumberOfPlayers/2) {
+        currentDart = (int)self.darts.count - 1;
+        yOffset = minY + (currentDart * kDartGap);
+        endPoint = CGPointMake(self.view.bounds.size.width - 55, yOffset);
+    }
+    else {
+        currentDart = abs(kMaxNumberOfPlayers/2 - (int)self.darts.count + 1);
+        yOffset = minY + (currentDart * kDartGap);
+        endPoint = CGPointMake(self.view.bounds.origin.y + 55, yOffset);
+    }
+
+    
     return endPoint;
 }
 
@@ -168,13 +191,19 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     
     if (self.darts && self.darts.count) {
         UIView *dartView = [self.darts lastObject];
-        
         UIImageView *dropDart = [[UIImageView alloc] initWithFrame:dartView.frame];
-        //        [dropDart setBackgroundColor:[UIColor orangeColor]];
-        [dropDart setImage:[UIImage imageNamed:@"dart.png"]];
+        
+        if (self.darts.count <= kMaxNumberOfPlayers/2) {
+            [dropDart setImage:[UIImage imageNamed:@"dart_right.png"]];
+        }
+        else {
+            [dropDart setImage:[UIImage imageNamed:@"dart_left.png"]];
+        }
         
         [self.darts removeLastObject];
         [dartView removeFromSuperview];
+        
+        [self.droppedDarts addObject:dropDart];
         [self.view addSubview:dropDart];
         
         UIDynamicItemBehavior* itemBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[dropDart]];
@@ -191,7 +220,7 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 #pragma mark - UIDynamic helpers
 - (void)addSnapForView:(UIView *)view toPoint:(CGPoint)point
 {
-    UISnapBehavior *snapDart = [[UISnapBehavior alloc]initWithItem:view snapToPoint:point];
+    UISnapBehavior *snapDart = [[UISnapBehavior alloc] initWithItem:view snapToPoint:point];
     snapDart.damping = 0.8;
     [self.animator addBehavior:snapDart];
 }
@@ -205,6 +234,7 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 - (void)addPushForView:(UIView *)view
 {
     UIPushBehavior *push = [[UIPushBehavior alloc] initWithItems:@[view] mode:UIPushBehaviorModeInstantaneous];
+    
     [push setPushDirection:CGVectorMake(0, 1.0)];
     [push setAngle:-0.2];
     [self.animator addBehavior:push];
@@ -247,6 +277,34 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     CGPoint bottomLeftEdge = CGPointMake(view.frame.origin.x, view.frame.origin.y + view.frame.size.height);
     
     [self.collision addBoundaryWithIdentifier:identifier fromPoint:topLeftEdge toPoint:bottomLeftEdge];
+}
+
+- (void)resetDartDynamics
+{
+    self.animator = nil;
+    self.gravity = nil;
+    self.collision = nil;
+    
+    for (UIView *dart in self.darts) {
+        [dart removeFromSuperview];
+    }
+    
+    for (UIView *droppedDart in self.droppedDarts) {
+        [droppedDart removeFromSuperview];
+    }
+    
+    self.darts = [NSMutableArray array];
+    self.droppedDarts = [NSMutableArray array];
+    
+    [self addCollisionBoundaryForView:self.startGameButton];
+    [self addCollisionBoundaryForView:self.addPlayerButton];
+}
+
+- (void)throwDartsForCurrentPlayers
+{
+    for (DSPlayer *player in self.newPlayers) {
+        [self newPlayerAddedWithName:player.playerName];
+    }
 }
 
 #pragma mark - UICollectionView Data Source
@@ -359,9 +417,14 @@ static float playerNameAnimationDuration = 1.0;
 }
 
 #pragma mark - Rotation
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self resetDartDynamics];
+}
+
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-
+    [self throwDartsForCurrentPlayers];
 }
 
 #pragma mark - Helpers
