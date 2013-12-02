@@ -14,7 +14,7 @@
 
 @end
 
-@interface DSNewGameViewController : UIViewController
+@interface DSNewGameViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 @property id <StartingGameDelegate> delegate;
 
 @end

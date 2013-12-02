@@ -26,6 +26,12 @@ static int const NumberOfStrikesNecessaryBeforeScoringPoints = 3;
     return self;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<Cricket Player: %@, Statistics: %@>",
+            [self playerName], self.playerStatistics];
+}
+
 - (void)incrementStrikeCountForScoreValue:(enum CricketScoreValue)scoreValue
 {
     NSNumber *numberOfStrikesForScoreValue = [self.playerStatistics objectForKey:[DSGame keyStringForCricketScoreValue:scoreValue]];

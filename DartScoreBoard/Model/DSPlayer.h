@@ -12,6 +12,8 @@
 @interface DSPlayer : NSObject
 @property (nonatomic, strong) NSString *playerName;
 @property (nonatomic, strong) NSMutableDictionary *playerStatistics;
+@property BOOL playerNameHasBeenEdited;
+@property BOOL isEditMode;
 
 //Init
 - (id)initWithPlayerName:(NSString *)name;

@@ -46,7 +46,7 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
 {
     [super viewDidAppear:animated];
     
-    [self testGameSetup];
+//    [self testGameSetup];
     
     if (!self.gameIsInProgress) {
         [self displayNewGameModal];
@@ -99,7 +99,7 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
 {
     UICollectionViewCell *cell;
     
-    if ([[DSGame sharedGame].players[indexPath.row]isKindOfClass:[NSString class]]) {
+    if ([[DSGame sharedGame].players[indexPath.row] isKindOfClass:[NSString class]]) {
         cell = [self scoreBoardScoreCellForCollectionView:collectionView forIndexPath:indexPath];
     } else {
         cell = [self scoreBoardCellForCollectionView:collectionView forIndexPath:indexPath];
@@ -178,7 +178,7 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
 //    [DSGame sharedGame].players = @[player1, player2, player3, player4, player5, player6, player7, player8];
     [DSGame sharedGame].players = @[player1, player2];
     self.gameIsInProgress = YES;
-    [[DSGame sharedGame]flushPlayerListWithScoreCards];
+    [[DSGame sharedGame] flushPlayerListWithScoreCards];
 
 }
 

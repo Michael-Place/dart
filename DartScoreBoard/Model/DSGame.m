@@ -31,8 +31,15 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedGame = [[self alloc] init];
+        sharedGame.players = [NSMutableArray array];
     });
     return sharedGame;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<Game with players: %@>",
+            [self players]];
 }
 
 #pragma mark - Getters
@@ -102,7 +109,7 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
 
 - (void)flushPlayerListWithScoreCards
 {
-    NSLog(@"flshing socore table");
+    NSLog(@"flushing score table");
     NSMutableArray *flushedPlayers = [NSMutableArray array];
     
     if (self.players.count == 2) {
