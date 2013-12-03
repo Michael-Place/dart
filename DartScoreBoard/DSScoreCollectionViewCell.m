@@ -52,6 +52,15 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@", self.scoreList[indexPath.row]];
     [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
     
+    NSNumber *shouldCloseObject = [[DSGame sharedGame].gameStatusPointValueDictionary objectForKey:[DSGame keyStringForCricketScoreValue:[DSGame scoreValueForIndex:indexPath.row]]];
+    BOOL shouldClose = shouldCloseObject.boolValue;
+    
+    if (shouldClose) {
+        cell.textLabel.textColor = [UIColor grayColor];
+    } else {
+        cell.textLabel.textColor = [UIColor whiteColor];
+    }
+    
     cell.backgroundColor = [UIColor clearColor];
     return cell;
     

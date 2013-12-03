@@ -11,13 +11,14 @@
 
 @interface DSGame ()
 @property (nonatomic, strong) NSDictionary *scoreValueDictionary;
-@property (nonatomic, strong) NSArray *cricketScoreList;
+@property (nonatomic, strong) NSMutableArray *cricketScoreList;
+
 
 @end
 
 @implementation DSGame
 NSString *const CricketScoreStringDoubleBullseye = @"DoubleBullseye";
-NSString *const CricketScoreStringBullseye = @"Bullseye";
+NSString *const CricketScoreStringBullseye = @"Bull";
 NSString *const CricketScoreStringTwenty = @"Twenty";
 NSString *const CricketScoreStringNineteen = @"Nineteen";
 NSString *const CricketScoreStringEighteen = @"Eighteen";
@@ -25,7 +26,7 @@ NSString *const CricketScoreStringSeventeen = @"Seventeen";
 NSString *const CricketScoreStringSixteen = @"Sixteen";
 NSString *const CricketScoreStringFifteen = @"Fifteen";
 
-+ (id)sharedGame
++ (DSGame *)sharedGame
 {
     static DSGame *sharedGame = nil;
     static dispatch_once_t onceToken;
@@ -74,8 +75,7 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     DSPlayer *player = [self playerWithName:playerName];
     
     [player incrementStrikeCountForScoreValue:value];
-    
-    [self.delegate updateGameState];
+    [self willUpdateDisplay];
 }
 
 - (void)decrementScoreValue:(enum CricketScoreValue)value forPlayerNamed:(NSString *)playerName
@@ -83,7 +83,13 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     DSPlayer *player = [self playerWithName:playerName];
     
     [player decrementStrikeCountForScoreValue:value];
-    
+    [self willUpdateDisplay];
+}
+
+- (void)willUpdateDisplay
+{
+    [[DSGame sharedGame] updateScoreValuesToBeClosed];
+    [[DSGame sharedGame] updateGameForPossibleWinner];
     [self.delegate updateGameState];
 }
 
@@ -132,10 +138,73 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     
 }
 
+- (void)updateGameForPossibleWinner
+{
+    int playerCounter = 0;
+    int currentMaxScore = 0;
+    DSPlayer *possibleWinner;
+    while (playerCounter < self.players.count) {
+        if ([self.players[playerCounter] isKindOfClass:[DSPlayer class]]) {
+            DSPlayer *player = self.players[playerCounter];
+            if ([player totalPointsEarned] > currentMaxScore) {
+                possibleWinner = player;
+            }
+        }
+        playerCounter++;
+    }
+    
+    if ([possibleWinner hasClosedAllScoreValues] && [possibleWinner totalPointsEarned] > 0) {
+        self.winner = possibleWinner.playerName;
+    } else {
+        self.winner = [NSString string];
+    }
+}
+
+- (void)updateScoreValuesToBeClosed
+{
+    self.gameStatusPointValueDictionary = [NSMutableDictionary dictionary];
+    
+    int scoreIndex = 0;
+    
+    while (scoreIndex < self.cricketScoreList.count) {
+        int cricketScoreValue = [DSGame scoreValueForIndex:scoreIndex];
+        NSString *scoreValueString = [DSGame keyStringForCricketScoreValue:cricketScoreValue];
+        NSNumber *shouldCloseScore = [NSNumber numberWithBool:[self shouldCloseScoreValue:cricketScoreValue]];
+        [self.gameStatusPointValueDictionary setObject:shouldCloseScore forKey:scoreValueString];
+        scoreIndex++;
+    }
+    NSLog(@"here");
+}
+
+- (BOOL)shouldCloseScoreValue:(enum CricketScoreValue)value
+{
+    BOOL shouldCloseScoreValue = NO;
+    int isClosedForPlayerCount = 0;
+    int playerCounter = 0;
+    int playerCount = 0;
+    while (playerCounter < self.players.count) {
+        if (![self.players[playerCounter] isKindOfClass:[NSString class]]) {
+            DSPlayer *player = self.players[playerCounter];
+            playerCount++;
+            if ([player pointsEarnedForCricketScoreValue:value] > 2) {
+                isClosedForPlayerCount++;
+            }
+        }
+        playerCounter++;
+    }
+    if (isClosedForPlayerCount == playerCount) {
+        shouldCloseScoreValue = YES;
+    }
+    return shouldCloseScoreValue;
+}
+
 + (enum CricketScoreValue)scoreValueForIndex:(int)index
 {
     NSString *cricketValueString = [DSGame sharedGame].cricketScoreList[index];
     int scoreValue = [self scoreValueForKeyString:cricketValueString];
+    if ([cricketValueString isEqualToString:CricketScoreStringBullseye]) {
+        scoreValue = 25;
+    }
     return scoreValue;
 }
 
@@ -152,5 +221,7 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     
     return scoreValue;
 }
+
+
 
 @end

@@ -45,9 +45,6 @@ const NSString *kStrikeThreeSymbol = @"\u2297";
 
 - (void)updateScoreValue
 {
-    UIColor *scoreBackgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"chalk_pallet.png"]];
-    self.incrementScoreLabel.textColor = scoreBackgroundColor;
-    self.decrementScoreLabel.textColor = scoreBackgroundColor;
     self.backgroundColor = [UIColor clearColor];
 //    NSLog(@"updating score value");
     if (self.score == 0) {
@@ -79,7 +76,30 @@ const NSString *kStrikeThreeSymbol = @"\u2297";
         self.incrementScoreLabel.text = myString;
         self.decrementScoreLabel.text = [NSString stringWithFormat:@"%i",self.score];
     }
+    
+    [self shouldCloseScoreOrEndGame];
     [self setNeedsDisplay];
+}
+
+- (void)shouldCloseScoreOrEndGame
+{
+    NSNumber *shouldCloseObject = [[DSGame sharedGame].gameStatusPointValueDictionary objectForKey:[DSGame keyStringForCricketScoreValue:self.scoreValue]];
+    BOOL shouldClose = shouldCloseObject.boolValue;
+    
+    if (shouldClose || ([DSGame sharedGame].winner && [DSGame sharedGame].winner.length)) {
+        [self.incrementScoreValueButton setUserInteractionEnabled:NO];
+        UIColor *colorForText = [UIColor grayColor];
+        if (([DSGame sharedGame].winner && [DSGame sharedGame].winner.length)) {
+            colorForText = [UIColor yellowColor];
+        }
+        self.incrementScoreLabel.textColor = colorForText;
+        self.decrementScoreLabel.textColor = colorForText;
+    } else {
+        [self.incrementScoreValueButton setUserInteractionEnabled:YES];
+        UIColor *scoreBackgroundColor = [UIColor whiteColor];
+        self.incrementScoreLabel.textColor = scoreBackgroundColor;
+        self.decrementScoreLabel.textColor = scoreBackgroundColor;
+    }
 }
 
 - (IBAction)decrementScoreValueButtonTapped:(id)sender

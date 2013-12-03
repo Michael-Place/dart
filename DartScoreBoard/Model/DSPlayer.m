@@ -57,12 +57,6 @@ static int const NumberOfStrikesNecessaryBeforeScoringPoints = 3;
     NSNumber *numberOfStrikesForScoreValue = [self.playerStatistics objectForKey:[DSGame keyStringForCricketScoreValue:scoreValue]];
     pointsEarned = numberOfStrikesForScoreValue.integerValue;
     
-//    if (pointsEarned < 0) {
-//        NSLog(@"this is why we initiate");
-//        [self.playerStatistics setObject:[NSNumber numberWithInt:0] forKey:[DSGame keyStringForCricketScoreValue:scoreValue]];
-//        pointsEarned = 0;
-//    }
-    
     if (pointsEarned > NumberOfStrikesNecessaryBeforeScoringPoints) {
         int numberOfPointScoringStrikes = numberOfStrikesForScoreValue.intValue - NumberOfStrikesNecessaryBeforeScoringPoints;
         pointsEarned = numberOfPointScoringStrikes * scoreValue;
@@ -84,6 +78,17 @@ static int const NumberOfStrikesNecessaryBeforeScoringPoints = 3;
     }
     
     return pointsEarned;
+}
+
+- (BOOL)hasClosedAllScoreValues
+{
+    BOOL hasClosedAllScoreValues = YES;
+    for (NSNumber *pointsForValue in [self.playerStatistics allValues]) {
+        if (pointsForValue.integerValue < 3) {
+            hasClosedAllScoreValues = NO;
+        }
+    }
+    return hasClosedAllScoreValues;
 }
 
 - (BOOL)isClosedForScoreValue:(enum CricketScoreValue)scoreValue

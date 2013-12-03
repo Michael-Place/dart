@@ -28,6 +28,9 @@
 // Returns the total number of points earned by the player
 - (int)totalPointsEarned;
 
+// Returns true if all score values has been closed
+- (BOOL)hasClosedAllScoreValues;
+
 // Returns true if the score value has been closed (aka been struck three times)
 - (BOOL)isClosedForScoreValue:(enum CricketScoreValue)scoreValue;
 

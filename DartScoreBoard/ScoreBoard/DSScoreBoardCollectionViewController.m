@@ -37,8 +37,6 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
 	// Do any additional setup after loading the view.
     [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreBoardCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreBoardScoreCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:ScoreBoardScoreCellIdentifier];
-    UIImageView *backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Chalkboard.png"]];
-    [self.collectionView setBackgroundView:backgroundView];
     [DSGame sharedGame].delegate = self;
 }
 
@@ -114,12 +112,18 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
     DSScoreBoardCollectionViewCell *scoreBoardCell = [collectionView dequeueReusableCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier forIndexPath:indexPath];
     DSPlayer *playerForCell = [[[DSGame sharedGame] players] objectAtIndex:indexPath.row];
     [scoreBoardCell setPlayer:playerForCell];
-    UIColor *scoreBackgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"chalk_pallet.png"]];
-    [scoreBoardCell.playerNameLabel setTextColor:scoreBackgroundColor];
+//    UIColor *scoreBackgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"chalk_pallet.png"]];
+    [scoreBoardCell.playerNameLabel setTextColor:[UIColor whiteColor]];
     [scoreBoardCell.playerNameLabel setText:playerForCell.playerName];
     [scoreBoardCell.playerScoreTableView reloadData];
-    [scoreBoardCell.totalScoreLabel setTextColor:scoreBackgroundColor];
+    [scoreBoardCell.totalScoreLabel setTextColor:[UIColor whiteColor]];
     scoreBoardCell.totalScoreLabel.text = [NSString stringWithFormat:@"%d", playerForCell.totalPointsEarned];
+    if ([DSGame sharedGame].winner && [[DSGame sharedGame].winner isEqualToString:playerForCell.playerName]) {
+        scoreBoardCell.backgroundColor = [UIColor blueColor];
+    } else {
+        scoreBoardCell.backgroundColor = [UIColor clearColor];
+    }
+    
     return scoreBoardCell;
 }
 
