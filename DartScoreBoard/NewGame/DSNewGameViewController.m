@@ -325,6 +325,7 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     
     DSPlayer *playerForIndexPath = [self.newPlayers objectAtIndex:indexPath.row];
     
+    [newPlayerCell.playerNameTextField setText:playerForIndexPath.playerName];
     [newPlayerCell.playerNameLabel setText:playerForIndexPath.playerName];
     
     // First two players can't be deleted
@@ -466,8 +467,12 @@ static float playerNameAnimationDuration = 1.0;
     else {
         // Set player name to user entered value
         [cell.playerNameLabel setText:cell.playerNameTextField.text];
-        [playerForCell setPlayerName:cell.playerNameTextField.text];
-        [playerForCell setPlayerNameHasBeenEdited:YES];
+        
+        // If the players current name does not match what the user entered, update it and note that it has been edited
+        if (![playerForCell.playerName isEqualToString:cell.playerNameTextField.text]) {
+            [playerForCell setPlayerName:cell.playerNameTextField.text];
+            [playerForCell setPlayerNameHasBeenEdited:YES];
+        }
     }
 
     if (animated) {
