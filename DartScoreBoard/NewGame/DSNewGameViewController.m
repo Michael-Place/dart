@@ -67,6 +67,11 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 // Allows us to dismiss keyboard by tapping anywhere outside of the text view
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
+    [self findAndResignFirstResponder];
+}
+
+- (void)findAndResignFirstResponder
+{
     for (int i = 0; i < self.newPlayers.count; i++) {
         NSIndexPath *indexPathForCell = [NSIndexPath indexPathForItem:i inSection:0];
         DSNewPlayerCollectionViewCell *cell = (DSNewPlayerCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPathForCell];
@@ -493,10 +498,9 @@ static float playerNameAnimationDuration = 1.0;
     for (DSPlayer *player in self.newPlayers) {
         if (player != playerInFocus) {
             [player setIsEditMode:NO];
+            [self findAndResignFirstResponder];
         }
     }
-    
-    [self.collectionView reloadData];
 }
 
 - (NSString *)defaultNameForNewPlayer
