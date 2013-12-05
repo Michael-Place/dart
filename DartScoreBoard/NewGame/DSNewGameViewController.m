@@ -482,14 +482,22 @@ static float playerNameAnimationDuration = 1.0;
         [cell.playerNameLabel setText:playerForCell.playerName];
     }
     else {
-        // Set player name to user entered value
-        [cell.playerNameLabel setText:cell.playerNameTextField.text];
-        
-        // If the players current name does not match what the user entered, update it and note that it has been edited
-        if (![playerForCell.playerName isEqualToString:cell.playerNameTextField.text]) {
-            [playerForCell setPlayerName:cell.playerNameTextField.text];
-            [playerForCell setPlayerNameHasBeenEdited:YES];
+        if ([self playerNameIsValidForPlayer:playerForCell andPotentialName:cell
+            .playerNameTextField.text]) {
+            // Set player name to user entered value
+            [cell.playerNameLabel setText:cell.playerNameTextField.text];
+            
+            // If the players current name does not match what the user entered, update it and note that it has been edited
+            if (![playerForCell.playerName isEqualToString:cell.playerNameTextField.text]) {
+                [playerForCell setPlayerName:cell.playerNameTextField.text];
+                [playerForCell setPlayerNameHasBeenEdited:YES];
+            }
         }
+        else {
+            [cell.playerNameTextField setText:playerForCell.playerName];
+            [self showInvalidNameAlert];
+        }
+        
     }
 
     if (animated) {
@@ -506,6 +514,25 @@ static float playerNameAnimationDuration = 1.0;
         [cell.playerNameTextField resignFirstResponder];
     }
     
+}
+
+- (BOOL)playerNameIsValidForPlayer:(DSPlayer *)player andPotentialName:(NSString *)potentialName
+{
+    BOOL nameIsValid = YES;
+    for (DSPlayer *otherPlayer in self.newPlayers) {
+        if (player != otherPlayer && [potentialName isEqualToString:otherPlayer.playerName]) {
+            nameIsValid = NO;
+            break;
+        }
+    }
+    
+    return nameIsValid;
+}
+
+- (void)showInvalidNameAlert
+{
+    UIAlertView *invalidNameAlert = [[UIAlertView alloc] initWithTitle:@"Oh No!" message:@"Sorry, but no two players can have the same name. Please choose another name for this player." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [invalidNameAlert show];
 }
 
 - (NSString *)defaultNameForNewPlayer
