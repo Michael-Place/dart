@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "DSPlayer.h"
 
+@protocol ScoreBoardCollectionViewCellDelegate <NSObject>
+
+- (CGFloat)parentHeight;
+- (CGFloat)parentWidth;
+
+@end
+
 @interface DSScoreBoardCollectionViewCell : UICollectionViewCell <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) id <ScoreBoardCollectionViewCellDelegate> cellDelegate;
 @property (weak, nonatomic) IBOutlet UITableView *playerScoreTableView;
 @property (weak, nonatomic) IBOutlet UILabel *playerNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalScoreLabel;

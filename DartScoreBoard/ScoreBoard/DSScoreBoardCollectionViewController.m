@@ -12,7 +12,7 @@
 #import "DSNewGameViewController.h"
 #import "DSGame.h"
 
-@interface DSScoreBoardCollectionViewController () <StartingGameDelegate, UpdatingGameState>
+@interface DSScoreBoardCollectionViewController () <StartingGameDelegate, UpdatingGameState, ScoreBoardCollectionViewCellDelegate>
 @property BOOL gameIsInProgress;
 @property (strong, nonatomic) IBOutlet UICollectionView *scoreBoardCollectionView;
 
@@ -111,7 +111,10 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
 {
     DSScoreBoardCollectionViewCell *scoreBoardCell = [collectionView dequeueReusableCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier forIndexPath:indexPath];
     DSPlayer *playerForCell = [[[DSGame sharedGame] players] objectAtIndex:indexPath.row];
+    
+    [scoreBoardCell setCellDelegate:self];
     [scoreBoardCell setPlayer:playerForCell];
+    
 //    UIColor *scoreBackgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"chalk_pallet.png"]];
     [scoreBoardCell.playerNameLabel setTextColor:[UIColor whiteColor]];
     [scoreBoardCell.playerNameLabel setText:playerForCell.playerName];
@@ -149,8 +152,31 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGSize itemSize = [self loadScoreBoardCollectionViewCellFromNib].frame.size;
-    itemSize.height = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ?  [[UIScreen mainScreen] bounds].size.width :  [[UIScreen mainScreen] bounds].size.height;
+    itemSize.height = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ?  [[UIScreen mainScreen] bounds].size.width : [[UIScreen mainScreen] bounds].size.height;
     return itemSize;
+}
+
+static int landscapeHeightForTableView = 520;
+static int portraitHeightForTableView = 776;
+#pragma mark - ScoreBoardCollectionViewDelegate
+- (CGFloat)parentHeight
+{
+    CGFloat height;
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        height = landscapeHeightForTableView;
+    }
+    else {
+        height = portraitHeightForTableView;
+    }
+    
+    return height;
+}
+
+- (CGFloat)parentWidth
+{
+    DSScoreBoardCollectionViewCell *cell = [self loadScoreBoardCollectionViewCellFromNib];
+    
+    return cell.playerScoreTableView.frame.size.width;
 }
 
 #pragma mark - Rotation

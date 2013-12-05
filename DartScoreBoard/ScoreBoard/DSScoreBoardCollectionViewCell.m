@@ -23,7 +23,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat cellHeight = [self loadPlayerScoreValueCellFromNib].frame.size.height;
+    CGFloat cellHeight = [self.cellDelegate parentHeight] / [self.player.playerStatistics count];
+    
     return cellHeight;
 }
 

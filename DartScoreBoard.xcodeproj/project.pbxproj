@@ -222,12 +222,12 @@
 				E9C9D552184941C60085BC43 /* DSScoreBoardCollectionViewController.m */,
 				E9C9D55B184944370085BC43 /* DSScoreBoardCollectionViewCell.h */,
 				E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */,
-				ED176F41184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.h */,
-				ED176F42184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.m */,
+				E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */,
 				E92C414918495949001CA645 /* DSPlayerScoreValueTableViewCell.h */,
 				E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */,
-				E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */,
 				E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */,
+				ED176F41184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.h */,
+				ED176F42184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.m */,
 				ED176F3F184B810700EEEFE7 /* DSScoreBoardScoreCollectionViewCell.xib */,
 			);
 			name = ScoreBoard;
