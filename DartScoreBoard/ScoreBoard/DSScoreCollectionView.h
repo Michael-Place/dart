@@ -1,5 +1,5 @@
 //
-//  DSScoreCollectionViewCell.h
+//  DSScoreCollectionView.h
 //  DartScoreBoard
 //
 //  Created by Zhe Jia on 12/1/13.
@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSScoreBoardCollectionViewCell.h"
 
-@interface DSScoreCollectionViewCell : UICollectionViewCell
-
-- (void)setUpScoreValue;
+@interface DSScoreCollectionView : UICollectionReusableView
 
 @end

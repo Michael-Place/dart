@@ -8,7 +8,7 @@
 
 #import "DSScoreBoardCollectionViewController.h"
 #import "DSScoreBoardCollectionViewCell.h"
-#import "DSScoreCollectionViewCell.h"
+#import "DSScoreCollectionView.h"
 #import "DSNewGameViewController.h"
 #import "DSGame.h"
 
@@ -20,7 +20,8 @@
 
 @implementation DSScoreBoardCollectionViewController
 static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardCollectionViewCellIdentifier";
-static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIdentifier";
+static NSString *const ScoreBoardHeaderIdentifier = @"ScoreBoardHeaderIdentifier";
+static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderLandscapeIdentifier";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,8 +36,11 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreCollectionView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ScoreBoardHeaderIdentifier];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreCollectionViewLandscape" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ScoreBoardHeaderLandscapeIdentifier];
+    
     [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreBoardCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"DSScoreBoardScoreCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:ScoreBoardScoreCellIdentifier];
     [DSGame sharedGame].delegate = self;
 }
 
@@ -71,7 +75,7 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
 {
     self.gameIsInProgress = YES;
     [self dismissViewControllerAnimated:YES completion:nil];
-    [[DSGame sharedGame]flushPlayerListWithScoreCards];
+//    [[DSGame sharedGame]flushPlayerListWithScoreCards];
 }
 
 #pragma mark - Update Game State Delegate
@@ -83,39 +87,47 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
 #pragma mark - UICollectionViewDatasource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    int numberOfSections;
+    if ([[[DSGame sharedGame] players] count] <= 3) {
+        numberOfSections = [[[DSGame sharedGame] players] count];
+    }
+    else {
+        numberOfSections = [self numberOfSectionsBasedOnPlayerCount];
+    }
+    
+    return numberOfSections;
 }
 
+const int DefaultPlayersPerSection = 2;
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    int playerCount = [[[DSGame sharedGame] players] count];
-    return playerCount;
+    int playersPerSection = DefaultPlayersPerSection;
+    if ([[[DSGame sharedGame] players] count] <= 3) {
+        playersPerSection = 1;
+    }
+    else if ([[[DSGame sharedGame] players] count] % 2 != 0) {
+        if (section == [self numberOfSectionsBasedOnPlayerCount] - 1) {
+            playersPerSection = [[[DSGame sharedGame] players] count] % 2;
+        }
+    }
+    
+    return playersPerSection;
 }
 
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell;
-    
-    if ([[DSGame sharedGame].players[indexPath.row] isKindOfClass:[NSString class]]) {
-        cell = [self scoreBoardScoreCellForCollectionView:collectionView forIndexPath:indexPath];
-    } else {
-        cell = [self scoreBoardCellForCollectionView:collectionView forIndexPath:indexPath];
-    }
-    
-
-    return cell;
-}
-
-- (UICollectionViewCell *)scoreBoardCellForCollectionView:(UICollectionView *)collectionView forIndexPath:(NSIndexPath *)indexPath
-{
     DSScoreBoardCollectionViewCell *scoreBoardCell = [collectionView dequeueReusableCellWithReuseIdentifier:ScoreBoardCollectionViewCellIdentifier forIndexPath:indexPath];
-    DSPlayer *playerForCell = [[[DSGame sharedGame] players] objectAtIndex:indexPath.row];
+    DSPlayer *playerForCell = [self playerForIndexPath:indexPath];
     
     [scoreBoardCell setCellDelegate:self];
     [scoreBoardCell setPlayer:playerForCell];
     
-//    UIColor *scoreBackgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"chalk_pallet.png"]];
+    //    UIColor *scoreBackgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"chalk_pallet.png"]];
     [scoreBoardCell.playerNameLabel setTextColor:[UIColor whiteColor]];
     [scoreBoardCell.playerNameLabel setText:playerForCell.playerName];
     [scoreBoardCell.playerScoreTableView reloadData];
@@ -128,19 +140,34 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
     }
     
     return scoreBoardCell;
+
 }
 
-- (UICollectionViewCell *)scoreBoardScoreCellForCollectionView:(UICollectionView *)collectionView forIndexPath:(NSIndexPath *)indexPath
+- (DSPlayer *)playerForIndexPath:(NSIndexPath *)indexPath
 {
-    DSScoreCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ScoreBoardScoreCellIdentifier forIndexPath:indexPath];
+    int indexOfPlayer;
+    if ([[[DSGame sharedGame] players] count] <= 3) {
+        indexOfPlayer = indexPath.section;
+    }
+    else {
+        indexOfPlayer = indexPath.section * DefaultPlayersPerSection + indexPath.row;
+    }
     
-    [cell setUpScoreValue];
-    return cell;
+    return (DSPlayer *)[[[DSGame sharedGame] players] objectAtIndex:indexOfPlayer];
 }
 
--(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    return NO;
+    DSScoreCollectionView *supplementaryView;
+    
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        supplementaryView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ScoreBoardHeaderIdentifier forIndexPath:indexPath];
+    }
+    else {
+        supplementaryView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ScoreBoardHeaderLandscapeIdentifier forIndexPath:indexPath];
+    }
+    
+    return supplementaryView;
 }
 
 #pragma mark - UICollectionViewFlowLayout
@@ -149,15 +176,93 @@ static NSString *const ScoreBoardScoreCellIdentifier = @"ScoreBoardScoreCellIden
     return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
+const int WidthOfHeaderView = 150;
+const int MaxPlayersOnScreenForPortrait = 4;
+const int MaxPlayersOnScreenForLandscape = 4;
+const int DefaultHeadersOnScreenForPortrait = 1;
+const int DefaultHeadersOnScreenForLandscape = 1;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize itemSize = [self loadScoreBoardCollectionViewCellFromNib].frame.size;
-    itemSize.height = (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ?  [[UIScreen mainScreen] bounds].size.width : [[UIScreen mainScreen] bounds].size.height;
+    CGSize itemSize;
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        itemSize = [self sizeForPlayerCellsInLandscapeOrientation];
+    }
+    else {
+        itemSize = [self sizeForPlayerCellsInPortraitOrientation];
+    }
+    
     return itemSize;
 }
 
-static int landscapeHeightForTableView = 520;
-static int portraitHeightForTableView = 776;
+- (CGSize)sizeForPlayerCellsInLandscapeOrientation
+{
+    CGSize itemSize = [self loadScoreBoardCollectionViewCellFromNib].frame.size;
+    itemSize.height = [[UIScreen mainScreen] bounds].size.width;
+
+    // Calculate number of section headers on screen based on number of players
+    int numberOfSectionHeaders;
+    if ([[[DSGame sharedGame] players] count] <= 3) {
+        numberOfSectionHeaders = [[[DSGame sharedGame] players] count] - 1;
+    }
+    else {
+        numberOfSectionHeaders = DefaultHeadersOnScreenForLandscape;
+    }
+    
+    // Caclulate the width of the cell based on number of players and number of section headers
+    if ([[[DSGame sharedGame] players] count] > MaxPlayersOnScreenForLandscape) {
+        itemSize.width = (self.collectionView.frame.size.width - (WidthOfHeaderView * numberOfSectionHeaders)) / MaxPlayersOnScreenForLandscape;
+    }
+    else {
+        itemSize.width = (self.collectionView.frame.size.width - (WidthOfHeaderView * numberOfSectionHeaders)) / [[[DSGame sharedGame] players] count];
+    }
+    
+    return itemSize;
+    
+}
+
+- (CGSize)sizeForPlayerCellsInPortraitOrientation
+{
+    CGSize itemSize = [self loadScoreBoardCollectionViewCellFromNib].frame.size;
+    itemSize.height = [[UIScreen mainScreen] bounds].size.height;
+    
+    // Calculate number of section headers on screen based on number of players
+    int numberOfSectionHeaders;
+    if ([[[DSGame sharedGame] players] count] <= 3) {
+        numberOfSectionHeaders = [[[DSGame sharedGame] players] count] - 1;
+    }
+    else {
+        numberOfSectionHeaders = DefaultHeadersOnScreenForPortrait;
+    }
+    
+    if ([[[DSGame sharedGame] players] count] > MaxPlayersOnScreenForPortrait) {
+        itemSize.width = (self.collectionView.frame.size.width - (WidthOfHeaderView * numberOfSectionHeaders)) / MaxPlayersOnScreenForPortrait;
+    }
+    else {
+        itemSize.width = (self.collectionView.frame.size.width - (WidthOfHeaderView * numberOfSectionHeaders)) / [[[DSGame sharedGame] players] count];
+    }
+    
+    return itemSize;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    CGSize itemSize;
+    if (section == 0) {
+        itemSize = CGSizeZero;
+    }
+    else {
+        itemSize = [self loadScoreBoardHeaderFromNib].frame.size;
+        itemSize.height =   (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) ?  [[UIScreen mainScreen] bounds].size.width : [[UIScreen mainScreen] bounds].size.height;
+    }
+    
+    return itemSize;
+}
+
+// Unfortunately I had to hardcode these values in
+// If you make changes to the height of the table view in the nib
+// Make sure to come back here and update these values
+const int landscapeHeightForTableView = 520;
+const int portraitHeightForTableView = 776;
 #pragma mark - ScoreBoardCollectionViewDelegate
 - (CGFloat)parentHeight
 {
@@ -170,13 +275,6 @@ static int portraitHeightForTableView = 776;
     }
     
     return height;
-}
-
-- (CGFloat)parentWidth
-{
-    DSScoreBoardCollectionViewCell *cell = [self loadScoreBoardCollectionViewCellFromNib];
-    
-    return cell.playerScoreTableView.frame.size.width;
 }
 
 #pragma mark - Rotation
@@ -193,8 +291,27 @@ static int portraitHeightForTableView = 776;
     return scoreBoardCell;
 }
 
+- (DSScoreCollectionView *)loadScoreBoardHeaderFromNib
+{
+    NSArray *scoreBoardHeaderNib = [[NSBundle mainBundle] loadNibNamed:@"DSScoreCollectionView" owner:self options:nil];
+    DSScoreCollectionView *scoreBoardHeader = [scoreBoardHeaderNib objectAtIndex:0];
+    return scoreBoardHeader;
+}
+
+- (int)numberOfSectionsBasedOnPlayerCount
+{
+    int numberOfSections = [[[DSGame sharedGame] players] count] / 2;
+    
+    // handle if player count does not divide evenly
+    if ([[[DSGame sharedGame] players] count] % 2 != 0) {
+        numberOfSections++;
+    }
+    
+    return numberOfSections;
+}
+
 #pragma mark - Test Code
-- (void) testGameSetup
+- (void)testGameSetup
 {
     DSPlayer *player1 = [[DSPlayer alloc]initWithPlayerName:@"George"];
     DSPlayer *player2 = [[DSPlayer alloc]initWithPlayerName:@"Michael"];
@@ -208,7 +325,7 @@ static int portraitHeightForTableView = 776;
 //    [DSGame sharedGame].players = @[player1, player2, player3, player4, player5, player6, player7, player8];
     [DSGame sharedGame].players = @[player1, player2];
     self.gameIsInProgress = YES;
-    [[DSGame sharedGame] flushPlayerListWithScoreCards];
+//    [[DSGame sharedGame] flushPlayerListWithScoreCards];
 
 }
 

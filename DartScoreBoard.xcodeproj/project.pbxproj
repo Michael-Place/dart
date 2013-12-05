@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E92C414B18495949001CA645 /* DSPlayerScoreValueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */; };
 		E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */; };
+		E96CF999185007DC00032DFF /* DSScoreCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96CF998185007DC00032DFF /* DSScoreCollectionView.xib */; };
+		E96CF9B11850322E00032DFF /* DSScoreCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E96CF9AF1850322E00032DFF /* DSScoreCollectionView.m */; };
+		E96CF9B31850326800032DFF /* DSScoreCollectionViewLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96CF9B21850326800032DFF /* DSScoreCollectionViewLandscape.xib */; };
 		E98D954318494A0900A02273 /* DSNewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E98D954118494A0900A02273 /* DSNewGameViewController.m */; };
 		E9A5CC1B184BCFCB00619D7D /* add_user_background.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A5CC1A184BCFCB00619D7D /* add_user_background.png */; };
 		E9A5CC1D184BD10700619D7D /* delete_user_button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A5CC1C184BD10700619D7D /* delete_user_button_background.png */; };
@@ -38,8 +41,6 @@
 		E9F6EFFA184965B400A16A44 /* DSNewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */; };
 		ED176F3C184ADC2100EEEFE7 /* Chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */; };
 		ED176F3E184B00A700EEEFE7 /* chalk_pallet.png in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */; };
-		ED176F40184B810700EEEFE7 /* DSScoreBoardScoreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3F184B810700EEEFE7 /* DSScoreBoardScoreCollectionViewCell.xib */; };
-		ED176F43184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED176F42184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.m */; };
 		ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,10 @@
 		E92C414918495949001CA645 /* DSPlayerScoreValueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSPlayerScoreValueTableViewCell.h; path = ScoreBoard/DSPlayerScoreValueTableViewCell.h; sourceTree = "<group>"; };
 		E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSPlayerScoreValueTableViewCell.m; path = ScoreBoard/DSPlayerScoreValueTableViewCell.m; sourceTree = "<group>"; };
 		E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSPlayerScoreValueTableViewCell.xib; path = ScoreBoard/DSPlayerScoreValueTableViewCell.xib; sourceTree = "<group>"; };
+		E96CF998185007DC00032DFF /* DSScoreCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSScoreCollectionView.xib; path = ScoreBoard/DSScoreCollectionView.xib; sourceTree = "<group>"; };
+		E96CF9AF1850322E00032DFF /* DSScoreCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSScoreCollectionView.m; path = ScoreBoard/DSScoreCollectionView.m; sourceTree = "<group>"; };
+		E96CF9B01850322E00032DFF /* DSScoreCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSScoreCollectionView.h; path = ScoreBoard/DSScoreCollectionView.h; sourceTree = "<group>"; };
+		E96CF9B21850326800032DFF /* DSScoreCollectionViewLandscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSScoreCollectionViewLandscape.xib; path = ScoreBoard/DSScoreCollectionViewLandscape.xib; sourceTree = "<group>"; };
 		E98D954018494A0900A02273 /* DSNewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSNewGameViewController.h; path = NewGame/DSNewGameViewController.h; sourceTree = "<group>"; };
 		E98D954118494A0900A02273 /* DSNewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSNewGameViewController.m; path = NewGame/DSNewGameViewController.m; sourceTree = "<group>"; };
 		E9A5CC1A184BCFCB00619D7D /* add_user_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_user_background.png; sourceTree = "<group>"; };
@@ -96,9 +101,6 @@
 		E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSNewGameViewController.xib; sourceTree = "<group>"; };
 		ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chalkboard.png; sourceTree = "<group>"; };
 		ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chalk_pallet.png; sourceTree = "<group>"; };
-		ED176F3F184B810700EEEFE7 /* DSScoreBoardScoreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSScoreBoardScoreCollectionViewCell.xib; sourceTree = "<group>"; };
-		ED176F41184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSScoreCollectionViewCell.h; sourceTree = "<group>"; };
-		ED176F42184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSScoreCollectionViewCell.m; sourceTree = "<group>"; };
 		ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CricketScoreValueList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,9 +228,10 @@
 				E92C414918495949001CA645 /* DSPlayerScoreValueTableViewCell.h */,
 				E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */,
 				E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */,
-				ED176F41184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.h */,
-				ED176F42184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.m */,
-				ED176F3F184B810700EEEFE7 /* DSScoreBoardScoreCollectionViewCell.xib */,
+				E96CF9AF1850322E00032DFF /* DSScoreCollectionView.m */,
+				E96CF9B01850322E00032DFF /* DSScoreCollectionView.h */,
+				E96CF998185007DC00032DFF /* DSScoreCollectionView.xib */,
+				E96CF9B21850326800032DFF /* DSScoreCollectionViewLandscape.xib */,
 			);
 			name = ScoreBoard;
 			sourceTree = "<group>";
@@ -355,14 +358,15 @@
 				E9F6EFFA184965B400A16A44 /* DSNewGameViewController.xib in Resources */,
 				E9A5CC1B184BCFCB00619D7D /* add_user_background.png in Resources */,
 				E9A5CC28184C1C3300619D7D /* dart_left.png in Resources */,
+				E96CF999185007DC00032DFF /* DSScoreCollectionView.xib in Resources */,
 				ED176F3C184ADC2100EEEFE7 /* Chalkboard.png in Resources */,
+				E96CF9B31850326800032DFF /* DSScoreCollectionViewLandscape.xib in Resources */,
 				E9A5CC25184BF08500619D7D /* DSNewPlayerCollectionViewCell.xib in Resources */,
 				E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */,
 				E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */,
 				ED176F3E184B00A700EEEFE7 /* chalk_pallet.png in Resources */,
 				E9A5CC29184C1C3300619D7D /* dart_right.png in Resources */,
 				E9C9D53418493E790085BC43 /* Images.xcassets in Resources */,
-				ED176F40184B810700EEEFE7 /* DSScoreBoardScoreCollectionViewCell.xib in Resources */,
 				E9A5CC1D184BD10700619D7D /* delete_user_button_background.png in Resources */,
 				ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */,
 				E9C9D52C18493E790085BC43 /* Main_iPhone.storyboard in Resources */,
@@ -389,7 +393,7 @@
 				E9C9D557184942930085BC43 /* DSPlayer.m in Sources */,
 				E9C9D55D184944370085BC43 /* DSScoreBoardCollectionViewCell.m in Sources */,
 				E98D954318494A0900A02273 /* DSNewGameViewController.m in Sources */,
-				ED176F43184B8E3D00EEEFE7 /* DSScoreCollectionViewCell.m in Sources */,
+				E96CF9B11850322E00032DFF /* DSScoreCollectionView.m in Sources */,
 				E9C9D52518493E790085BC43 /* main.m in Sources */,
 				E92C414B18495949001CA645 /* DSPlayerScoreValueTableViewCell.m in Sources */,
 				E9C9D55A1849429D0085BC43 /* DSGame.m in Sources */,

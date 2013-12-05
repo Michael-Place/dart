@@ -12,7 +12,6 @@
 @protocol ScoreBoardCollectionViewCellDelegate <NSObject>
 
 - (CGFloat)parentHeight;
-- (CGFloat)parentWidth;
 
 @end
 

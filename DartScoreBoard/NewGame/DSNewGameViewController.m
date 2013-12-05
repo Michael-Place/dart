@@ -119,9 +119,6 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     if (self.newPlayers.count > 1) {
         [[DSGame sharedGame] setPlayers:[NSArray arrayWithArray:[self.newPlayers copy]]];
         [self.delegate startGame];
-    } else {
-        UIAlertView *needMorePlayersAlert = [[UIAlertView alloc] initWithTitle:@"Need More Players" message:@"Need minimum of two players to start game." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [needMorePlayersAlert show];
     }
 }
 

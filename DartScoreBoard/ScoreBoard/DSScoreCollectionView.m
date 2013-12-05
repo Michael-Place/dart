@@ -1,22 +1,23 @@
 //
-//  DSScoreCollectionViewCell.m
+//  DSScoreCollectionView.m
 //  DartScoreBoard
 //
 //  Created by Zhe Jia on 12/1/13.
 //  Copyright (c) 2013 Zheike. All rights reserved.
 //
 
-#import "DSScoreCollectionViewCell.h"
+#import "DSScoreCollectionView.h"
+#import "DSScoreBoardCollectionViewController.h"
 #import "DSGame.h"
 
-@interface DSScoreCollectionViewCell() <UITableViewDataSource, UITableViewDelegate>
+@interface DSScoreCollectionView() <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak)IBOutlet UITableView *scoreTableView;
 @property (nonatomic, strong)NSArray *scoreList;
 
 @end
 
-@implementation DSScoreCollectionViewCell
+@implementation DSScoreCollectionView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -27,12 +28,13 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    [self setUpScoreValue];
+}
+
 - (void)setUpScoreValue
 {
-    NSLog(@"setting up table?");
-    self.scoreTableView.delegate = self;
-    self.scoreTableView.dataSource = self;
-    
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CricketScoreValueList" ofType:@"plist"]];
     self.scoreList = [NSArray arrayWithArray:[dictionary objectForKey:@"CricketDisplayScoreValueStringList"]];
     
@@ -49,6 +51,7 @@
     }
     
     cell.textLabel.textColor = [UIColor whiteColor];
+    [cell.textLabel setFont:[UIFont systemFontOfSize:60]];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", self.scoreList[indexPath.row]];
     [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
     
@@ -68,21 +71,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.scoreList.count;
+    return [self.scoreList count];
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 110;
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
+extern const int landscapeHeightForTableView;
+extern const int portraitHeightForTableView;
+
 @interface DSScoreBoardCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @end
