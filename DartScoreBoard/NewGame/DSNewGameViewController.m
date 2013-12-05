@@ -16,7 +16,7 @@ const int kDefaultNumberOfPlayers = 4;
 const int kMaxNumberOfPlayers = 8;
 const int kDartGap = 60;
 
-@interface DSNewGameViewController () <NewPlayerCellDelegate>
+@interface DSNewGameViewController () <NewPlayerCellDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
 @property (weak, nonatomic) IBOutlet UIButton *addPlayerButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -50,6 +50,8 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(handleSingleTap:)];
     [tapGesture setCancelsTouchesInView:NO];
+    [tapGesture setDelegate:self];
+    
     [self.view addGestureRecognizer:tapGesture];
     
     
@@ -64,6 +66,16 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    BOOL shouldReceiveTouch = YES;
+    if ([touch.view isDescendantOfView:self.collectionView]) {
+        shouldReceiveTouch = NO;
+    }
+        
+    return shouldReceiveTouch;
+}
+
 // Allows us to dismiss keyboard by tapping anywhere outside of the text view
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
@@ -75,9 +87,12 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     for (int i = 0; i < self.newPlayers.count; i++) {
         NSIndexPath *indexPathForCell = [NSIndexPath indexPathForItem:i inSection:0];
         DSNewPlayerCollectionViewCell *cell = (DSNewPlayerCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPathForCell];
+        DSPlayer *playerForCell = [self.newPlayers objectAtIndex:indexPathForCell.row];
+        
         if ([cell.playerNameTextField isFirstResponder]) {
             [cell.playerNameTextField resignFirstResponder];
-            [[self.newPlayers objectAtIndex:indexPathForCell.row] setIsEditMode:NO];
+            [playerForCell setIsEditMode:NO];
+            NSLog(@"BLOW Exiting edit mode for %@", [(DSPlayer *)[self.newPlayers objectAtIndex:indexPathForCell.row] playerName]);
             break;
         }
     }
@@ -359,8 +374,6 @@ static float playerNameAnimationDuration = 1.0;
     DSNewPlayerCollectionViewCell *cell = (DSNewPlayerCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     DSPlayer *playerForCell = (DSPlayer *)[self.newPlayers objectAtIndex:indexPath.row];
     
-    [self exitEditModeForAllPlayersAsideFromPlayer:playerForCell];
-    
     // Toggle edit mode on tap
     if (playerForCell.isEditMode) {
         [playerForCell setIsEditMode:NO];
@@ -378,8 +391,10 @@ static float playerNameAnimationDuration = 1.0;
 - (void)didFinishEditingForCell:(DSNewPlayerCollectionViewCell *)cell
 {
     NSIndexPath *indexPathForCell = [self.collectionView indexPathForCell:cell];
-    
+    DSPlayer *playerForCell = (DSPlayer *)[self.newPlayers objectAtIndex:indexPathForCell.row];
+
     if ([self indexPathIsBackedByData:indexPathForCell]) {
+        [playerForCell setIsEditMode:NO];
         [self exitEditModeForCell:cell atIndexPath:indexPathForCell animated:YES];
     }
 }
@@ -491,16 +506,6 @@ static float playerNameAnimationDuration = 1.0;
         [cell.playerNameTextField resignFirstResponder];
     }
     
-}
-
-- (void)exitEditModeForAllPlayersAsideFromPlayer:(DSPlayer *)playerInFocus
-{
-    for (DSPlayer *player in self.newPlayers) {
-        if (player != playerInFocus) {
-            [player setIsEditMode:NO];
-            [self findAndResignFirstResponder];
-        }
-    }
 }
 
 - (NSString *)defaultNameForNewPlayer
