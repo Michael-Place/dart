@@ -92,7 +92,6 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
         if ([cell.playerNameTextField isFirstResponder]) {
             [cell.playerNameTextField resignFirstResponder];
             [playerForCell setIsEditMode:NO];
-            NSLog(@"BLOW Exiting edit mode for %@", [(DSPlayer *)[self.newPlayers objectAtIndex:indexPathForCell.row] playerName]);
             break;
         }
     }

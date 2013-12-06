@@ -46,7 +46,6 @@ const NSString *kStrikeThreeSymbol = @"\u2297";
 - (void)updateScoreValue
 {
     self.backgroundColor = [UIColor clearColor];
-//    NSLog(@"updating score value");
     if (self.score == 0) {
         self.incrementScoreLabel.text = @"+";
         self.decrementScoreLabel.text = @"-";
