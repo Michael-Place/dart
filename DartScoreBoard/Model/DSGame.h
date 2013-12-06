@@ -37,7 +37,7 @@ extern NSString *const CricketScoreStringFifteen;
 @property (nonatomic, strong) NSArray *players;
 @property (nonatomic, strong) NSMutableDictionary *gameStatusPointValueDictionary;
 @property (nonatomic, weak) id <UpdatingGameState> delegate;
-@property (nonatomic, strong)NSString *winner;
+@property (nonatomic, strong) NSString *winner;
 
 // Shared instance
 + (DSGame *)sharedGame;
@@ -46,6 +46,8 @@ extern NSString *const CricketScoreStringFifteen;
 + (enum CricketScoreValue)scoreValueForIndex:(int)index;
 + (NSString *)keyStringForCricketScoreValue:(enum CricketScoreValue)scoreValue;
 + (enum CricketScoreValue)scoreValueForKeyString:(NSString *)keyString;
+
+- (void)resetGame;
 
 - (void)updateScoreValuesToBeClosed;
 - (void)updateGameForPossibleWinner;

@@ -9,7 +9,6 @@
 #import "DSNewGameViewController.h"
 #import "DSNewGameViewController.h"
 #import "DSNewPlayerCollectionViewCell.h"
-#import "DSPlayer.h"
 #import "DSGame.h"
 
 const int kDefaultNumberOfPlayers = 4;
@@ -37,6 +36,12 @@ const int kDartGap = 60;
 
 @implementation DSNewGameViewController
 static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollectionViewCellIdentifier";
+
+- (void)setInitialPlayers:(NSArray *)players
+{
+    self.newPlayers = nil;
+    [self.newPlayers addObjectsFromArray:players];
+}
 
 - (void)viewDidLoad
 {
@@ -100,7 +105,9 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self setupDefaultNewGame];
+    if (![self.newPlayers count]) {
+        [self setupDefaultNewGame];
+    }
 }
 
 - (void)setupDefaultNewGame
@@ -116,6 +123,26 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     } completion:^(BOOL finished) {
         [self newPlayerAddedWithName:playerOne.playerName];
         [self newPlayerAddedWithName:playerTwo.playerName];
+    }];
+}
+
+- (void)setUpGameWithPlayers:(NSArray *)players
+{
+    self.newPlayers = nil;
+    [self.newPlayers addObjectsFromArray:players];
+    
+    [self.collectionView performBatchUpdates:^{
+        NSMutableArray *indexPaths = [NSMutableArray array];
+        for (int i = 0; i < [self.newPlayers count]; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+            [indexPaths addObject:indexPath];
+        }
+        
+        [self.collectionView insertItemsAtIndexPaths:[indexPaths copy]];
+    } completion:^(BOOL finished) {
+        for (DSPlayer *player in self.newPlayers) {
+            [self newPlayerAddedWithName:player.playerName];
+        }
     }];
 }
 

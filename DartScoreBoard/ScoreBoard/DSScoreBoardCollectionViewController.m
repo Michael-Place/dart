@@ -10,11 +10,15 @@
 #import "DSScoreBoardCollectionViewCell.h"
 #import "DSScoreCollectionView.h"
 #import "DSNewGameViewController.h"
+#import "DSGameActionItemViewController.h"
+#import "DSAppDelegate.h"
 #import "DSGame.h"
 
-@interface DSScoreBoardCollectionViewController () <StartingGameDelegate, UpdatingGameState, ScoreBoardCollectionViewCellDelegate>
+@interface DSScoreBoardCollectionViewController () <StartingGameDelegate, UpdatingGameState, ScoreBoardCollectionViewCellDelegate, DSGameActionDelegate>
 @property BOOL gameIsInProgress;
 @property (strong, nonatomic) IBOutlet UICollectionView *scoreBoardCollectionView;
+@property (nonatomic, strong) DSGameActionItemViewController *gameActionItemViewController;
+@property (nonatomic, strong) DSNewGameViewController *newGameViewController;
 
 @end
 
@@ -54,7 +58,7 @@ static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderL
         [self displayNewGameModal];
     }
     [self.collectionView reloadData];
-    
+    [self.view addSubview:self.gameActionItemViewController.view];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,9 +70,7 @@ static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderL
 #pragma mark - Starting Game Delegate
 - (void)displayNewGameModal
 {
-    DSNewGameViewController *newGameVC = [[DSNewGameViewController alloc] initWithNibName:@"DSNewGameViewController" bundle:nil];
-    [newGameVC setDelegate:self];
-    [self presentViewController:newGameVC animated:YES completion:nil];
+    [self presentViewController:self.newGameViewController animated:YES completion:nil];
 }
 
 - (void)startGame
@@ -308,6 +310,75 @@ const int portraitHeightForTableView = 776;
     }
     
     return numberOfSections;
+}
+
+#pragma mark - DSGameActionDelegate
+- (void)didSelectGameAction:(enum DSGameAction)gameAction
+{
+    switch (gameAction) {
+        case DSGameActionResetGame:
+            [self resetGame];
+            break;
+        case DSGameActionStartNewGameWithSamePlayers:
+            [self startNewGameWithSamePlayers];
+            break;
+        case DSGameActionNavigateBackToNewGameView:
+            [self navigateBackToNewGameView];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)resetGame
+{
+    // Reset shared game object and reload collection view
+    [[DSGame sharedGame] resetGame];
+    [self.collectionView reloadData];
+}
+
+- (void)startNewGameWithSamePlayers
+{
+    // Clear game data
+    [self clearGameData];
+    
+    // Set up new game view controller with current players
+    [self.newGameViewController setInitialPlayers:[[DSGame sharedGame] players]];
+    [self displayNewGameModal];
+}
+
+- (void)navigateBackToNewGameView
+{
+    [self clearGameData];
+    [self displayNewGameModal];
+}
+
+- (void)clearGameData
+{
+    self.newGameViewController = nil;
+    [[DSGame sharedGame] resetGame];
+    [self.collectionView reloadData];
+}
+
+#pragma mark - Getters
+- (DSNewGameViewController *)newGameViewController
+{
+    if (!_newGameViewController) {
+        _newGameViewController = [[DSNewGameViewController alloc] initWithNibName:@"DSNewGameViewController" bundle:nil];
+        [_newGameViewController setDelegate:self];
+    }
+    return _newGameViewController;
+}
+
+const int GameActionButtonPadding = 0;
+- (DSGameActionItemViewController *)gameActionItemViewController
+{
+    if (!_gameActionItemViewController) {
+        _gameActionItemViewController = [[DSGameActionItemViewController alloc] initWithNibName:@"DSGameActionItemViewController" bundle:nil];
+        [_gameActionItemViewController.view setCenter:CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height - _gameActionItemViewController.view.frame.size.height - GameActionButtonPadding)];
+        [_gameActionItemViewController setGameActionDelegate:self];
+    }
+    return _gameActionItemViewController;
 }
 
 #pragma mark - Test Code

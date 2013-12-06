@@ -8,6 +8,9 @@
 
 #import "DSAppDelegate.h"
 
+@interface DSAppDelegate ()
+@end
+
 @implementation DSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

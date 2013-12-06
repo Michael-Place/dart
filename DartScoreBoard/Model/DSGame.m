@@ -69,6 +69,16 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     return _cricketScoreList;
 }
 
+#pragma mark - Game Actions
+- (void)resetGame
+{
+    self.winner = nil;
+    
+    for (DSPlayer *player in self.players) {
+        [player setPlayerStatistics:nil];
+    }
+}
+
 #pragma mark - Game state updater
 - (void)incrementScoreValue:(enum CricketScoreValue)value forPlayerNamed:(NSString *)playerName
 {

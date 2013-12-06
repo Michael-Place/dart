@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSPlayer.h"
 
 @protocol StartingGameDelegate <NSObject>
-
 - (void)startGame;
 
 @end
 
 @interface DSNewGameViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 @property id <StartingGameDelegate> delegate;
+
+- (void)setInitialPlayers:(NSArray *)players;
 
 @end
 
