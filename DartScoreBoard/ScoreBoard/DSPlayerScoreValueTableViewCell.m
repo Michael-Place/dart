@@ -19,6 +19,7 @@ const NSString *kStrikeThreeSymbol = @"\u2297";
 
 @property (weak, nonatomic) IBOutlet UILabel *decrementScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *incrementScoreLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *incrementScoreImageView;
 
 - (IBAction)decrementScoreValueButtonTapped:(id)sender;
 - (IBAction)incrementScoreValueButtonTapped:(id)sender;
@@ -49,30 +50,30 @@ const NSString *kStrikeThreeSymbol = @"\u2297";
     if (self.score == 0) {
         self.incrementScoreLabel.text = @"+";
         self.decrementScoreLabel.text = @"-";
-        NSLog(@"%@ : %i",self.playerName, self.scoreValue);
+        [self.incrementScoreImageView setImage:nil]; ;
     } else if (self.score < 4) {
-        NSString *myString;
+        UIImage *strikeImage;
         switch (self.score) {
             case 1: {
-                myString = [NSString stringWithFormat:@"%@",kStrikeOneSymbol];
+                strikeImage = [UIImage imageNamed:@"one-strike"];
                 break;
             }
             case 2: {
-                myString = [NSString stringWithFormat:@"%@", kStrikeTwoSymbol];
+                strikeImage = [UIImage imageNamed:@"two-strike"];
                 break;
             }
             case 3: {
-                myString = [NSString stringWithFormat:@"%@", kStrikeThreeSymbol];
+                strikeImage = [UIImage imageNamed:@"three-strike"];
                 break;
             }
             default:
                 break;
         }
-        self.incrementScoreLabel.text = myString;
+        [self.incrementScoreImageView setImage:strikeImage]; ;
         self.decrementScoreLabel.text = @"-";
     } else {
-        NSString *myString = [NSString stringWithFormat:@"%@", kStrikeThreeSymbol];
-        self.incrementScoreLabel.text = myString;
+        UIImage *strikeImage = [UIImage imageNamed:@"three-strike"];
+        [self.incrementScoreImageView setImage:strikeImage];
         self.decrementScoreLabel.text = [NSString stringWithFormat:@"%i",self.score];
     }
     
