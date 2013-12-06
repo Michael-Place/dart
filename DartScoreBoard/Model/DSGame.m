@@ -112,41 +112,14 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     DSPlayer *playerToReturn;
     
     while (playerIndex < self.players.count) {
-        if ([self.players[playerIndex] isKindOfClass:[DSPlayer class]]) {
-            DSPlayer *player = (DSPlayer *)self.players[playerIndex];
-            if ([player.playerName isEqualToString:name]) {
-                playerToReturn = player;
-            }
+        DSPlayer *player = (DSPlayer *)self.players[playerIndex];
+        if ([player.playerName isEqualToString:name]) {
+            playerToReturn = player;
         }
         playerIndex++;
     }
     
     return playerToReturn;
-}
-
-- (void)flushPlayerListWithScoreCards
-{
-    NSLog(@"flushing score table");
-    NSMutableArray *flushedPlayers = [NSMutableArray array];
-    
-    if (self.players.count == 2) {
-        [flushedPlayers addObjectsFromArray:@[self.players[0], @"ScoreList", self.players[1]]];
-    } else {
-        int playerIndex = 0;
-        int playersPerScoreBoard = 2;
-        while (playerIndex < self.players.count) {
-            if (playersPerScoreBoard > 0) {
-                playersPerScoreBoard--;
-                [flushedPlayers addObject:self.players[playerIndex]];
-                playerIndex++;
-            }else {
-                playersPerScoreBoard = 2;
-                [flushedPlayers addObject:@"ScoreList"];
-            }
-        }
-    }
-    self.players = [NSArray arrayWithArray:flushedPlayers];
-    
 }
 
 - (void)updateGameForPossibleWinner
@@ -155,11 +128,9 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     int currentMaxScore = 0;
     DSPlayer *possibleWinner;
     while (playerCounter < self.players.count) {
-        if ([self.players[playerCounter] isKindOfClass:[DSPlayer class]]) {
-            DSPlayer *player = self.players[playerCounter];
-            if ([player totalPointsEarned] > currentMaxScore) {
-                possibleWinner = player;
-            }
+        DSPlayer *player = self.players[playerCounter];
+        if ([player totalPointsEarned] > currentMaxScore) {
+            possibleWinner = player;
         }
         playerCounter++;
     }
@@ -194,12 +165,10 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     int playerCounter = 0;
     int playerCount = 0;
     while (playerCounter < self.players.count) {
-        if (![self.players[playerCounter] isKindOfClass:[NSString class]]) {
-            DSPlayer *player = self.players[playerCounter];
-            playerCount++;
-            if ([player pointsEarnedForCricketScoreValue:value] > 2) {
-                isClosedForPlayerCount++;
-            }
+        DSPlayer *player = self.players[playerCounter];
+        playerCount++;
+        if ([player pointsEarnedForCricketScoreValue:value] > 2) {
+            isClosedForPlayerCount++;
         }
         playerCounter++;
     }

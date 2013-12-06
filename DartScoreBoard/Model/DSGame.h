@@ -51,7 +51,6 @@ extern NSString *const CricketScoreStringFifteen;
 
 - (void)updateScoreValuesToBeClosed;
 - (void)updateGameForPossibleWinner;
-- (void)flushPlayerListWithScoreCards;
 - (void)incrementScoreValue:(enum CricketScoreValue)value forPlayerNamed:(NSString *)playerName;
 - (void)decrementScoreValue:(enum CricketScoreValue)value forPlayerNamed:(NSString *)playerName;
 

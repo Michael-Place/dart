@@ -77,7 +77,6 @@ static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderL
 {
     self.gameIsInProgress = YES;
     [self dismissViewControllerAnimated:YES completion:nil];
-//    [[DSGame sharedGame]flushPlayerListWithScoreCards];
 }
 
 #pragma mark - Update Game State Delegate
@@ -401,8 +400,6 @@ const int GameActionButtonPadding = 0;
 //    [DSGame sharedGame].players = @[player1, player2, player3, player4, player5, player6, player7, player8];
     [DSGame sharedGame].players = @[player1, player2];
     self.gameIsInProgress = YES;
-//    [[DSGame sharedGame] flushPlayerListWithScoreCards];
-
 }
 
 @end
