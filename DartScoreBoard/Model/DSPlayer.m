@@ -55,7 +55,7 @@ static int const NumberOfStrikesNecessaryBeforeScoringPoints = 3;
 {
     int pointsEarned;
     NSNumber *numberOfStrikesForScoreValue = [self.playerStatistics objectForKey:[DSGame keyStringForCricketScoreValue:scoreValue]];
-    pointsEarned = numberOfStrikesForScoreValue.integerValue;
+    pointsEarned = (int)numberOfStrikesForScoreValue.integerValue;
     
     if (pointsEarned > NumberOfStrikesNecessaryBeforeScoringPoints) {
         int numberOfPointScoringStrikes = numberOfStrikesForScoreValue.intValue - NumberOfStrikesNecessaryBeforeScoringPoints;

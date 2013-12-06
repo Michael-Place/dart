@@ -88,7 +88,7 @@ static NSString *const NavigateBackToNewGameViewActionString = @"Back to Menu";
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    enum DSGameAction selectedAction = indexPath.row;
+    enum DSGameAction selectedAction = (int)indexPath.row;
     
     if ([self.gameActionDelegate respondsToSelector:@selector(didSelectGameAction:)]) {
         [self.gameActionDelegate didSelectGameAction:selectedAction];

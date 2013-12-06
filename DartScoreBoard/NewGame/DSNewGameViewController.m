@@ -395,8 +395,6 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 static float playerNameAnimationDuration = 1.0;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Did select cell: %i", indexPath.row);
-    
     DSNewPlayerCollectionViewCell *cell = (DSNewPlayerCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     DSPlayer *playerForCell = (DSPlayer *)[self.newPlayers objectAtIndex:indexPath.row];
     
@@ -447,7 +445,7 @@ static float playerNameAnimationDuration = 1.0;
     BOOL needToReloadCollectionView = NO;
     
     for (DSPlayer *player in self.newPlayers) {
-        int numberOfPlayer = [self.newPlayers indexOfObject:player] + 1;
+        int numberOfPlayer = (int)[self.newPlayers indexOfObject:player] + 1;
         if (!player.playerNameHasBeenEdited) {
             needToReloadCollectionView = YES;
             [[self.newPlayers objectAtIndex:numberOfPlayer -1 ] setPlayerName:[NSString stringWithFormat:@"Player %i", numberOfPlayer]];
@@ -563,7 +561,7 @@ static float playerNameAnimationDuration = 1.0;
 
 - (NSString *)defaultNameForNewPlayer
 {
-    return [NSString stringWithFormat:@"Player %i", (self.newPlayers.count + 1)];
+    return [NSString stringWithFormat:@"Player %lu", (self.newPlayers.count + 1)];
 }
 
 - (BOOL)indexPathIsBackedByData:(NSIndexPath *)indexPath

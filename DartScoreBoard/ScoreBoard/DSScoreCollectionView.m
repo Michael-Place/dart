@@ -60,7 +60,7 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@", self.scoreList[indexPath.row]];
     [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
     
-    NSNumber *shouldCloseObject = [[DSGame sharedGame].gameStatusPointValueDictionary objectForKey:[DSGame keyStringForCricketScoreValue:[DSGame scoreValueForIndex:indexPath.row]]];
+    NSNumber *shouldCloseObject = [[DSGame sharedGame].gameStatusPointValueDictionary objectForKey:[DSGame keyStringForCricketScoreValue:[DSGame scoreValueForIndex:(int)indexPath.row]]];
     BOOL shouldClose = shouldCloseObject.boolValue;
     
     if (shouldClose) {
