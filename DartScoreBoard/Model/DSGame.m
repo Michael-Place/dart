@@ -73,6 +73,7 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
 - (void)resetGame
 {
     self.winner = nil;
+    self.gameStatusPointValueDictionary = nil;
     
     for (DSPlayer *player in self.players) {
         [player setPlayerStatistics:nil];
