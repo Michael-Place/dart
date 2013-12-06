@@ -47,6 +47,12 @@
 		E9C9D55A1849429D0085BC43 /* DSGame.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C9D5591849429D0085BC43 /* DSGame.m */; };
 		E9C9D55D184944370085BC43 /* DSScoreBoardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */; };
 		E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */; };
+		E9E8C18F1852675F002DD5C3 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C18D1852675F002DD5C3 /* Icon-76@2x.png */; };
+		E9E8C1901852675F002DD5C3 /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C18E1852675F002DD5C3 /* icon-76.png */; };
+		E9E8C195185269B8002DD5C3 /* spotlight-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C191185269B8002DD5C3 /* spotlight-icon@2x.png */; };
+		E9E8C196185269B8002DD5C3 /* spotlight-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C192185269B8002DD5C3 /* spotlight-icon.png */; };
+		E9E8C197185269B8002DD5C3 /* settings-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C193185269B8002DD5C3 /* settings-icon@2x.png */; };
+		E9E8C198185269B8002DD5C3 /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C194185269B8002DD5C3 /* settings-icon.png */; };
 		E9F6EFFA184965B400A16A44 /* DSNewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */; };
 		ED176F3C184ADC2100EEEFE7 /* Chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */; };
 		ED176F3E184B00A700EEEFE7 /* chalk_pallet.png in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */; };
@@ -118,6 +124,12 @@
 		E9C9D55B184944370085BC43 /* DSScoreBoardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSScoreBoardCollectionViewCell.h; path = ScoreBoard/DSScoreBoardCollectionViewCell.h; sourceTree = "<group>"; };
 		E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSScoreBoardCollectionViewCell.m; path = ScoreBoard/DSScoreBoardCollectionViewCell.m; sourceTree = "<group>"; };
 		E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSScoreBoardCollectionViewCell.xib; path = ScoreBoard/DSScoreBoardCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9E8C18D1852675F002DD5C3 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		E9E8C18E1852675F002DD5C3 /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76.png"; sourceTree = "<group>"; };
+		E9E8C191185269B8002DD5C3 /* spotlight-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spotlight-icon@2x.png"; sourceTree = "<group>"; };
+		E9E8C192185269B8002DD5C3 /* spotlight-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spotlight-icon.png"; sourceTree = "<group>"; };
+		E9E8C193185269B8002DD5C3 /* settings-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon@2x.png"; sourceTree = "<group>"; };
+		E9E8C194185269B8002DD5C3 /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
 		E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSNewGameViewController.xib; sourceTree = "<group>"; };
 		ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chalkboard.png; sourceTree = "<group>"; };
 		ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chalk_pallet.png; sourceTree = "<group>"; };
@@ -282,9 +294,23 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		E9E8C18C18526752002DD5C3 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				E9E8C191185269B8002DD5C3 /* spotlight-icon@2x.png */,
+				E9E8C192185269B8002DD5C3 /* spotlight-icon.png */,
+				E9E8C193185269B8002DD5C3 /* settings-icon@2x.png */,
+				E9E8C194185269B8002DD5C3 /* settings-icon.png */,
+				E9E8C18D1852675F002DD5C3 /* Icon-76@2x.png */,
+				E9E8C18E1852675F002DD5C3 /* icon-76.png */,
+			);
+			name = Icon;
+			sourceTree = "<group>";
+		};
 		E9F6EFFC184965E300A16A44 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E9E8C18C18526752002DD5C3 /* Icon */,
 				ED176F3A184ADC0400EEEFE7 /* ScoreBoard */,
 				E9F6EFFD184965EB00A16A44 /* NewGame */,
 			);
@@ -393,6 +419,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E8C1901852675F002DD5C3 /* icon-76.png in Resources */,
+				E9E8C196185269B8002DD5C3 /* spotlight-icon.png in Resources */,
 				E9C9D52F18493E790085BC43 /* Main_iPad.storyboard in Resources */,
 				E9F6EFFA184965B400A16A44 /* DSNewGameViewController.xib in Resources */,
 				E949B7661851837B003CD01C /* DSGameActionTableViewController.xib in Resources */,
@@ -404,6 +432,7 @@
 				ED176F3C184ADC2100EEEFE7 /* Chalkboard.png in Resources */,
 				E96CF9B31850326800032DFF /* DSScoreCollectionViewLandscape.xib in Resources */,
 				E9750D781852319900B35A10 /* one-strike.png in Resources */,
+				E9E8C198185269B8002DD5C3 /* settings-icon.png in Resources */,
 				E9A5CC25184BF08500619D7D /* DSNewPlayerCollectionViewCell.xib in Resources */,
 				E949B76B185183BE003CD01C /* DSGameActionItemViewController.xib in Resources */,
 				E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */,
@@ -411,12 +440,15 @@
 				ED176F3E184B00A700EEEFE7 /* chalk_pallet.png in Resources */,
 				E949B75718517C93003CD01C /* add_user_background_white.png in Resources */,
 				E9A5CC29184C1C3300619D7D /* dart_right.png in Resources */,
+				E9E8C197185269B8002DD5C3 /* settings-icon@2x.png in Resources */,
 				E9750D761852319900B35A10 /* two-strike.png in Resources */,
+				E9E8C195185269B8002DD5C3 /* spotlight-icon@2x.png in Resources */,
 				E9C9D53418493E790085BC43 /* Images.xcassets in Resources */,
 				E9A5CC1D184BD10700619D7D /* delete_user_button_black.png in Resources */,
 				ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */,
 				E9C9D52C18493E790085BC43 /* Main_iPhone.storyboard in Resources */,
 				E9C9D52318493E790085BC43 /* InfoPlist.strings in Resources */,
+				E9E8C18F1852675F002DD5C3 /* Icon-76@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,12 +613,12 @@
 		E9C9D54B18493E790085BC43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DartScoreBoard/DartScoreBoard-Prefix.pch";
 				INFOPLIST_FILE = "DartScoreBoard/DartScoreBoard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1A989A09-7278-445F-AA71-63CF067E2098";
 				WRAPPER_EXTENSION = app;
@@ -596,11 +628,11 @@
 		E9C9D54C18493E790085BC43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DartScoreBoard/DartScoreBoard-Prefix.pch";
 				INFOPLIST_FILE = "DartScoreBoard/DartScoreBoard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
