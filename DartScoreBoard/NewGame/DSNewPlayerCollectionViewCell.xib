@@ -13,15 +13,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="162" height="157"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="whiteCircle.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Ke-Jr-iLd">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add_user_background_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Ke-Jr-iLd">
                         <rect key="frame" x="0.0" y="7" width="150" height="150"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pp6-gX-e66">
-                        <rect key="frame" x="130" y="1" width="32" height="32"/>
+                        <rect key="frame" x="133" y="2" width="25" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" backgroundImage="delete_user_button_background.png">
+                        <state key="normal" backgroundImage="delete_user_button_white.png">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -57,7 +57,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="delete_user_button_background.png" width="603" height="600"/>
-        <image name="whiteCircle.png" width="659" height="659"/>
+        <image name="add_user_background_white.png" width="659" height="659"/>
+        <image name="delete_user_button_white.png" width="149" height="149"/>
     </resources>
 </document>
