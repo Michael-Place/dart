@@ -91,7 +91,7 @@ static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderL
 {
     int numberOfSections;
     if ([[[DSGame sharedGame] players] count] <= 3) {
-        numberOfSections = [[[DSGame sharedGame] players] count];
+        numberOfSections = (int)[[[DSGame sharedGame] players] count];
     }
     else {
         numberOfSections = [self numberOfSectionsBasedOnPlayerCount];
@@ -147,9 +147,9 @@ const int DefaultPlayersPerSection = 2;
 
 - (DSPlayer *)playerForIndexPath:(NSIndexPath *)indexPath
 {
-    int indexOfPlayer;
+    NSInteger indexOfPlayer;
     if ([[[DSGame sharedGame] players] count] <= 3) {
-        indexOfPlayer = indexPath.section;
+        indexOfPlayer = (int)indexPath.section;
     }
     else {
         indexOfPlayer = indexPath.section * DefaultPlayersPerSection + indexPath.row;
@@ -204,7 +204,7 @@ const int DefaultHeadersOnScreenForLandscape = 1;
     // Calculate number of section headers on screen based on number of players
     int numberOfSectionHeaders;
     if ([[[DSGame sharedGame] players] count] <= 3) {
-        numberOfSectionHeaders = [[[DSGame sharedGame] players] count] - 1;
+        numberOfSectionHeaders = (int)[[[DSGame sharedGame] players] count] - 1;
     }
     else {
         numberOfSectionHeaders = DefaultHeadersOnScreenForLandscape;
@@ -230,7 +230,7 @@ const int DefaultHeadersOnScreenForLandscape = 1;
     // Calculate number of section headers on screen based on number of players
     int numberOfSectionHeaders;
     if ([[[DSGame sharedGame] players] count] <= 3) {
-        numberOfSectionHeaders = [[[DSGame sharedGame] players] count] - 1;
+        numberOfSectionHeaders = (int)[[[DSGame sharedGame] players] count] - 1;
     }
     else {
         numberOfSectionHeaders = DefaultHeadersOnScreenForPortrait;
@@ -307,7 +307,7 @@ const int portraitHeightForTableView = 776;
 
 - (int)numberOfSectionsBasedOnPlayerCount
 {
-    int numberOfSections = [[[DSGame sharedGame] players] count] / 2;
+    int numberOfSections = (int)[[[DSGame sharedGame] players] count] / 2;
     
     // handle if player count does not divide evenly
     if ([[[DSGame sharedGame] players] count] % 2 != 0) {
