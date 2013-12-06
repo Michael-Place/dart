@@ -131,6 +131,7 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
         DSPlayer *player = self.players[playerCounter];
         if ([player totalPointsEarned] > currentMaxScore) {
             possibleWinner = player;
+            currentMaxScore = [possibleWinner totalPointsEarned];
         }
         playerCounter++;
     }

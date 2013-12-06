@@ -135,7 +135,9 @@ const int DefaultPlayersPerSection = 2;
     [scoreBoardCell.totalScoreLabel setTextColor:[UIColor whiteColor]];
     scoreBoardCell.totalScoreLabel.text = [NSString stringWithFormat:@"%d", playerForCell.totalPointsEarned];
     if ([DSGame sharedGame].winner && [[DSGame sharedGame].winner isEqualToString:playerForCell.playerName]) {
-        scoreBoardCell.backgroundColor = [UIColor blueColor];
+        if (![playerForCell.playerName isEqualToString:[DSGame sharedGame].winner]) {
+            scoreBoardCell.backgroundColor = [UIColor grayColor];
+        }
     } else {
         scoreBoardCell.backgroundColor = [UIColor clearColor];
     }

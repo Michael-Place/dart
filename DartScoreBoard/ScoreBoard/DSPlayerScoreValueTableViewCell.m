@@ -86,12 +86,12 @@ const NSString *kStrikeThreeSymbol = @"\u2297";
     NSNumber *shouldCloseObject = [[DSGame sharedGame].gameStatusPointValueDictionary objectForKey:[DSGame keyStringForCricketScoreValue:self.scoreValue]];
     BOOL shouldClose = shouldCloseObject.boolValue;
     
-    if (shouldClose || ([DSGame sharedGame].winner && [DSGame sharedGame].winner.length)) {
+    if (shouldClose || ([[DSGame sharedGame] winner] && [[DSGame sharedGame] winner].length)) {
         [self.incrementScoreValueButton setUserInteractionEnabled:NO];
         UIColor *colorForText = [UIColor grayColor];
-        if (([DSGame sharedGame].winner && [DSGame sharedGame].winner.length)) {
-            colorForText = [UIColor yellowColor];
-        }
+//        if (([[DSGame sharedGame] winner] && [[DSGame sharedGame] winner].length)) {
+//            colorForText = [UIColor yellowColor];
+//        }
         self.incrementScoreLabel.textColor = colorForText;
         self.decrementScoreLabel.textColor = colorForText;
     } else {
