@@ -26,4 +26,10 @@
     [self.cellDelegate didFinishEditingForCell:self];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self endEditing:YES];
+    return YES;
+}
+
 @end

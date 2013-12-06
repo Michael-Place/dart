@@ -279,6 +279,11 @@ const int portraitHeightForTableView = 776;
     return height;
 }
 
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
 #pragma mark - Rotation
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
