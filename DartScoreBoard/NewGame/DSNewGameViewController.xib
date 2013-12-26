@@ -7,7 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSNewGameViewController">
             <connections>
                 <outlet property="addPlayerButton" destination="9XW-Vl-6vP" id="yVd-go-zNq"/>
+                <outlet property="appTitleLabel" destination="n9j-aD-BUY" id="ivD-6k-zsH"/>
                 <outlet property="collectionView" destination="LTv-jH-nG2" id="83v-6U-Wq4"/>
+                <outlet property="gameInstructionLabel" destination="BQt-db-HIx" id="mGJ-DL-KV3"/>
                 <outlet property="startGameButton" destination="A7g-sA-tUu" id="pdX-JR-4oj"/>
                 <outlet property="view" destination="1" id="bT4-rv-vn7"/>
             </connections>

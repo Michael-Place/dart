@@ -10,8 +10,7 @@
 #import "DSGame.h"
 
 @interface DSPlayerScoreValueTableViewCell : UITableViewCell
-
-@property (nonatomic, strong)NSString *playerName;
+@property (nonatomic, strong) NSString *playerName;
 @property (nonatomic, assign) enum CricketScoreValue scoreValue;
 @property (nonatomic, assign) int score;
 

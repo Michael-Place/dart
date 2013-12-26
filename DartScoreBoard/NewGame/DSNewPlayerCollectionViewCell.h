@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *playerNameTextField;
 @property (weak, nonatomic) IBOutlet UILabel *playerNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *deletePlayerButton;
+@property (weak, nonatomic) IBOutlet UIView *backgroundColorView;
 
 - (IBAction)deletePlayerButtonTapped:(id)sender;
 

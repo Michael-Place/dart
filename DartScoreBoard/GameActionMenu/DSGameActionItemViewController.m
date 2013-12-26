@@ -32,6 +32,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // Set interface colors
+    [self.menuButton setTitleColor:[DSAppSkinner scoreBoardTextColor] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning

@@ -19,6 +19,8 @@ const int kDartGap = 60;
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
 @property (weak, nonatomic) IBOutlet UIButton *addPlayerButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UILabel *appTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *gameInstructionLabel;
 
 //Dyanmics
 @property (nonatomic, strong) NSMutableArray *darts;
@@ -52,14 +54,22 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
                                                     bundle:[NSBundle mainBundle]]
                                 forCellWithReuseIdentifier:NewPlayerCollectionViewCellIdentifier];
     
-    UITapGestureRecognizer *tapGesture =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(handleSingleTap:)];
+    // Add the tap gesture to the view so that we can dismiss the keyboard if applicable
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector(handleSingleTap:)];
     [tapGesture setCancelsTouchesInView:NO];
     [tapGesture setDelegate:self];
-    
     [self.view addGestureRecognizer:tapGesture];
     
+    // Set the interface colors
+    [self.appTitleLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.gameInstructionLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.addPlayerButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+    [self.startGameButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+    
+    [self.addPlayerButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
+    [self.startGameButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
+
     
     //Reset DSGame
     [[DSGame sharedGame] setPlayers:[NSArray array]];
@@ -387,10 +397,19 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     DSNewPlayerCollectionViewCell *newPlayerCell = [collectionView dequeueReusableCellWithReuseIdentifier:NewPlayerCollectionViewCellIdentifier forIndexPath:indexPath];
     [newPlayerCell setCellDelegate:self];
     
+    // Make the background view circular
+    CGPoint saveCenter = newPlayerCell.backgroundColorView.center;
+    newPlayerCell.backgroundColorView.layer.cornerRadius = newPlayerCell.backgroundColorView.frame.size.width / 2.0;
+    newPlayerCell.backgroundColorView.center = saveCenter;
+
     DSPlayer *playerForIndexPath = [self.newPlayers objectAtIndex:indexPath.row];
     
+    // Set the interface colors
+    [newPlayerCell.backgroundColorView setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
     [newPlayerCell.playerNameTextField setText:playerForIndexPath.playerName];
     [newPlayerCell.playerNameLabel setText:playerForIndexPath.playerName];
+    [newPlayerCell.playerNameLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [newPlayerCell.playerNameTextField setTextColor:[DSAppSkinner newGameFontColor]];
     
     // First two players can't be deleted
     [newPlayerCell.deletePlayerButton setHidden:(indexPath.row < 2) ? YES : NO];

@@ -9,12 +9,11 @@
 #import "DSPlayerScoreValueTableViewCell.h"
 
 @interface DSPlayerScoreValueTableViewCell ()
-@property (weak, nonatomic) IBOutlet UIButton *decrementScoreValueButton;
-@property (weak, nonatomic) IBOutlet UIButton *incrementScoreValueButton;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-
 @property (weak, nonatomic) IBOutlet UILabel *decrementScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *incrementScoreLabel;
+@property (weak, nonatomic) IBOutlet UIButton *decrementScoreValueButton;
+@property (weak, nonatomic) IBOutlet UIButton *incrementScoreValueButton;
+
 @property (weak, nonatomic) IBOutlet UIImageView *incrementScoreImageView;
 
 - (IBAction)decrementScoreValueButtonTapped:(id)sender;
@@ -47,7 +46,8 @@
         self.incrementScoreLabel.text = @"+";
         self.decrementScoreLabel.text = @"-";
         [self.incrementScoreImageView setImage:nil]; ;
-    } else if (self.score < 4) {
+    }
+    else if (self.score < 4) {
         UIImage *strikeImage;
         switch (self.score) {
             case 1: {
@@ -67,7 +67,8 @@
         }
         [self.incrementScoreImageView setImage:strikeImage]; ;
         self.decrementScoreLabel.text = @"-";
-    } else {
+    }
+    else {
         UIImage *strikeImage = [UIImage imageNamed:@"three-strike"];
         [self.incrementScoreImageView setImage:strikeImage];
         self.decrementScoreLabel.text = [NSString stringWithFormat:@"%i",self.score];
@@ -84,9 +85,8 @@
     
     if (shouldClose || ([[DSGame sharedGame] winner] && [[DSGame sharedGame] winner].length)) {
         [self.incrementScoreValueButton setUserInteractionEnabled:NO];
-        UIColor *colorForText = [UIColor grayColor];
-        self.incrementScoreLabel.textColor = colorForText;
-        self.decrementScoreLabel.textColor = colorForText;
+        self.incrementScoreLabel.textColor = [DSAppSkinner scoreBoardClosedColor];
+        self.decrementScoreLabel.textColor = [DSAppSkinner scoreBoardClosedColor];
         
         
         UIImage *strikeImage;
@@ -116,9 +116,8 @@
         [self.incrementScoreImageView setImage:strikeImage];
     } else {
         [self.incrementScoreValueButton setUserInteractionEnabled:YES];
-        UIColor *scoreBackgroundColor = [UIColor whiteColor];
-        self.incrementScoreLabel.textColor = scoreBackgroundColor;
-        self.decrementScoreLabel.textColor = scoreBackgroundColor;
+        self.incrementScoreLabel.textColor = [DSAppSkinner scoreBoardTextColor];
+        self.decrementScoreLabel.textColor = [DSAppSkinner scoreBoardTextColor];
     }
 }
 

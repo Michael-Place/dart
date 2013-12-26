@@ -7,12 +7,17 @@
 //
 
 #import "DSNewPlayerCollectionViewCell.h"
+#import <QuartzCore/QuartzCore.h>
+
+@interface DSNewPlayerCollectionViewCell ()
+
+@end
 
 @implementation DSNewPlayerCollectionViewCell
 
 - (void)awakeFromNib
 {
-    [self.playerNameTextField setDelegate:self];
+    [self.playerNameTextField setDelegate:self];    
 }
 
 - (IBAction)deletePlayerButtonTapped:(id)sender

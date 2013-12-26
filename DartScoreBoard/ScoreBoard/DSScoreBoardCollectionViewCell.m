@@ -11,6 +11,12 @@
 
 @implementation DSScoreBoardCollectionViewCell
 
+- (void)awakeFromNib
+{
+    [self.playerNameLabel setTextColor:[DSAppSkinner scoreBoardTextColor]];
+    [self.totalScoreLabel setTextColor:[DSAppSkinner scoreBoardTextColor]];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -28,12 +34,9 @@
     return cellHeight;
 }
 
-//UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Blah"];
-//return cell;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DSPlayerScoreValueTableViewCell *scoreCell = (DSPlayerScoreValueTableViewCell *)cell;
-    NSLog(@"~~Updating Score: %@ : Score Value : %d Score : %d", scoreCell.playerName, scoreCell.scoreValue, scoreCell.score);
     [scoreCell updateScoreValue];
 }
 
@@ -45,6 +48,7 @@
     if (cell == nil) {
         cell = [self loadPlayerScoreValueCellFromNib];
     }
+    
     cell.playerName = self.player.playerName;
     cell.scoreValue = [DSGame scoreValueForIndex:indexPath.row];
     cell.score = [self.player pointsEarnedForCricketScoreValue:cell.scoreValue];

@@ -53,7 +53,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+    cell.backgroundColor = [UIColor clearColor];
+
     cell.textLabel.textColor = [UIColor whiteColor];
     [cell.textLabel setFont:[UIFont systemFontOfSize:60]];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", self.scoreList[indexPath.row]];
@@ -63,12 +64,11 @@
     BOOL shouldClose = shouldCloseObject.boolValue;
     
     if (shouldClose || [[DSGame sharedGame] winner].length) {
-        cell.textLabel.textColor = [UIColor grayColor];
+        [cell.textLabel setTextColor:[DSAppSkinner scoreBoardClosedColor]];
     } else {
-        cell.textLabel.textColor = [UIColor whiteColor];
+        [cell.textLabel setTextColor:[DSAppSkinner scoreBoardTextColor]];
     }
     
-    cell.backgroundColor = [UIColor clearColor];
     return cell;
     
 }

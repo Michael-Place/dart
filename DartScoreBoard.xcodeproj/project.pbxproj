@@ -27,8 +27,6 @@
 		E9117345186CA849006351AA /* delete_user_button_black.png in Resources */ = {isa = PBXBuildFile; fileRef = E911733F186CA849006351AA /* delete_user_button_black.png */; };
 		E9117346186CA849006351AA /* dart_right.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117340186CA849006351AA /* dart_right.png */; };
 		E9117347186CA849006351AA /* dart_left.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117341186CA849006351AA /* dart_left.png */; };
-		E9117348186CA849006351AA /* add_user_background_white.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117342186CA849006351AA /* add_user_background_white.png */; };
-		E9117349186CA849006351AA /* add_user_background_red.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117343186CA849006351AA /* add_user_background_red.png */; };
 		E92C414B18495949001CA645 /* DSPlayerScoreValueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */; };
 		E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */; };
 		E949B7651851837B003CD01C /* DSGameActionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E949B7631851837B003CD01C /* DSGameActionTableViewController.m */; };
@@ -96,8 +94,6 @@
 		E911733F186CA849006351AA /* delete_user_button_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete_user_button_black.png; path = Assets/NewGame/delete_user_button_black.png; sourceTree = "<group>"; };
 		E9117340186CA849006351AA /* dart_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dart_right.png; path = Assets/NewGame/dart_right.png; sourceTree = "<group>"; };
 		E9117341186CA849006351AA /* dart_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dart_left.png; path = Assets/NewGame/dart_left.png; sourceTree = "<group>"; };
-		E9117342186CA849006351AA /* add_user_background_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_user_background_white.png; path = Assets/NewGame/add_user_background_white.png; sourceTree = "<group>"; };
-		E9117343186CA849006351AA /* add_user_background_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_user_background_red.png; path = Assets/NewGame/add_user_background_red.png; sourceTree = "<group>"; };
 		E92C414918495949001CA645 /* DSPlayerScoreValueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSPlayerScoreValueTableViewCell.h; path = ScoreBoard/DSPlayerScoreValueTableViewCell.h; sourceTree = "<group>"; };
 		E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSPlayerScoreValueTableViewCell.m; path = ScoreBoard/DSPlayerScoreValueTableViewCell.m; sourceTree = "<group>"; };
 		E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSPlayerScoreValueTableViewCell.xib; path = ScoreBoard/DSPlayerScoreValueTableViewCell.xib; sourceTree = "<group>"; };
@@ -348,8 +344,6 @@
 				E911733F186CA849006351AA /* delete_user_button_black.png */,
 				E9117340186CA849006351AA /* dart_right.png */,
 				E9117341186CA849006351AA /* dart_left.png */,
-				E9117342186CA849006351AA /* add_user_background_white.png */,
-				E9117343186CA849006351AA /* add_user_background_red.png */,
 			);
 			name = NewGame;
 			sourceTree = "<group>";
@@ -456,7 +450,6 @@
 				E911732F186CA826006351AA /* two-strike-closed.png in Resources */,
 				E949B7661851837B003CD01C /* DSGameActionTableViewController.xib in Resources */,
 				E911733D186CA837006351AA /* chalk_pallet.png in Resources */,
-				E9117349186CA849006351AA /* add_user_background_red.png in Resources */,
 				E9117339186CA837006351AA /* three-strike.png in Resources */,
 				E9117347186CA849006351AA /* dart_left.png in Resources */,
 				E96CF999185007DC00032DFF /* DSScoreCollectionView.xib in Resources */,
@@ -469,7 +462,6 @@
 				E911732B186CA80B006351AA /* settings-icon.png in Resources */,
 				E911733A186CA837006351AA /* one-strike-closed.png in Resources */,
 				E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */,
-				E9117348186CA849006351AA /* add_user_background_white.png in Resources */,
 				E9C9D53418493E790085BC43 /* Images.xcassets in Resources */,
 				E9117328186CA80B006351AA /* spotlight-icon@2x.png in Resources */,
 				E9117346186CA849006351AA /* dart_right.png in Resources */,
