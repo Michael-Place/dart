@@ -91,6 +91,10 @@
         
         UIImage *strikeImage;
         switch (self.score) {
+            case 0: {
+                strikeImage = [UIImage imageNamed:@""];
+                break;
+            }
             case 1: {
                 strikeImage = [UIImage imageNamed:@"one-strike-closed"];
                 break;
