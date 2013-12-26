@@ -19,7 +19,7 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *scoreBoardCollectionView;
 @property (nonatomic, strong) DSGameActionItemViewController *gameActionItemViewController;
 @property (nonatomic, strong) DSNewGameViewController *newGameViewController;
-
+@property (nonatomic, strong) NSMutableArray *headerViews;
 @end
 
 @implementation DSScoreBoardCollectionViewController
@@ -27,11 +27,12 @@ static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardColl
 static NSString *const ScoreBoardHeaderIdentifier = @"ScoreBoardHeaderIdentifier";
 static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderLandscapeIdentifier";
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
+        self.headerViews = [NSMutableArray array];
     }
     return self;
 }
@@ -83,6 +84,14 @@ static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderL
 - (void)updateGameState
 {
     [self.scoreBoardCollectionView reloadData];
+    [self reloadSectionHeaders];
+}
+
+- (void)reloadSectionHeaders
+{
+    for (DSScoreCollectionView *header in self.headerViews) {
+        [header.scoreTableView reloadData];
+    }
 }
 
 #pragma mark - UICollectionViewDatasource
@@ -188,7 +197,8 @@ const int DefaultPlayersPerSection = 2;
     else {
         supplementaryView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ScoreBoardHeaderLandscapeIdentifier forIndexPath:indexPath];
     }
-    
+
+    [self.headerViews addObject:supplementaryView];
     return supplementaryView;
 }
 
@@ -359,6 +369,8 @@ const int portraitHeightForTableView = 776;
 {
     // Reset shared game object and reload collection view
     [[DSGame sharedGame] resetGame];
+    
+    [self reloadSectionHeaders];
     [self.collectionView reloadData];
 }
 
@@ -382,6 +394,8 @@ const int portraitHeightForTableView = 776;
 {
     self.newGameViewController = nil;
     [[DSGame sharedGame] resetGame];
+    
+    [self reloadSectionHeaders];
     [self.collectionView reloadData];
 }
 

@@ -10,5 +10,6 @@
 #import "DSScoreBoardCollectionViewCell.h"
 
 @interface DSScoreCollectionView : UICollectionReusableView
+@property (nonatomic, weak) IBOutlet UITableView *scoreTableView;
 
 @end

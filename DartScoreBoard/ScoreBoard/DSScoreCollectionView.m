@@ -12,8 +12,7 @@
 
 @interface DSScoreCollectionView() <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, weak)IBOutlet UITableView *scoreTableView;
-@property (nonatomic, strong)NSArray *scoreList;
+@property (nonatomic, strong) NSArray *scoreList;
 
 @end
 
@@ -63,7 +62,7 @@
     NSNumber *shouldCloseObject = [[DSGame sharedGame].gameStatusPointValueDictionary objectForKey:[DSGame keyStringForCricketScoreValue:[DSGame scoreValueForIndex:(int)indexPath.row]]];
     BOOL shouldClose = shouldCloseObject.boolValue;
     
-    if (shouldClose) {
+    if (shouldClose || [[DSGame sharedGame] winner].length) {
         cell.textLabel.textColor = [UIColor grayColor];
     } else {
         cell.textLabel.textColor = [UIColor whiteColor];
