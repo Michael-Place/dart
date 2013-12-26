@@ -54,6 +54,9 @@
 		E9E8C198185269B8002DD5C3 /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C194185269B8002DD5C3 /* settings-icon.png */; };
 		E9E8C19A18527F81002DD5C3 /* three-strike.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C19918527F81002DD5C3 /* three-strike.png */; };
 		E9ED53E1186BFDFA00AA39FE /* UIColor+HexSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */; };
+		E9ED53E3186C054600AA39FE /* three-strike-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = E9ED53E2186C054600AA39FE /* three-strike-closed.png */; };
+		E9ED53E6186C073B00AA39FE /* two-strike-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = E9ED53E4186C073B00AA39FE /* two-strike-closed.png */; };
+		E9ED53E7186C073B00AA39FE /* one-strike-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = E9ED53E5186C073B00AA39FE /* one-strike-closed.png */; };
 		E9F6EFFA184965B400A16A44 /* DSNewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */; };
 		ED176F3C184ADC2100EEEFE7 /* Chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */; };
 		ED176F3E184B00A700EEEFE7 /* chalk_pallet.png in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */; };
@@ -133,6 +136,9 @@
 		E9E8C19918527F81002DD5C3 /* three-strike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "three-strike.png"; sourceTree = "<group>"; };
 		E9ED53DF186BFDFA00AA39FE /* UIColor+HexSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexSupport.h"; path = "Utilities/UIColor+HexSupport.h"; sourceTree = "<group>"; };
 		E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexSupport.m"; path = "Utilities/UIColor+HexSupport.m"; sourceTree = "<group>"; };
+		E9ED53E2186C054600AA39FE /* three-strike-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "three-strike-closed.png"; sourceTree = "<group>"; };
+		E9ED53E4186C073B00AA39FE /* two-strike-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "two-strike-closed.png"; sourceTree = "<group>"; };
+		E9ED53E5186C073B00AA39FE /* one-strike-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one-strike-closed.png"; sourceTree = "<group>"; };
 		E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSNewGameViewController.xib; sourceTree = "<group>"; };
 		ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chalkboard.png; sourceTree = "<group>"; };
 		ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chalk_pallet.png; sourceTree = "<group>"; };
@@ -346,6 +352,9 @@
 		ED176F3A184ADC0400EEEFE7 /* ScoreBoard */ = {
 			isa = PBXGroup;
 			children = (
+				E9ED53E4186C073B00AA39FE /* two-strike-closed.png */,
+				E9ED53E5186C073B00AA39FE /* one-strike-closed.png */,
+				E9ED53E2186C054600AA39FE /* three-strike-closed.png */,
 				E9E8C19918527F81002DD5C3 /* three-strike.png */,
 				E9750D731852319900B35A10 /* two-strike.png */,
 				E9750D751852319900B35A10 /* one-strike.png */,
@@ -435,16 +444,19 @@
 				E9E8C1901852675F002DD5C3 /* icon-76.png in Resources */,
 				E9E8C196185269B8002DD5C3 /* spotlight-icon.png in Resources */,
 				E9C9D52F18493E790085BC43 /* Main_iPad.storyboard in Resources */,
+				E9ED53E7186C073B00AA39FE /* one-strike-closed.png in Resources */,
 				E9F6EFFA184965B400A16A44 /* DSNewGameViewController.xib in Resources */,
 				E949B7661851837B003CD01C /* DSGameActionTableViewController.xib in Resources */,
 				E9A5CC1B184BCFCB00619D7D /* add_user_background_red.png in Resources */,
 				E9A5CC28184C1C3300619D7D /* dart_left.png in Resources */,
 				E96CF999185007DC00032DFF /* DSScoreCollectionView.xib in Resources */,
+				E9ED53E6186C073B00AA39FE /* two-strike-closed.png in Resources */,
 				E949B75B18518046003CD01C /* delete_user_button_white.png in Resources */,
 				ED176F3C184ADC2100EEEFE7 /* Chalkboard.png in Resources */,
 				E96CF9B31850326800032DFF /* DSScoreCollectionViewLandscape.xib in Resources */,
 				E9750D781852319900B35A10 /* one-strike.png in Resources */,
 				E9E8C198185269B8002DD5C3 /* settings-icon.png in Resources */,
+				E9ED53E3186C054600AA39FE /* three-strike-closed.png in Resources */,
 				E9A5CC25184BF08500619D7D /* DSNewPlayerCollectionViewCell.xib in Resources */,
 				E949B76B185183BE003CD01C /* DSGameActionItemViewController.xib in Resources */,
 				E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */,

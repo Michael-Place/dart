@@ -8,10 +8,6 @@
 
 #import "DSPlayerScoreValueTableViewCell.h"
 
-const NSString *kStrikeOneSymbol = @"\u29F5";
-const NSString *kStrikeTwoSymbol = @"\u2613";
-const NSString *kStrikeThreeSymbol = @"\u2297";
-
 @interface DSPlayerScoreValueTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIButton *decrementScoreValueButton;
 @property (weak, nonatomic) IBOutlet UIButton *incrementScoreValueButton;
@@ -89,11 +85,31 @@ const NSString *kStrikeThreeSymbol = @"\u2297";
     if (shouldClose || ([[DSGame sharedGame] winner] && [[DSGame sharedGame] winner].length)) {
         [self.incrementScoreValueButton setUserInteractionEnabled:NO];
         UIColor *colorForText = [UIColor grayColor];
-//        if (([[DSGame sharedGame] winner] && [[DSGame sharedGame] winner].length)) {
-//            colorForText = [UIColor yellowColor];
-//        }
         self.incrementScoreLabel.textColor = colorForText;
         self.decrementScoreLabel.textColor = colorForText;
+        
+        
+        UIImage *strikeImage;
+        switch (self.score) {
+            case 1: {
+                strikeImage = [UIImage imageNamed:@"one-strike-closed"];
+                break;
+            }
+            case 2: {
+                strikeImage = [UIImage imageNamed:@"two-strike-closed"];
+                break;
+            }
+            case 3: {
+                strikeImage = [UIImage imageNamed:@"three-strike-closed"];
+                break;
+            }
+            default:
+                // This catches the case where the 3 strikes have been exceeded
+                strikeImage = [UIImage imageNamed:@"three-strike-closed"];
+                break;
+        }
+        
+        [self.incrementScoreImageView setImage:strikeImage];
     } else {
         [self.incrementScoreValueButton setUserInteractionEnabled:YES];
         UIColor *scoreBackgroundColor = [UIColor whiteColor];
