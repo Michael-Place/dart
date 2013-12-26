@@ -28,6 +28,7 @@ const int kDartGap = 60;
 @property (nonatomic, strong) UICollisionBehavior *collision;
 
 @property (nonatomic, strong) NSMutableArray *newPlayers;
+@property int indexOfPlayerInEditMode;
 
 
 - (IBAction)addPlayerButtonTapped:(id)sender;
@@ -71,6 +72,34 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    
+    if (![self.newPlayers count]) {
+        [self setupDefaultNewGame];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardDidShowNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardDidHideNotification
+                                                  object:nil];
+}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     BOOL shouldReceiveTouch = YES;
@@ -99,14 +128,6 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
             [playerForCell setIsEditMode:NO];
             break;
         }
-    }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if (![self.newPlayers count]) {
-        [self setupDefaultNewGame];
     }
 }
 
@@ -405,6 +426,7 @@ static float playerNameAnimationDuration = 1.0;
     }
     else {
         [playerForCell setIsEditMode:YES];
+        [self setIndexOfPlayerInEditMode:indexPath.row];
         [self enterEditModeForCell:cell atIndexPath:indexPath animated:YES];
 
     }
@@ -561,7 +583,7 @@ static float playerNameAnimationDuration = 1.0;
 
 - (NSString *)defaultNameForNewPlayer
 {
-    return [NSString stringWithFormat:@"Player %lu", (self.newPlayers.count + 1)];
+    return [NSString stringWithFormat:@"Player %u", (self.newPlayers.count + 1)];
 }
 
 - (BOOL)indexPathIsBackedByData:(NSIndexPath *)indexPath
@@ -607,6 +629,34 @@ static float playerNameAnimationDuration = 1.0;
         _newPlayers = [NSMutableArray array];
     }
     return _newPlayers;
+}
+
+#pragma mark - Keyboard Notifications
+- (void)keyboardDidShow
+{
+    // Only scroll the collection view if we are in landscape
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        CGFloat collectionViewHeight = CGRectGetHeight(self.collectionView.bounds);
+        CGFloat cellHeight = [self loadNewPlayerCollectionViewCellFromNib].frame.size.height;
+        
+        [UIView animateWithDuration:.2 animations:^{
+            [self.collectionView setContentInset:UIEdgeInsetsMake(0, 0, (collectionViewHeight - cellHeight), 0)];
+            
+        } completion:^(BOOL finished) {
+            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.indexOfPlayerInEditMode inSection:0]
+                                        atScrollPosition:UICollectionViewScrollPositionTop
+                                                animated:YES];
+        }];
+    }
+}
+
+- (void)keyboardDidHide
+{
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        [UIView animateWithDuration:.2 animations:^{
+            [self.collectionView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        }];
+    }
 }
 
 @end
