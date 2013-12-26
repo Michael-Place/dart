@@ -7,10 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E911731F186CA71D006351AA /* DSAppSkinner.m in Sources */ = {isa = PBXBuildFile; fileRef = E911731E186CA71D006351AA /* DSAppSkinner.m */; };
+		E9117321186CA7EF006351AA /* DSNewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9117320186CA7EF006351AA /* DSNewGameViewController.xib */; };
+		E9117328186CA80B006351AA /* spotlight-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117322186CA80B006351AA /* spotlight-icon@2x.png */; };
+		E9117329186CA80B006351AA /* spotlight-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117323186CA80B006351AA /* spotlight-icon.png */; };
+		E911732A186CA80B006351AA /* settings-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117324186CA80B006351AA /* settings-icon@2x.png */; };
+		E911732B186CA80B006351AA /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117325186CA80B006351AA /* settings-icon.png */; };
+		E911732C186CA80B006351AA /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117326186CA80B006351AA /* Icon-76@2x.png */; };
+		E911732D186CA80B006351AA /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117327186CA80B006351AA /* icon-76.png */; };
+		E911732F186CA826006351AA /* two-strike-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = E911732E186CA826006351AA /* two-strike-closed.png */; };
+		E9117337186CA837006351AA /* two-strike.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117330186CA837006351AA /* two-strike.png */; };
+		E9117338186CA837006351AA /* three-strike-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117331186CA837006351AA /* three-strike-closed.png */; };
+		E9117339186CA837006351AA /* three-strike.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117332186CA837006351AA /* three-strike.png */; };
+		E911733A186CA837006351AA /* one-strike-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117333186CA837006351AA /* one-strike-closed.png */; };
+		E911733B186CA837006351AA /* one-strike.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117334186CA837006351AA /* one-strike.png */; };
+		E911733C186CA837006351AA /* Chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117335186CA837006351AA /* Chalkboard.png */; };
+		E911733D186CA837006351AA /* chalk_pallet.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117336186CA837006351AA /* chalk_pallet.png */; };
+		E9117344186CA849006351AA /* delete_user_button_white.png in Resources */ = {isa = PBXBuildFile; fileRef = E911733E186CA849006351AA /* delete_user_button_white.png */; };
+		E9117345186CA849006351AA /* delete_user_button_black.png in Resources */ = {isa = PBXBuildFile; fileRef = E911733F186CA849006351AA /* delete_user_button_black.png */; };
+		E9117346186CA849006351AA /* dart_right.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117340186CA849006351AA /* dart_right.png */; };
+		E9117347186CA849006351AA /* dart_left.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117341186CA849006351AA /* dart_left.png */; };
+		E9117348186CA849006351AA /* add_user_background_white.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117342186CA849006351AA /* add_user_background_white.png */; };
+		E9117349186CA849006351AA /* add_user_background_red.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117343186CA849006351AA /* add_user_background_red.png */; };
 		E92C414B18495949001CA645 /* DSPlayerScoreValueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */; };
 		E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */; };
-		E949B75718517C93003CD01C /* add_user_background_white.png in Resources */ = {isa = PBXBuildFile; fileRef = E949B75618517C93003CD01C /* add_user_background_white.png */; };
-		E949B75B18518046003CD01C /* delete_user_button_white.png in Resources */ = {isa = PBXBuildFile; fileRef = E949B75A18518046003CD01C /* delete_user_button_white.png */; };
 		E949B7651851837B003CD01C /* DSGameActionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E949B7631851837B003CD01C /* DSGameActionTableViewController.m */; };
 		E949B7661851837B003CD01C /* DSGameActionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E949B7641851837B003CD01C /* DSGameActionTableViewController.xib */; };
 		E949B76A185183BE003CD01C /* DSGameActionItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E949B768185183BE003CD01C /* DSGameActionItemViewController.m */; };
@@ -18,15 +38,9 @@
 		E96CF999185007DC00032DFF /* DSScoreCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96CF998185007DC00032DFF /* DSScoreCollectionView.xib */; };
 		E96CF9B11850322E00032DFF /* DSScoreCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E96CF9AF1850322E00032DFF /* DSScoreCollectionView.m */; };
 		E96CF9B31850326800032DFF /* DSScoreCollectionViewLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96CF9B21850326800032DFF /* DSScoreCollectionViewLandscape.xib */; };
-		E9750D761852319900B35A10 /* two-strike.png in Resources */ = {isa = PBXBuildFile; fileRef = E9750D731852319900B35A10 /* two-strike.png */; };
-		E9750D781852319900B35A10 /* one-strike.png in Resources */ = {isa = PBXBuildFile; fileRef = E9750D751852319900B35A10 /* one-strike.png */; };
 		E98D954318494A0900A02273 /* DSNewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E98D954118494A0900A02273 /* DSNewGameViewController.m */; };
-		E9A5CC1B184BCFCB00619D7D /* add_user_background_red.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A5CC1A184BCFCB00619D7D /* add_user_background_red.png */; };
-		E9A5CC1D184BD10700619D7D /* delete_user_button_black.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A5CC1C184BD10700619D7D /* delete_user_button_black.png */; };
 		E9A5CC23184BD49600619D7D /* DSNewPlayerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A5CC22184BD49600619D7D /* DSNewPlayerCollectionViewCell.m */; };
 		E9A5CC25184BF08500619D7D /* DSNewPlayerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A5CC24184BF08500619D7D /* DSNewPlayerCollectionViewCell.xib */; };
-		E9A5CC28184C1C3300619D7D /* dart_left.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A5CC26184C1C3300619D7D /* dart_left.png */; };
-		E9A5CC29184C1C3300619D7D /* dart_right.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A5CC27184C1C3300619D7D /* dart_right.png */; };
 		E9C9D51918493E790085BC43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C9D51818493E790085BC43 /* Foundation.framework */; };
 		E9C9D51B18493E790085BC43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C9D51A18493E790085BC43 /* CoreGraphics.framework */; };
 		E9C9D51D18493E790085BC43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C9D51C18493E790085BC43 /* UIKit.framework */; };
@@ -46,20 +60,7 @@
 		E9C9D55A1849429D0085BC43 /* DSGame.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C9D5591849429D0085BC43 /* DSGame.m */; };
 		E9C9D55D184944370085BC43 /* DSScoreBoardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */; };
 		E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */; };
-		E9E8C18F1852675F002DD5C3 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C18D1852675F002DD5C3 /* Icon-76@2x.png */; };
-		E9E8C1901852675F002DD5C3 /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C18E1852675F002DD5C3 /* icon-76.png */; };
-		E9E8C195185269B8002DD5C3 /* spotlight-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C191185269B8002DD5C3 /* spotlight-icon@2x.png */; };
-		E9E8C196185269B8002DD5C3 /* spotlight-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C192185269B8002DD5C3 /* spotlight-icon.png */; };
-		E9E8C197185269B8002DD5C3 /* settings-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C193185269B8002DD5C3 /* settings-icon@2x.png */; };
-		E9E8C198185269B8002DD5C3 /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C194185269B8002DD5C3 /* settings-icon.png */; };
-		E9E8C19A18527F81002DD5C3 /* three-strike.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E8C19918527F81002DD5C3 /* three-strike.png */; };
 		E9ED53E1186BFDFA00AA39FE /* UIColor+HexSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */; };
-		E9ED53E3186C054600AA39FE /* three-strike-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = E9ED53E2186C054600AA39FE /* three-strike-closed.png */; };
-		E9ED53E6186C073B00AA39FE /* two-strike-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = E9ED53E4186C073B00AA39FE /* two-strike-closed.png */; };
-		E9ED53E7186C073B00AA39FE /* one-strike-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = E9ED53E5186C073B00AA39FE /* one-strike-closed.png */; };
-		E9F6EFFA184965B400A16A44 /* DSNewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */; };
-		ED176F3C184ADC2100EEEFE7 /* Chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */; };
-		ED176F3E184B00A700EEEFE7 /* chalk_pallet.png in Resources */ = {isa = PBXBuildFile; fileRef = ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */; };
 		ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */; };
 /* End PBXBuildFile section */
 
@@ -74,11 +75,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E911731D186CA71D006351AA /* DSAppSkinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSAppSkinner.h; path = Utilities/DSAppSkinner.h; sourceTree = "<group>"; };
+		E911731E186CA71D006351AA /* DSAppSkinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSAppSkinner.m; path = Utilities/DSAppSkinner.m; sourceTree = "<group>"; };
+		E9117320186CA7EF006351AA /* DSNewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSNewGameViewController.xib; path = NewGame/DSNewGameViewController.xib; sourceTree = "<group>"; };
+		E9117322186CA80B006351AA /* spotlight-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spotlight-icon@2x.png"; path = "Assets/Icon/spotlight-icon@2x.png"; sourceTree = "<group>"; };
+		E9117323186CA80B006351AA /* spotlight-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spotlight-icon.png"; path = "Assets/Icon/spotlight-icon.png"; sourceTree = "<group>"; };
+		E9117324186CA80B006351AA /* settings-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-icon@2x.png"; path = "Assets/Icon/settings-icon@2x.png"; sourceTree = "<group>"; };
+		E9117325186CA80B006351AA /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-icon.png"; path = "Assets/Icon/settings-icon.png"; sourceTree = "<group>"; };
+		E9117326186CA80B006351AA /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Assets/Icon/Icon-76@2x.png"; sourceTree = "<group>"; };
+		E9117327186CA80B006351AA /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-76.png"; path = "Assets/Icon/icon-76.png"; sourceTree = "<group>"; };
+		E911732E186CA826006351AA /* two-strike-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "two-strike-closed.png"; path = "Assets/ScoreBoard/two-strike-closed.png"; sourceTree = "<group>"; };
+		E9117330186CA837006351AA /* two-strike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "two-strike.png"; path = "Assets/ScoreBoard/two-strike.png"; sourceTree = "<group>"; };
+		E9117331186CA837006351AA /* three-strike-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "three-strike-closed.png"; path = "Assets/ScoreBoard/three-strike-closed.png"; sourceTree = "<group>"; };
+		E9117332186CA837006351AA /* three-strike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "three-strike.png"; path = "Assets/ScoreBoard/three-strike.png"; sourceTree = "<group>"; };
+		E9117333186CA837006351AA /* one-strike-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "one-strike-closed.png"; path = "Assets/ScoreBoard/one-strike-closed.png"; sourceTree = "<group>"; };
+		E9117334186CA837006351AA /* one-strike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "one-strike.png"; path = "Assets/ScoreBoard/one-strike.png"; sourceTree = "<group>"; };
+		E9117335186CA837006351AA /* Chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Chalkboard.png; path = Assets/ScoreBoard/Chalkboard.png; sourceTree = "<group>"; };
+		E9117336186CA837006351AA /* chalk_pallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chalk_pallet.png; path = Assets/ScoreBoard/chalk_pallet.png; sourceTree = "<group>"; };
+		E911733E186CA849006351AA /* delete_user_button_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete_user_button_white.png; path = Assets/NewGame/delete_user_button_white.png; sourceTree = "<group>"; };
+		E911733F186CA849006351AA /* delete_user_button_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete_user_button_black.png; path = Assets/NewGame/delete_user_button_black.png; sourceTree = "<group>"; };
+		E9117340186CA849006351AA /* dart_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dart_right.png; path = Assets/NewGame/dart_right.png; sourceTree = "<group>"; };
+		E9117341186CA849006351AA /* dart_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dart_left.png; path = Assets/NewGame/dart_left.png; sourceTree = "<group>"; };
+		E9117342186CA849006351AA /* add_user_background_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_user_background_white.png; path = Assets/NewGame/add_user_background_white.png; sourceTree = "<group>"; };
+		E9117343186CA849006351AA /* add_user_background_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_user_background_red.png; path = Assets/NewGame/add_user_background_red.png; sourceTree = "<group>"; };
 		E92C414918495949001CA645 /* DSPlayerScoreValueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSPlayerScoreValueTableViewCell.h; path = ScoreBoard/DSPlayerScoreValueTableViewCell.h; sourceTree = "<group>"; };
 		E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSPlayerScoreValueTableViewCell.m; path = ScoreBoard/DSPlayerScoreValueTableViewCell.m; sourceTree = "<group>"; };
 		E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSPlayerScoreValueTableViewCell.xib; path = ScoreBoard/DSPlayerScoreValueTableViewCell.xib; sourceTree = "<group>"; };
-		E949B75618517C93003CD01C /* add_user_background_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_user_background_white.png; sourceTree = "<group>"; };
-		E949B75A18518046003CD01C /* delete_user_button_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_user_button_white.png; sourceTree = "<group>"; };
 		E949B7621851837B003CD01C /* DSGameActionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSGameActionTableViewController.h; path = GameActionMenu/DSGameActionTableViewController.h; sourceTree = "<group>"; };
 		E949B7631851837B003CD01C /* DSGameActionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSGameActionTableViewController.m; path = GameActionMenu/DSGameActionTableViewController.m; sourceTree = "<group>"; };
 		E949B7641851837B003CD01C /* DSGameActionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSGameActionTableViewController.xib; path = GameActionMenu/DSGameActionTableViewController.xib; sourceTree = "<group>"; };
@@ -89,17 +111,11 @@
 		E96CF9AF1850322E00032DFF /* DSScoreCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSScoreCollectionView.m; path = ScoreBoard/DSScoreCollectionView.m; sourceTree = "<group>"; };
 		E96CF9B01850322E00032DFF /* DSScoreCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSScoreCollectionView.h; path = ScoreBoard/DSScoreCollectionView.h; sourceTree = "<group>"; };
 		E96CF9B21850326800032DFF /* DSScoreCollectionViewLandscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSScoreCollectionViewLandscape.xib; path = ScoreBoard/DSScoreCollectionViewLandscape.xib; sourceTree = "<group>"; };
-		E9750D731852319900B35A10 /* two-strike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "two-strike.png"; sourceTree = "<group>"; };
-		E9750D751852319900B35A10 /* one-strike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one-strike.png"; sourceTree = "<group>"; };
 		E98D954018494A0900A02273 /* DSNewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSNewGameViewController.h; path = NewGame/DSNewGameViewController.h; sourceTree = "<group>"; };
 		E98D954118494A0900A02273 /* DSNewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSNewGameViewController.m; path = NewGame/DSNewGameViewController.m; sourceTree = "<group>"; };
-		E9A5CC1A184BCFCB00619D7D /* add_user_background_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_user_background_red.png; sourceTree = "<group>"; };
-		E9A5CC1C184BD10700619D7D /* delete_user_button_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_user_button_black.png; sourceTree = "<group>"; };
 		E9A5CC21184BD49600619D7D /* DSNewPlayerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSNewPlayerCollectionViewCell.h; path = NewGame/DSNewPlayerCollectionViewCell.h; sourceTree = "<group>"; };
 		E9A5CC22184BD49600619D7D /* DSNewPlayerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSNewPlayerCollectionViewCell.m; path = NewGame/DSNewPlayerCollectionViewCell.m; sourceTree = "<group>"; };
 		E9A5CC24184BF08500619D7D /* DSNewPlayerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSNewPlayerCollectionViewCell.xib; path = NewGame/DSNewPlayerCollectionViewCell.xib; sourceTree = "<group>"; };
-		E9A5CC26184C1C3300619D7D /* dart_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dart_left.png; sourceTree = "<group>"; };
-		E9A5CC27184C1C3300619D7D /* dart_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dart_right.png; sourceTree = "<group>"; };
 		E9C9D51518493E790085BC43 /* DartScoreBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DartScoreBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C9D51818493E790085BC43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E9C9D51A18493E790085BC43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,21 +143,8 @@
 		E9C9D55B184944370085BC43 /* DSScoreBoardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSScoreBoardCollectionViewCell.h; path = ScoreBoard/DSScoreBoardCollectionViewCell.h; sourceTree = "<group>"; };
 		E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSScoreBoardCollectionViewCell.m; path = ScoreBoard/DSScoreBoardCollectionViewCell.m; sourceTree = "<group>"; };
 		E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSScoreBoardCollectionViewCell.xib; path = ScoreBoard/DSScoreBoardCollectionViewCell.xib; sourceTree = "<group>"; };
-		E9E8C18D1852675F002DD5C3 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
-		E9E8C18E1852675F002DD5C3 /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76.png"; sourceTree = "<group>"; };
-		E9E8C191185269B8002DD5C3 /* spotlight-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spotlight-icon@2x.png"; sourceTree = "<group>"; };
-		E9E8C192185269B8002DD5C3 /* spotlight-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spotlight-icon.png"; sourceTree = "<group>"; };
-		E9E8C193185269B8002DD5C3 /* settings-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon@2x.png"; sourceTree = "<group>"; };
-		E9E8C194185269B8002DD5C3 /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
-		E9E8C19918527F81002DD5C3 /* three-strike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "three-strike.png"; sourceTree = "<group>"; };
 		E9ED53DF186BFDFA00AA39FE /* UIColor+HexSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexSupport.h"; path = "Utilities/UIColor+HexSupport.h"; sourceTree = "<group>"; };
 		E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexSupport.m"; path = "Utilities/UIColor+HexSupport.m"; sourceTree = "<group>"; };
-		E9ED53E2186C054600AA39FE /* three-strike-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "three-strike-closed.png"; sourceTree = "<group>"; };
-		E9ED53E4186C073B00AA39FE /* two-strike-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "two-strike-closed.png"; sourceTree = "<group>"; };
-		E9ED53E5186C073B00AA39FE /* one-strike-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one-strike-closed.png"; sourceTree = "<group>"; };
-		E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSNewGameViewController.xib; sourceTree = "<group>"; };
-		ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chalkboard.png; sourceTree = "<group>"; };
-		ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chalk_pallet.png; sourceTree = "<group>"; };
 		ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CricketScoreValueList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,7 +190,7 @@
 			children = (
 				E98D954018494A0900A02273 /* DSNewGameViewController.h */,
 				E98D954118494A0900A02273 /* DSNewGameViewController.m */,
-				E9F6EFF8184965B400A16A44 /* DSNewGameViewController.xib */,
+				E9117320186CA7EF006351AA /* DSNewGameViewController.xib */,
 				E9A5CC21184BD49600619D7D /* DSNewPlayerCollectionViewCell.h */,
 				E9A5CC22184BD49600619D7D /* DSNewPlayerCollectionViewCell.m */,
 				E9A5CC24184BF08500619D7D /* DSNewPlayerCollectionViewCell.xib */,
@@ -307,12 +310,12 @@
 		E9E8C18C18526752002DD5C3 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
-				E9E8C191185269B8002DD5C3 /* spotlight-icon@2x.png */,
-				E9E8C192185269B8002DD5C3 /* spotlight-icon.png */,
-				E9E8C193185269B8002DD5C3 /* settings-icon@2x.png */,
-				E9E8C194185269B8002DD5C3 /* settings-icon.png */,
-				E9E8C18D1852675F002DD5C3 /* Icon-76@2x.png */,
-				E9E8C18E1852675F002DD5C3 /* icon-76.png */,
+				E9117322186CA80B006351AA /* spotlight-icon@2x.png */,
+				E9117323186CA80B006351AA /* spotlight-icon.png */,
+				E9117324186CA80B006351AA /* settings-icon@2x.png */,
+				E9117325186CA80B006351AA /* settings-icon.png */,
+				E9117326186CA80B006351AA /* Icon-76@2x.png */,
+				E9117327186CA80B006351AA /* icon-76.png */,
 			);
 			name = Icon;
 			sourceTree = "<group>";
@@ -322,6 +325,8 @@
 			children = (
 				E9ED53DF186BFDFA00AA39FE /* UIColor+HexSupport.h */,
 				E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */,
+				E911731D186CA71D006351AA /* DSAppSkinner.h */,
+				E911731E186CA71D006351AA /* DSAppSkinner.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -339,12 +344,12 @@
 		E9F6EFFD184965EB00A16A44 /* NewGame */ = {
 			isa = PBXGroup;
 			children = (
-				E949B75A18518046003CD01C /* delete_user_button_white.png */,
-				E949B75618517C93003CD01C /* add_user_background_white.png */,
-				E9A5CC26184C1C3300619D7D /* dart_left.png */,
-				E9A5CC27184C1C3300619D7D /* dart_right.png */,
-				E9A5CC1C184BD10700619D7D /* delete_user_button_black.png */,
-				E9A5CC1A184BCFCB00619D7D /* add_user_background_red.png */,
+				E911733E186CA849006351AA /* delete_user_button_white.png */,
+				E911733F186CA849006351AA /* delete_user_button_black.png */,
+				E9117340186CA849006351AA /* dart_right.png */,
+				E9117341186CA849006351AA /* dart_left.png */,
+				E9117342186CA849006351AA /* add_user_background_white.png */,
+				E9117343186CA849006351AA /* add_user_background_red.png */,
 			);
 			name = NewGame;
 			sourceTree = "<group>";
@@ -352,14 +357,14 @@
 		ED176F3A184ADC0400EEEFE7 /* ScoreBoard */ = {
 			isa = PBXGroup;
 			children = (
-				E9ED53E4186C073B00AA39FE /* two-strike-closed.png */,
-				E9ED53E5186C073B00AA39FE /* one-strike-closed.png */,
-				E9ED53E2186C054600AA39FE /* three-strike-closed.png */,
-				E9E8C19918527F81002DD5C3 /* three-strike.png */,
-				E9750D731852319900B35A10 /* two-strike.png */,
-				E9750D751852319900B35A10 /* one-strike.png */,
-				ED176F3D184B00A700EEEFE7 /* chalk_pallet.png */,
-				ED176F3B184ADC2100EEEFE7 /* Chalkboard.png */,
+				E9117330186CA837006351AA /* two-strike.png */,
+				E9117331186CA837006351AA /* three-strike-closed.png */,
+				E9117332186CA837006351AA /* three-strike.png */,
+				E9117333186CA837006351AA /* one-strike-closed.png */,
+				E9117334186CA837006351AA /* one-strike.png */,
+				E9117335186CA837006351AA /* Chalkboard.png */,
+				E9117336186CA837006351AA /* chalk_pallet.png */,
+				E911732E186CA826006351AA /* two-strike-closed.png */,
 			);
 			name = ScoreBoard;
 			sourceTree = "<group>";
@@ -441,39 +446,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9E8C1901852675F002DD5C3 /* icon-76.png in Resources */,
-				E9E8C196185269B8002DD5C3 /* spotlight-icon.png in Resources */,
+				E9117329186CA80B006351AA /* spotlight-icon.png in Resources */,
+				E9117345186CA849006351AA /* delete_user_button_black.png in Resources */,
+				E9117344186CA849006351AA /* delete_user_button_white.png in Resources */,
+				E911732C186CA80B006351AA /* Icon-76@2x.png in Resources */,
 				E9C9D52F18493E790085BC43 /* Main_iPad.storyboard in Resources */,
-				E9ED53E7186C073B00AA39FE /* one-strike-closed.png in Resources */,
-				E9F6EFFA184965B400A16A44 /* DSNewGameViewController.xib in Resources */,
+				E911733B186CA837006351AA /* one-strike.png in Resources */,
+				E9117338186CA837006351AA /* three-strike-closed.png in Resources */,
+				E911732F186CA826006351AA /* two-strike-closed.png in Resources */,
 				E949B7661851837B003CD01C /* DSGameActionTableViewController.xib in Resources */,
-				E9A5CC1B184BCFCB00619D7D /* add_user_background_red.png in Resources */,
-				E9A5CC28184C1C3300619D7D /* dart_left.png in Resources */,
+				E911733D186CA837006351AA /* chalk_pallet.png in Resources */,
+				E9117349186CA849006351AA /* add_user_background_red.png in Resources */,
+				E9117339186CA837006351AA /* three-strike.png in Resources */,
+				E9117347186CA849006351AA /* dart_left.png in Resources */,
 				E96CF999185007DC00032DFF /* DSScoreCollectionView.xib in Resources */,
-				E9ED53E6186C073B00AA39FE /* two-strike-closed.png in Resources */,
-				E949B75B18518046003CD01C /* delete_user_button_white.png in Resources */,
-				ED176F3C184ADC2100EEEFE7 /* Chalkboard.png in Resources */,
+				E9117321186CA7EF006351AA /* DSNewGameViewController.xib in Resources */,
 				E96CF9B31850326800032DFF /* DSScoreCollectionViewLandscape.xib in Resources */,
-				E9750D781852319900B35A10 /* one-strike.png in Resources */,
-				E9E8C198185269B8002DD5C3 /* settings-icon.png in Resources */,
-				E9ED53E3186C054600AA39FE /* three-strike-closed.png in Resources */,
 				E9A5CC25184BF08500619D7D /* DSNewPlayerCollectionViewCell.xib in Resources */,
+				E911733C186CA837006351AA /* Chalkboard.png in Resources */,
 				E949B76B185183BE003CD01C /* DSGameActionItemViewController.xib in Resources */,
 				E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */,
+				E911732B186CA80B006351AA /* settings-icon.png in Resources */,
+				E911733A186CA837006351AA /* one-strike-closed.png in Resources */,
 				E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */,
-				ED176F3E184B00A700EEEFE7 /* chalk_pallet.png in Resources */,
-				E949B75718517C93003CD01C /* add_user_background_white.png in Resources */,
-				E9A5CC29184C1C3300619D7D /* dart_right.png in Resources */,
-				E9E8C197185269B8002DD5C3 /* settings-icon@2x.png in Resources */,
-				E9750D761852319900B35A10 /* two-strike.png in Resources */,
-				E9E8C195185269B8002DD5C3 /* spotlight-icon@2x.png in Resources */,
+				E9117348186CA849006351AA /* add_user_background_white.png in Resources */,
 				E9C9D53418493E790085BC43 /* Images.xcassets in Resources */,
-				E9A5CC1D184BD10700619D7D /* delete_user_button_black.png in Resources */,
+				E9117328186CA80B006351AA /* spotlight-icon@2x.png in Resources */,
+				E9117346186CA849006351AA /* dart_right.png in Resources */,
 				ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */,
-				E9E8C19A18527F81002DD5C3 /* three-strike.png in Resources */,
+				E911732A186CA80B006351AA /* settings-icon@2x.png in Resources */,
 				E9C9D52C18493E790085BC43 /* Main_iPhone.storyboard in Resources */,
 				E9C9D52318493E790085BC43 /* InfoPlist.strings in Resources */,
-				E9E8C18F1852675F002DD5C3 /* Icon-76@2x.png in Resources */,
+				E911732D186CA80B006351AA /* icon-76.png in Resources */,
+				E9117337186CA837006351AA /* two-strike.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +508,7 @@
 				E949B7651851837B003CD01C /* DSGameActionTableViewController.m in Sources */,
 				E92C414B18495949001CA645 /* DSPlayerScoreValueTableViewCell.m in Sources */,
 				E9C9D55A1849429D0085BC43 /* DSGame.m in Sources */,
+				E911731F186CA71D006351AA /* DSAppSkinner.m in Sources */,
 				E9C9D52918493E790085BC43 /* DSAppDelegate.m in Sources */,
 				E9A5CC23184BD49600619D7D /* DSNewPlayerCollectionViewCell.m in Sources */,
 			);
