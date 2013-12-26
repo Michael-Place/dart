@@ -127,22 +127,42 @@ const int DefaultPlayersPerSection = 2;
     
     [scoreBoardCell setCellDelegate:self];
     [scoreBoardCell setPlayer:playerForCell];
+    [self setColorForCell:scoreBoardCell atIndexPath:indexPath];
     
-    //    UIColor *scoreBackgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"chalk_pallet.png"]];
     [scoreBoardCell.playerNameLabel setTextColor:[UIColor whiteColor]];
     [scoreBoardCell.playerNameLabel setText:playerForCell.playerName];
     [scoreBoardCell.playerScoreTableView reloadData];
     [scoreBoardCell.totalScoreLabel setTextColor:[UIColor whiteColor]];
     scoreBoardCell.totalScoreLabel.text = [NSString stringWithFormat:@"%d", playerForCell.totalPointsEarned];
+    
     if ([DSGame sharedGame].winner && [[DSGame sharedGame].winner isEqualToString:playerForCell.playerName]) {
-        scoreBoardCell.backgroundColor = [UIColor blueColor];
-
+        [scoreBoardCell setBackgroundColor:[UIColor blueColor]];
     } else {
-        scoreBoardCell.backgroundColor = [UIColor clearColor];
+        [scoreBoardCell setBackgroundColor:[UIColor clearColor]];
     }
     
     return scoreBoardCell;
 
+}
+
+- (void)setColorForCell:(DSScoreBoardCollectionViewCell *)scoreBoardCell atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([[[DSGame sharedGame] players] count] <= 3) {
+        if (indexPath.section % 2 == 0) {
+            [scoreBoardCell.colorView setBackgroundColor:[UIColor colorForHex:@"EF4DB6"]];
+        }
+        else {
+            [scoreBoardCell.colorView setBackgroundColor:[UIColor colorForHex:@"C643FC"]];
+        }
+    }
+    else {
+        if ((indexPath.row % 2 == 0)) {
+            [scoreBoardCell.colorView setBackgroundColor:[UIColor colorForHex:@"EF4DB6"]];
+        }
+        else {
+            [scoreBoardCell.colorView setBackgroundColor:[UIColor colorForHex:@"C643FC"]];
+        }
+    }
 }
 
 - (DSPlayer *)playerForIndexPath:(NSIndexPath *)indexPath

@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *playerScoreTableView;
 @property (weak, nonatomic) IBOutlet UILabel *playerNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalScoreLabel;
+@property (weak, nonatomic) IBOutlet UIView *colorView;
 
 @property (strong, nonatomic) DSPlayer *player;
 
