@@ -227,12 +227,12 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     
     UIImageView *dartView;
     if (self.darts.count + 1 <= kMaxNumberOfPlayers/2) {
-        dartView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 15)];
-        [dartView setImage:[UIImage imageNamed:@"dart_right.png"]];
+        dartView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150, 50)];
+        [dartView setImage:[DSAssetGenerator imageForDartWithFrame:dartView.frame]];
     }
     else {
-        dartView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width, 0, 100, 15)];
-        [dartView setImage:[UIImage imageNamed:@"dart_left.png"]];
+        dartView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width, 0, 150, 50)];
+        [dartView setImage:[self rotateImage:[DSAssetGenerator imageForDartWithFrame:dartView.frame]]];
     }
     
     [self throwDart:dartView];
@@ -269,10 +269,10 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
         UIImageView *dropDart = [[UIImageView alloc] initWithFrame:dartView.frame];
         
         if (self.darts.count <= kMaxNumberOfPlayers/2) {
-            [dropDart setImage:[UIImage imageNamed:@"dart_right.png"]];
+            [dropDart setImage:[DSAssetGenerator imageForDartWithFrame:dartView.frame]];
         }
         else {
-            [dropDart setImage:[UIImage imageNamed:@"dart_left.png"]];
+            [dropDart setImage:[self rotateImage:[DSAssetGenerator imageForDartWithFrame:dartView.frame]]];
         }
         
         [self.darts removeLastObject];
@@ -283,8 +283,6 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
         
         UIDynamicItemBehavior* itemBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[dropDart]];
         itemBehaviour.elasticity = 1.0;
-        //    [itemBehaviour addAngularVelocity:20.0 forItem:dropDart];
-        
         
         [self addPushForView:dropDart];
         [self addGravityForView:dropDart];
@@ -615,6 +613,21 @@ static float playerNameAnimationDuration = 1.0;
     }
     
     return indexPathIsValid;
+}
+
+- (UIImage *)rotateImage:(UIImage *)image
+{
+    CGFloat rads = M_PI;
+    float newSide = MAX([image size].width, [image size].height);
+    CGSize size =  CGSizeMake(newSide, newSide);
+    UIGraphicsBeginImageContext(size);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextTranslateCTM(ctx, newSide/2, newSide/2);
+    CGContextRotateCTM(ctx, rads);
+    CGContextDrawImage(UIGraphicsGetCurrentContext(),CGRectMake(-[image size].width/2,-[image size].height/2,size.width, size.height),image.CGImage);
+    UIImage *i = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return i;
 }
 
 #pragma mark - UIDynamic properties

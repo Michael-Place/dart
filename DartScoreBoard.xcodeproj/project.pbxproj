@@ -15,8 +15,6 @@
 		E911732B186CA80B006351AA /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117325186CA80B006351AA /* settings-icon.png */; };
 		E911732C186CA80B006351AA /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117326186CA80B006351AA /* Icon-76@2x.png */; };
 		E911732D186CA80B006351AA /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117327186CA80B006351AA /* icon-76.png */; };
-		E9117346186CA849006351AA /* dart_right.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117340186CA849006351AA /* dart_right.png */; };
-		E9117347186CA849006351AA /* dart_left.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117341186CA849006351AA /* dart_left.png */; };
 		E911735C186D0AAA006351AA /* DSAssetGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = E911735B186D0AAA006351AA /* DSAssetGenerator.m */; };
 		E92C414B18495949001CA645 /* DSPlayerScoreValueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */; };
 		E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */; };
@@ -73,8 +71,6 @@
 		E9117325186CA80B006351AA /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-icon.png"; path = "Assets/Icon/settings-icon.png"; sourceTree = "<group>"; };
 		E9117326186CA80B006351AA /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Assets/Icon/Icon-76@2x.png"; sourceTree = "<group>"; };
 		E9117327186CA80B006351AA /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-76.png"; path = "Assets/Icon/icon-76.png"; sourceTree = "<group>"; };
-		E9117340186CA849006351AA /* dart_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dart_right.png; path = Assets/NewGame/dart_right.png; sourceTree = "<group>"; };
-		E9117341186CA849006351AA /* dart_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dart_left.png; path = Assets/NewGame/dart_left.png; sourceTree = "<group>"; };
 		E911735A186D0AAA006351AA /* DSAssetGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSAssetGenerator.h; path = StrikeViews/DSAssetGenerator.h; sourceTree = "<group>"; };
 		E911735B186D0AAA006351AA /* DSAssetGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSAssetGenerator.m; path = StrikeViews/DSAssetGenerator.m; sourceTree = "<group>"; };
 		E92C414918495949001CA645 /* DSPlayerScoreValueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSPlayerScoreValueTableViewCell.h; path = ScoreBoard/DSPlayerScoreValueTableViewCell.h; sourceTree = "<group>"; };
@@ -333,8 +329,6 @@
 		E9F6EFFD184965EB00A16A44 /* NewGame */ = {
 			isa = PBXGroup;
 			children = (
-				E9117340186CA849006351AA /* dart_right.png */,
-				E9117341186CA849006351AA /* dart_left.png */,
 			);
 			name = NewGame;
 			sourceTree = "<group>";
@@ -427,7 +421,6 @@
 				E911732C186CA80B006351AA /* Icon-76@2x.png in Resources */,
 				E9C9D52F18493E790085BC43 /* Main_iPad.storyboard in Resources */,
 				E949B7661851837B003CD01C /* DSGameActionTableViewController.xib in Resources */,
-				E9117347186CA849006351AA /* dart_left.png in Resources */,
 				E96CF999185007DC00032DFF /* DSScoreCollectionView.xib in Resources */,
 				E9117321186CA7EF006351AA /* DSNewGameViewController.xib in Resources */,
 				E96CF9B31850326800032DFF /* DSScoreCollectionViewLandscape.xib in Resources */,
@@ -438,7 +431,6 @@
 				E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */,
 				E9C9D53418493E790085BC43 /* Images.xcassets in Resources */,
 				E9117328186CA80B006351AA /* spotlight-icon@2x.png in Resources */,
-				E9117346186CA849006351AA /* dart_right.png in Resources */,
 				ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */,
 				E911732A186CA80B006351AA /* settings-icon@2x.png in Resources */,
 				E9C9D52C18493E790085BC43 /* Main_iPhone.storyboard in Resources */,

@@ -22,5 +22,5 @@ enum DSStrike {
 
 // New Player View
 + (UIImage *)imageForNewPlayerDeletionButtonForFrame:(CGRect)frame;
-
++ (UIImage *)imageForDartWithFrame:(CGRect)frame;
 @end

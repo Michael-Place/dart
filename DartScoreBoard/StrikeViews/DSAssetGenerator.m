@@ -80,6 +80,16 @@ enum DSStrikeState {
     return result;
 }
 
++ (UIImage *)imageForDartWithFrame:(CGRect)frame
+{
+    UIGraphicsBeginImageContextWithOptions(frame.size, NO, 0.0f);
+    [[DSAssetGenerator sharedAssetGenerator] drawDart];
+    UIImage* result = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return result;
+}
+
 #pragma mark - Strike Draw
 - (void)drawOneStrike
 {
@@ -194,6 +204,137 @@ enum DSStrikeState {
     [strokeColor setStroke];
     bezierPath.lineWidth = 6;
     [bezierPath stroke];
+}
+
+- (void)drawDart
+{
+    //// Color Declarations
+    UIColor* strokeColor = [UIColor whiteColor];
+    
+    UIColor *dartGripColor = [DSAppSkinner newGameForegroundColor];
+    UIColor *dartFlightColor = [DSAppSkinner primaryScoreBoardForegroundColor];
+    
+    //// Bezier Drawing
+    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(144.5, 29.5)];
+    [bezierPath addCurveToPoint: CGPointMake(114.5, 29.5) controlPoint1: CGPointMake(119.79, 29.5) controlPoint2: CGPointMake(114.5, 29.5)];
+    bezierPath.lineCapStyle = kCGLineCapRound;
+    
+    [strokeColor setStroke];
+    bezierPath.lineWidth = 1.5;
+    [bezierPath stroke];
+    
+    
+    //// Bezier 2 Drawing
+    UIBezierPath* bezier2Path = [UIBezierPath bezierPath];
+    [bezier2Path moveToPoint: CGPointMake(113.5, 29.5)];
+    [bezier2Path addCurveToPoint: CGPointMake(79.5, 29.5) controlPoint1: CGPointMake(74.5, 29.5) controlPoint2: CGPointMake(79.5, 29.5)];
+    [dartGripColor setStroke];
+    bezier2Path.lineWidth = 4.5;
+    [bezier2Path stroke];
+    
+    
+    //// Bezier 3 Drawing
+    UIBezierPath* bezier3Path = [UIBezierPath bezierPath];
+    [bezier3Path moveToPoint: CGPointMake(79.5, 29.5)];
+    [bezier3Path addCurveToPoint: CGPointMake(49.5, 29.5) controlPoint1: CGPointMake(54.79, 29.5) controlPoint2: CGPointMake(49.5, 29.5)];
+    bezier3Path.lineCapStyle = kCGLineCapRound;
+    
+    [strokeColor setStroke];
+    bezier3Path.lineWidth = 2;
+    [bezier3Path stroke];
+    
+    
+    //// Bezier 4 Drawing
+    UIBezierPath* bezier4Path = [UIBezierPath bezierPath];
+    [bezier4Path moveToPoint: CGPointMake(49.5, 29.5)];
+    [bezier4Path addCurveToPoint: CGPointMake(5.5, 29.5) controlPoint1: CGPointMake(5.5, 29.5) controlPoint2: CGPointMake(5.5, 29.5)];
+    [strokeColor setStroke];
+    bezier4Path.lineWidth = 1;
+    [bezier4Path stroke];
+    
+    
+    //// Bezier 5 Drawing
+    UIBezierPath* bezier5Path = [UIBezierPath bezierPath];
+    [strokeColor setStroke];
+    bezier5Path.lineWidth = 1;
+    [bezier5Path stroke];
+    
+    
+    //// Bezier 6 Drawing
+    UIBezierPath* bezier6Path = [UIBezierPath bezierPath];
+    [bezier6Path moveToPoint: CGPointMake(49.5, 29.5)];
+    [bezier6Path addLineToPoint: CGPointMake(34.5, 14.5)];
+    [bezier6Path addLineToPoint: CGPointMake(10.5, 14.5)];
+    [bezier6Path addLineToPoint: CGPointMake(1.5, 29.5)];
+    [bezier6Path addLineToPoint: CGPointMake(49.5, 29.5)];
+    [bezier6Path closePath];
+    [dartFlightColor setFill];
+    [bezier6Path fill];
+    [strokeColor setStroke];
+    bezier6Path.lineWidth = 1;
+    [bezier6Path stroke];
+    
+    
+    //// Bezier 7 Drawing
+    UIBezierPath* bezier7Path = [UIBezierPath bezierPath];
+    [bezier7Path moveToPoint: CGPointMake(49.5, 30.5)];
+    [bezier7Path addLineToPoint: CGPointMake(38.5, 37.5)];
+    [bezier7Path addLineToPoint: CGPointMake(8.5, 37.5)];
+    [bezier7Path addLineToPoint: CGPointMake(1.5, 30.5)];
+    [bezier7Path addLineToPoint: CGPointMake(49.5, 30.5)];
+    [bezier7Path closePath];
+    [dartFlightColor setFill];
+    [bezier7Path fill];
+    [strokeColor setStroke];
+    bezier7Path.lineWidth = 1;
+    [bezier7Path stroke];
+    
+    
+    //// Bezier 8 Drawing
+    UIBezierPath* bezier8Path = [UIBezierPath bezierPath];
+    [bezier8Path moveToPoint: CGPointMake(48.5, 30.5)];
+    [bezier8Path addLineToPoint: CGPointMake(44.5, 45.5)];
+    [bezier8Path addLineToPoint: CGPointMake(16.5, 45.5)];
+    [bezier8Path addLineToPoint: CGPointMake(11.5, 37.5)];
+    [bezier8Path addLineToPoint: CGPointMake(38.5, 37.5)];
+    [bezier8Path addLineToPoint: CGPointMake(48.5, 30.5)];
+    [bezier8Path closePath];
+    [dartFlightColor setFill];
+    [bezier8Path fill];
+    [strokeColor setStroke];
+    bezier8Path.lineWidth = 1;
+    [bezier8Path stroke];
+    
+    
+    //// Bezier 9 Drawing
+    UIBezierPath* bezier9Path = [UIBezierPath bezierPath];
+    [strokeColor setStroke];
+    bezier9Path.lineWidth = 1;
+    [bezier9Path stroke];
+    
+    
+    //// Bezier 10 Drawing
+    UIBezierPath* bezier10Path = [UIBezierPath bezierPath];
+    [bezier10Path moveToPoint: CGPointMake(48.5, 29.5)];
+    [bezier10Path addLineToPoint: CGPointMake(48.5, 19.5)];
+    [bezier10Path addLineToPoint: CGPointMake(39.5, 19.5)];
+    [bezier10Path addLineToPoint: CGPointMake(48.5, 29.5)];
+    [bezier10Path closePath];
+    [dartFlightColor setFill];
+    [bezier10Path fill];
+    [strokeColor setStroke];
+    bezier10Path.lineWidth = 1;
+    [bezier10Path stroke];
+    
+    
+    //// Bezier 11 Drawing
+    UIBezierPath* bezier11Path = [UIBezierPath bezierPath];
+    [bezier11Path moveToPoint: CGPointMake(144.5, 29.5)];
+    [bezier11Path addCurveToPoint: CGPointMake(147.5, 29.5) controlPoint1: CGPointMake(148.5, 29.5) controlPoint2: CGPointMake(147.5, 29.5)];
+    [strokeColor setStroke];
+    bezier11Path.lineWidth = 1;
+    [bezier11Path stroke];
 }
 
 @end
