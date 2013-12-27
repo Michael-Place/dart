@@ -7,7 +7,7 @@
 //
 
 #import "DSPlayerScoreValueTableViewCell.h"
-#import "DSStrikeAssetGenerator.h"
+#import "DSAssetGenerator.h"
 
 @interface DSPlayerScoreValueTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *decrementScoreLabel;
@@ -58,26 +58,26 @@
                 break;
             }
             case 1: {
-                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForOpenStrike:DSStrikeOne InFrame:self.strikeImageView.frame]];
+                [self.strikeImageView setImage:[DSAssetGenerator imageForOpenStrike:DSStrikeOne InFrame:self.strikeImageView.frame]];
                 break;
             }
             case 2: {
-                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForOpenStrike:DSStrikeTwo InFrame:self.strikeImageView.frame]];
+                [self.strikeImageView setImage:[DSAssetGenerator imageForOpenStrike:DSStrikeTwo InFrame:self.strikeImageView.frame]];
                 break;
             }
             case 3: {
-                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForOpenStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
+                [self.strikeImageView setImage:[DSAssetGenerator imageForOpenStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
                 break;
             }
             default:
                 // This catches the case where the 3 strikes have been exceeded
-                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForOpenStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
+                [self.strikeImageView setImage:[DSAssetGenerator imageForOpenStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
                 break;
         }
         self.decrementScoreLabel.text = @"-";
     }
     else {
-        [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForOpenStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
+        [self.strikeImageView setImage:[DSAssetGenerator imageForOpenStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
         self.decrementScoreLabel.text = [NSString stringWithFormat:@"%i",self.score];
     }
     
@@ -101,20 +101,20 @@
                 break;
             }
             case 1: {
-                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForClosedStrike:DSStrikeOne InFrame:self.strikeImageView.frame]];
+                [self.strikeImageView setImage:[DSAssetGenerator imageForClosedStrike:DSStrikeOne InFrame:self.strikeImageView.frame]];
                 break;
             }
             case 2: {
-                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForClosedStrike:DSStrikeTwo InFrame:self.strikeImageView.frame]];
+                [self.strikeImageView setImage:[DSAssetGenerator imageForClosedStrike:DSStrikeTwo InFrame:self.strikeImageView.frame]];
                 break;
             }
             case 3: {
-                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForClosedStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
+                [self.strikeImageView setImage:[DSAssetGenerator imageForClosedStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
                 break;
             }
             default:
                 // This catches the case where the 3 strikes have been exceeded
-                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForClosedStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
+                [self.strikeImageView setImage:[DSAssetGenerator imageForClosedStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
                 break;
         }
         

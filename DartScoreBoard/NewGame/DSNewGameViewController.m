@@ -9,6 +9,7 @@
 #import "DSNewGameViewController.h"
 #import "DSNewGameViewController.h"
 #import "DSNewPlayerCollectionViewCell.h"
+#import "DSAssetGenerator.h"
 #import "DSGame.h"
 
 const int kDefaultNumberOfPlayers = 4;
@@ -413,6 +414,7 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     
     // First two players can't be deleted
     [newPlayerCell.deletePlayerButton setHidden:(indexPath.row < 2) ? YES : NO];
+    [newPlayerCell.deletePlayerButton setImage:[DSAssetGenerator imageForNewPlayerDeletionButtonForFrame:newPlayerCell.deletePlayerButton.frame] forState:UIControlStateNormal];
     
     // Update the cells edit mode in case we are dequeing
     (playerForIndexPath.isEditMode) ? [self enterEditModeForCell:newPlayerCell atIndexPath:indexPath animated:NO] :

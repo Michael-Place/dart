@@ -1,28 +1,28 @@
 //
-//  DSStrikeAssetGenerator.m
+//  DSAssetGenerator.m
 //  DartScoreBoard
 //
 //  Created by Michael Place on 12/26/13.
 //  Copyright (c) 2013 Zheike. All rights reserved.
 //
 
-#import "DSStrikeAssetGenerator.h"
+#import "DSAssetGenerator.h"
 
 enum DSStrikeState {
     DSStrikeStateOpen,
     DSStrikeStateClosed
 };
 
-@interface DSStrikeAssetGenerator ()
+@interface DSAssetGenerator ()
 @property enum DSStrikeState strikeState;
 
 @end
 
-@implementation DSStrikeAssetGenerator
+@implementation DSAssetGenerator
 
-+ (DSStrikeAssetGenerator *)sharedAssetGenerator
++ (DSAssetGenerator *)sharedAssetGenerator
 {
-    static DSStrikeAssetGenerator *sharedAssetGenerator = nil;
+    static DSAssetGenerator *sharedAssetGenerator = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedAssetGenerator = [[self alloc] init];
@@ -32,14 +32,14 @@ enum DSStrikeState {
 
 + (UIImage *)imageForOpenStrike:(enum DSStrike)strike InFrame:(CGRect)frame
 {
-    [[DSStrikeAssetGenerator sharedAssetGenerator] setStrikeState:DSStrikeStateOpen];
-    return [[DSStrikeAssetGenerator sharedAssetGenerator] imageForStrike:strike inFrame:frame];
+    [[DSAssetGenerator sharedAssetGenerator] setStrikeState:DSStrikeStateOpen];
+    return [[DSAssetGenerator sharedAssetGenerator] imageForStrike:strike inFrame:frame];
 }
 
 + (UIImage *)imageForClosedStrike:(enum DSStrike)strike InFrame:(CGRect)frame
 {
-    [[DSStrikeAssetGenerator sharedAssetGenerator] setStrikeState:DSStrikeStateClosed];
-    return [[DSStrikeAssetGenerator sharedAssetGenerator] imageForStrike:strike inFrame:frame];
+    [[DSAssetGenerator sharedAssetGenerator] setStrikeState:DSStrikeStateClosed];
+    return [[DSAssetGenerator sharedAssetGenerator] imageForStrike:strike inFrame:frame];
 
 }
 
@@ -70,7 +70,17 @@ enum DSStrikeState {
     return result;
 }
 
-#pragma mark - Strike Draw Methods
++ (UIImage *)imageForNewPlayerDeletionButtonForFrame:(CGRect)frame
+{
+    UIGraphicsBeginImageContextWithOptions(frame.size, NO, 0.0f);
+    [[DSAssetGenerator sharedAssetGenerator] drawDeleteNewPlayer];
+    UIImage* result = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return result;
+}
+
+#pragma mark - Strike Draw
 - (void)drawOneStrike
 {
     //// Color Declarations
@@ -156,6 +166,34 @@ enum DSStrikeState {
     [strokeColor setStroke];
     bezier11Path.lineWidth = 10;
     [bezier11Path stroke];
+}
+
+#pragma mark - New Player Deletion Draw
+- (void)drawDeleteNewPlayer
+{
+    //// Color Declarations
+    UIColor* strokeColor = [DSAppSkinner newGameForegroundColor];
+    
+    //// Bezier 2 Drawing
+    UIBezierPath* bezier2Path = [UIBezierPath bezierPath];
+    [bezier2Path moveToPoint: CGPointMake(4, 4)];
+    [bezier2Path addCurveToPoint: CGPointMake(21, 21) controlPoint1: CGPointMake(20.06, 19.11) controlPoint2: CGPointMake(21, 21)];
+    bezier2Path.lineCapStyle = kCGLineCapRound;
+    
+    [strokeColor setStroke];
+    bezier2Path.lineWidth = 6;
+    [bezier2Path stroke];
+    
+    
+    //// Bezier Drawing
+    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(21, 4)];
+    [bezierPath addCurveToPoint: CGPointMake(4, 21) controlPoint1: CGPointMake(4.94, 19.11) controlPoint2: CGPointMake(4, 21)];
+    bezierPath.lineCapStyle = kCGLineCapRound;
+    
+    [strokeColor setStroke];
+    bezierPath.lineWidth = 6;
+    [bezierPath stroke];
 }
 
 @end

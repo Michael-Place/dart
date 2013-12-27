@@ -22,7 +22,7 @@
                         <rect key="frame" x="133" y="2" width="25" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <state key="normal" backgroundImage="delete_user_button_white.png">
+                        <state key="normal">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -58,7 +58,4 @@
             </connections>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="delete_user_button_white.png" width="149" height="149"/>
-    </resources>
 </document>

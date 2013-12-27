@@ -14,8 +14,13 @@ enum DSStrike {
     DSStrikeThree
     };
 
-@interface DSStrikeAssetGenerator : NSObject
+@interface DSAssetGenerator : NSObject
+
+// Score Board View
 + (UIImage *)imageForOpenStrike:(enum DSStrike)strike InFrame:(CGRect)frame;
 + (UIImage *)imageForClosedStrike:(enum DSStrike)strike InFrame:(CGRect)frame;
+
+// New Player View
++ (UIImage *)imageForNewPlayerDeletionButtonForFrame:(CGRect)frame;
 
 @end
