@@ -7,6 +7,7 @@
 //
 
 #import "DSPlayerScoreValueTableViewCell.h"
+#import "DSStrikeAssetGenerator.h"
 
 @interface DSPlayerScoreValueTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *decrementScoreLabel;
@@ -14,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *decrementScoreValueButton;
 @property (weak, nonatomic) IBOutlet UIButton *incrementScoreValueButton;
 
-@property (weak, nonatomic) IBOutlet UIImageView *incrementScoreImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *strikeImageView;
 
 - (IBAction)decrementScoreValueButtonTapped:(id)sender;
 - (IBAction)incrementScoreValueButtonTapped:(id)sender;
@@ -42,35 +43,41 @@
 - (void)updateScoreValue
 {
     self.backgroundColor = [UIColor clearColor];
+    
     if (self.score == 0) {
         self.incrementScoreLabel.text = @"+";
         self.decrementScoreLabel.text = @"-";
-        [self.incrementScoreImageView setImage:nil]; ;
+        
+        [self.strikeImageView setImage:[UIImage imageNamed:@""]];
     }
     else if (self.score < 4) {
-        UIImage *strikeImage;
+        
         switch (self.score) {
+            case 0: {
+                [self.strikeImageView setImage:[UIImage imageNamed:@""]];
+                break;
+            }
             case 1: {
-                strikeImage = [UIImage imageNamed:@"one-strike"];
+                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForOpenStrike:DSStrikeOne InFrame:self.strikeImageView.frame]];
                 break;
             }
             case 2: {
-                strikeImage = [UIImage imageNamed:@"two-strike"];
+                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForOpenStrike:DSStrikeTwo InFrame:self.strikeImageView.frame]];
                 break;
             }
             case 3: {
-                strikeImage = [UIImage imageNamed:@"three-strike"];
+                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForOpenStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
                 break;
             }
             default:
+                // This catches the case where the 3 strikes have been exceeded
+                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForOpenStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
                 break;
         }
-        [self.incrementScoreImageView setImage:strikeImage]; ;
         self.decrementScoreLabel.text = @"-";
     }
     else {
-        UIImage *strikeImage = [UIImage imageNamed:@"three-strike"];
-        [self.incrementScoreImageView setImage:strikeImage];
+        [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForOpenStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
         self.decrementScoreLabel.text = [NSString stringWithFormat:@"%i",self.score];
     }
     
@@ -88,32 +95,30 @@
         self.incrementScoreLabel.textColor = [DSAppSkinner scoreBoardClosedColor];
         self.decrementScoreLabel.textColor = [DSAppSkinner scoreBoardClosedColor];
         
-        
-        UIImage *strikeImage;
         switch (self.score) {
             case 0: {
-                strikeImage = [UIImage imageNamed:@""];
+                [self.strikeImageView setImage:[UIImage imageNamed:@""]];
                 break;
             }
             case 1: {
-                strikeImage = [UIImage imageNamed:@"one-strike-closed"];
+                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForClosedStrike:DSStrikeOne InFrame:self.strikeImageView.frame]];
                 break;
             }
             case 2: {
-                strikeImage = [UIImage imageNamed:@"two-strike-closed"];
+                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForClosedStrike:DSStrikeTwo InFrame:self.strikeImageView.frame]];
                 break;
             }
             case 3: {
-                strikeImage = [UIImage imageNamed:@"three-strike-closed"];
+                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForClosedStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
                 break;
             }
             default:
                 // This catches the case where the 3 strikes have been exceeded
-                strikeImage = [UIImage imageNamed:@"three-strike-closed"];
+                [self.strikeImageView setImage:[DSStrikeAssetGenerator imageForClosedStrike:DSStrikeThree InFrame:self.strikeImageView.frame]];
                 break;
         }
         
-        [self.incrementScoreImageView setImage:strikeImage];
+        
     } else {
         [self.incrementScoreValueButton setUserInteractionEnabled:YES];
         self.incrementScoreLabel.textColor = [DSAppSkinner scoreBoardTextColor];
@@ -132,4 +137,5 @@
     NSLog(@"Incrementing value");
     [[DSGame sharedGame] incrementScoreValue:self.scoreValue forPlayerNamed:self.playerName];
 }
+
 @end
