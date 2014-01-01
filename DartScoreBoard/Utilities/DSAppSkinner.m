@@ -21,24 +21,24 @@
 
 + (UIColor *)newGameForegroundColor
 {
-    return [UIColor whiteColor];
+    return [UIColor colorForHex:@"F36C25"];
 }
 
 + (UIColor *)newGameFontColor
 {
-    return [UIColor blackColor];
+    return [UIColor colorForHex:@"E42427"];
 }
 
 // Score Board View
 
 + (UIColor *)primaryScoreBoardForegroundColor
 {
-    return [UIColor colorForHex:@"EF4DB6"];
+    return [UIColor colorForHex:@"E42427"];
 }
 
 + (UIColor *)complimentaryScoreBoardForegroundColor
 {
-    return [UIColor colorForHex:@"C643FC"];
+    return [UIColor colorForHex:@"F36C25"];
 }
 
 + (UIColor *)scoreBoardTextColor
@@ -48,7 +48,7 @@
 
 + (UIColor *)scoreBoardClosedColor
 {
-    return [UIColor grayColor];
+    return [UIColor colorForHex:@"8AD4E8"];
 }
 
 + (UIColor *)scoreBoardWinningPlayerColor

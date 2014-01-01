@@ -40,6 +40,7 @@
                     <rect key="frame" x="167" y="865" width="149" height="77"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <color key="tintColor" red="0.97870095800000001" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Add Player">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,16 +51,16 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add The Desired Number Of Players" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BQt-db-HIx">
-                    <rect key="frame" x="131" y="204" width="506" height="21"/>
+                    <rect key="frame" x="88" y="198" width="592" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cricket Score Keeper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n9j-aD-BUY">
-                    <rect key="frame" x="156" y="61" width="457" height="57"/>
+                    <rect key="frame" x="116" y="64" width="537" height="57"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="50"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -67,6 +68,7 @@
                     <rect key="frame" x="464" y="865" width="149" height="77"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <color key="tintColor" red="0.97870095800000001" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                     <state key="normal" title="Start Game">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

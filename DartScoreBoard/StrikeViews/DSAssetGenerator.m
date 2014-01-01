@@ -212,7 +212,7 @@ enum DSStrikeState {
     UIColor* strokeColor = [UIColor whiteColor];
     
     UIColor *dartGripColor = [DSAppSkinner newGameForegroundColor];
-    UIColor *dartFlightColor = [DSAppSkinner primaryScoreBoardForegroundColor];
+    UIColor *dartFlightColor = [DSAppSkinner newGameForegroundColor];
     
     //// Bezier Drawing
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];

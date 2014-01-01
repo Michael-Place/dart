@@ -157,18 +157,18 @@ const int DefaultPlayersPerSection = 2;
 {
     if ([[[DSGame sharedGame] players] count] <= 3) {
         if (indexPath.section % 2 == 0) {
-            [scoreBoardCell.colorView setBackgroundColor:[UIColor colorForHex:@"EF4DB6"]];
+            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner primaryScoreBoardForegroundColor]];
         }
         else {
-            [scoreBoardCell.colorView setBackgroundColor:[UIColor colorForHex:@"C643FC"]];
+            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner complimentaryScoreBoardForegroundColor]];
         }
     }
     else {
         if ((indexPath.row % 2 == 0)) {
-            [scoreBoardCell.colorView setBackgroundColor:[UIColor colorForHex:@"EF4DB6"]];
+            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner primaryScoreBoardForegroundColor]];
         }
         else {
-            [scoreBoardCell.colorView setBackgroundColor:[UIColor colorForHex:@"C643FC"]];
+            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner complimentaryScoreBoardForegroundColor]];
         }
     }
 }

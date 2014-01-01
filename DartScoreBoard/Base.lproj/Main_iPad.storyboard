@@ -12,6 +12,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <inset key="scrollIndicatorInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gIK-Vg-csV">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="50" height="50"/>

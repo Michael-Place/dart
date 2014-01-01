@@ -63,8 +63,8 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     [self.view addGestureRecognizer:tapGesture];
     
     // Set the interface colors
-    [self.appTitleLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
-    [self.gameInstructionLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.appTitleLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.gameInstructionLabel setTextColor:[DSAppSkinner newGameFontColor]];
     [self.addPlayerButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
     [self.startGameButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
     
