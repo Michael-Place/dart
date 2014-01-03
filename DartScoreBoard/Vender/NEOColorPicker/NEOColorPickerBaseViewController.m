@@ -88,17 +88,16 @@
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : UIInterfaceOrientationIsPortrait(interfaceOrientation));
 }
 
-
 - (NSUInteger)supportedInterfaceOrientations {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait);
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(buttonPressCancel:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(buttonPressDone:)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(buttonPressCancel:)];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:self action:@selector(buttonPressDone:)];
+    [self.navigationController.navigationBar setBarTintColor:self.view.backgroundColor];
 
     self.contentSizeForViewInPopover = CGSizeMake(320.0f, 460.0f);
 
@@ -110,7 +109,6 @@
     }
 }
 
-
 - (IBAction)buttonPressCancel:(id)sender {
     [self.delegate colorPickerViewControllerDidCancel:self];
 }
@@ -119,8 +117,6 @@
 - (IBAction)buttonPressDone:(id)sender {
     [self.delegate colorPickerViewController:self didSelectColor:self.selectedColor];
 }
-
-
 
 - (void) setupShadow:(CALayer *)layer {
     layer.shadowColor = [UIColor blackColor].CGColor;

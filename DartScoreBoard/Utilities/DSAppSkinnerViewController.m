@@ -83,6 +83,7 @@
 - (void)setupColorPicker
 {
     [self.colorPickerView addSubview:self.colorPickerNavigationController.view];
+    [self.colorPickerViewController setSelectedColor:self.textColorButton.backgroundColor];
 }
 
 - (IBAction)backgroundColorButtonTapped:(id)sender
