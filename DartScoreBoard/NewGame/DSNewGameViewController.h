@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSAppSkinnerViewController.h"
 #import "DSPlayer.h"
 
 @protocol StartingGameDelegate <NSObject>
@@ -14,7 +15,7 @@
 
 @end
 
-@interface DSNewGameViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface DSNewGameViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, DSAppSkinnerDelegate>
 @property id <StartingGameDelegate> delegate;
 
 - (void)setInitialPlayers:(NSArray *)players;

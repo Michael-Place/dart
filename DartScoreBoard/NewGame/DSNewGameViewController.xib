@@ -10,6 +10,7 @@
                 <outlet property="appTitleLabel" destination="n9j-aD-BUY" id="ivD-6k-zsH"/>
                 <outlet property="collectionView" destination="LTv-jH-nG2" id="83v-6U-Wq4"/>
                 <outlet property="gameInstructionLabel" destination="BQt-db-HIx" id="mGJ-DL-KV3"/>
+                <outlet property="settingsButton" destination="Vf1-pA-se0" id="23y-Pv-tPz"/>
                 <outlet property="startGameButton" destination="A7g-sA-tUu" id="pdX-JR-4oj"/>
                 <outlet property="view" destination="1" id="bT4-rv-vn7"/>
             </connections>
@@ -37,7 +38,7 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9XW-Vl-6vP">
-                    <rect key="frame" x="167" y="865" width="149" height="77"/>
+                    <rect key="frame" x="325" y="865" width="149" height="77"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -65,7 +66,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A7g-sA-tUu">
-                    <rect key="frame" x="464" y="865" width="149" height="77"/>
+                    <rect key="frame" x="531" y="865" width="149" height="77"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -76,6 +77,20 @@
                     </state>
                     <connections>
                         <action selector="startGameTapped:" destination="-1" eventType="touchUpInside" id="90v-vs-ZND"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vf1-pA-se0">
+                    <rect key="frame" x="116" y="865" width="149" height="77"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="tintColor" red="0.97870095800000001" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                    <state key="normal" title="Settings">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="settingsButtonTapped:" destination="-1" eventType="touchUpInside" id="lJI-uQ-zWP"/>
                     </connections>
                 </button>
             </subviews>

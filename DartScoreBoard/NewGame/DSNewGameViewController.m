@@ -22,6 +22,7 @@ const int kDartGap = 60;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *appTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *gameInstructionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
 //Dyanmics
 @property (nonatomic, strong) NSMutableArray *darts;
@@ -31,11 +32,14 @@ const int kDartGap = 60;
 @property (nonatomic, strong) UICollisionBehavior *collision;
 
 @property (nonatomic, strong) NSMutableArray *newPlayers;
+@property (nonatomic, strong) DSAppSkinnerViewController *settingsViewController;
+
 @property int indexOfPlayerInEditMode;
 
 
 - (IBAction)addPlayerButtonTapped:(id)sender;
 - (IBAction)startGameTapped:(id)sender;
+- (IBAction)settingsButtonTapped:(id)sender;
 @end
 
 @implementation DSNewGameViewController
@@ -67,10 +71,11 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     [self.gameInstructionLabel setTextColor:[DSAppSkinner newGameFontColor]];
     [self.addPlayerButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
     [self.startGameButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
-    
+    [self.settingsButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+
     [self.addPlayerButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
     [self.startGameButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
-
+    [self.settingsButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
     
     //Reset DSGame
     [[DSGame sharedGame] setPlayers:[NSArray array]];
@@ -198,6 +203,11 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
         [[DSGame sharedGame] setPlayers:[NSArray arrayWithArray:[self.newPlayers copy]]];
         [self.delegate startGame];
     }
+}
+
+- (IBAction)settingsButtonTapped:(id)sender
+{
+    [self presentViewController:self.settingsViewController animated:YES completion:nil];
 }
 
 #pragma mark - NewPlayer delegates
@@ -499,6 +509,12 @@ static float playerNameAnimationDuration = 1.0;
     }
 }
 
+#pragma mark - Settings Delegate
+- (void)didFinishWithSettings
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Rotation
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
@@ -693,4 +709,14 @@ static float playerNameAnimationDuration = 1.0;
     }
 }
 
+
+#pragma mark - Getters
+- (DSAppSkinnerViewController *)settingsViewController
+{
+    if (!_settingsViewController) {
+        _settingsViewController = [[DSAppSkinnerViewController alloc] initWithNibName:@"DSAppSkinnerViewController" bundle:nil];
+        [_settingsViewController setSettingsDelegate:self];
+    }
+    return _settingsViewController;
+}
 @end

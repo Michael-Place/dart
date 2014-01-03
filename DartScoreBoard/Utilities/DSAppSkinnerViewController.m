@@ -7,8 +7,9 @@
 //
 
 #import "DSAppSkinnerViewController.h"
+#import "NEOColorPickerViewController.h"
 
-@interface DSAppSkinnerViewController ()
+@interface DSAppSkinnerViewController () <NEOColorPickerViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *settingsTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *colorSettingsTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *backgroundColorLabel;
@@ -24,6 +25,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *foregroundColorTwoButton;
 @property (weak, nonatomic) IBOutlet UIButton *scoreOpenColorButton;
 @property (weak, nonatomic) IBOutlet UIButton *scoreClosedColorButton;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+
+@property (weak, nonatomic) IBOutlet UIView *colorPickerView;
+@property (weak, nonatomic) IBOutlet UILabel *selectedColorLabel;
+
+@property (strong, nonatomic) UINavigationController *colorPickerNavigationController;
+@property (strong, nonatomic) NEOColorPickerViewController *colorPickerViewController;
 
 - (IBAction)backgroundColorButtonTapped:(id)sender;
 - (IBAction)textColorButtonTapped:(id)sender;
@@ -31,6 +39,7 @@
 - (IBAction)foregroundColorTwoButtonTapped:(id)sender;
 - (IBAction)scoreOpenColorButtonTapped:(id)sender;
 - (IBAction)scoreClosedColorButtonTapped:(id)sender;
+- (IBAction)doneButtonTapped:(id)sender;
 
 @end
 
@@ -49,30 +58,66 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self.view setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
+    [self.settingsTitleLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.selectedColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.colorSettingsTitleLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.backgroundColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.textColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.foregroundColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.foregroundColorTwoLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.scoreOpenColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.scoreClosureColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    
+    [self.doneButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
+//    [self.doneButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+    
+    // Set the initial selected color
+    [self.selectedColorLabel setText:self.textColorLabel.text];
+    [self setupColorPicker];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)setupColorPicker
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.colorPickerView addSubview:self.colorPickerNavigationController.view];
 }
 
-- (IBAction)backgroundColorButtonTapped:(id)sender {
+- (IBAction)backgroundColorButtonTapped:(id)sender
+{
+    [self.selectedColorLabel setText:self.backgroundColorLabel.text];
 }
 
-- (IBAction)textColorButtonTapped:(id)sender {
+- (IBAction)textColorButtonTapped:(id)sender
+{
+    [self.selectedColorLabel setText:self.textColorLabel.text];
 }
 
-- (IBAction)foregroundColorButtonTapped:(id)sender {
+- (IBAction)foregroundColorButtonTapped:(id)sender
+{
+    [self.selectedColorLabel setText:self.foregroundColorLabel.text];
 }
 
-- (IBAction)foregroundColorTwoButtonTapped:(id)sender {
+- (IBAction)foregroundColorTwoButtonTapped:(id)sender
+{
+    [self.selectedColorLabel setText:self.foregroundColorTwoLabel.text];
 }
 
-- (IBAction)scoreOpenColorButtonTapped:(id)sender {
+- (IBAction)scoreOpenColorButtonTapped:(id)sender
+{
+    [self.selectedColorLabel setText:self.scoreOpenColorLabel.text];
 }
 
-- (IBAction)scoreClosedColorButtonTapped:(id)sender {
+- (IBAction)scoreClosedColorButtonTapped:(id)sender
+{
+    [self.selectedColorLabel setText:self.scoreClosureColorLabel.text];
+}
+
+- (IBAction)doneButtonTapped:(id)sender
+{
+    if (self.settingsDelegate && [self.settingsDelegate respondsToSelector:@selector(didFinishWithSettings)]) {
+        [self.settingsDelegate didFinishWithSettings];
+    }
 }
 
 #pragma mark - User Default Handling
@@ -115,6 +160,49 @@
     const CGFloat *components = CGColorGetComponents(color.CGColor);
     NSString *colorAsString = [NSString stringWithFormat:@"%f,%f,%f,%f", components[0], components[1], components[2], components[3]];
     return colorAsString;
+}
+
+#pragma mark - NEOColorPicker Delegate
+- (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller didChangeColor:(UIColor *)color
+{
+    
+}
+
+- (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller didSelectColor:(UIColor *)color
+{
+    
+}
+
+- (void)colorPickerViewControllerDidCancel:(NEOColorPickerBaseViewController *)controller
+{
+    
+}
+
+#pragma mark - Getters
+- (UINavigationController *)colorPickerNavigationController
+{
+    if (!_colorPickerNavigationController) {
+        _colorPickerNavigationController = [[UINavigationController alloc] initWithRootViewController:self.colorPickerViewController];
+        
+        CGRect colorPickerNavFrame = _colorPickerNavigationController.view.frame;
+        colorPickerNavFrame.origin.x = 0;
+        colorPickerNavFrame.origin.y = 0;
+        colorPickerNavFrame.size.width = self.colorPickerView.frame.size.width;
+        colorPickerNavFrame.size.height = self.colorPickerView.frame.size.height;
+        
+        [self.colorPickerNavigationController.view setFrame:colorPickerNavFrame];
+
+    }
+    return _colorPickerNavigationController;
+}
+
+ - (NEOColorPickerViewController *)colorPickerViewController
+{
+    if (!_colorPickerViewController) {
+        _colorPickerViewController = [[NEOColorPickerViewController alloc] init];
+        _colorPickerViewController.delegate = self;
+    }
+    return _colorPickerViewController;
 }
 
 @end

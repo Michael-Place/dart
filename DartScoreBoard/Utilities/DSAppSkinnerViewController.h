@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DSAppSkinnerViewController : UIViewController
+@protocol DSAppSkinnerDelegate <NSObject>
 
+- (void)didFinishWithSettings;
+
+@end
+
+@interface DSAppSkinnerViewController : UIViewController
+@property (nonatomic, weak) id <DSAppSkinnerDelegate> settingsDelegate;
 @end
