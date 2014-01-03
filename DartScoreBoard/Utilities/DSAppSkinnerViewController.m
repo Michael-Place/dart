@@ -32,6 +32,7 @@
 
 @property (strong, nonatomic) UINavigationController *colorPickerNavigationController;
 @property (strong, nonatomic) NEOColorPickerViewController *colorPickerViewController;
+@property (weak, nonatomic) UIButton *currentlySelectedColorButton;
 
 - (IBAction)backgroundColorButtonTapped:(id)sender;
 - (IBAction)textColorButtonTapped:(id)sender;
@@ -75,6 +76,7 @@
     
     // Set the initial selected color
     [self.selectedColorLabel setText:self.textColorLabel.text];
+    [self setCurrentlySelectedColorButton:self.textColorButton];
     [self setupColorPicker];
 }
 
@@ -86,31 +88,37 @@
 - (IBAction)backgroundColorButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.backgroundColorLabel.text];
+    [self setCurrentlySelectedColorButton:self.backgroundColorButton];
 }
 
 - (IBAction)textColorButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.textColorLabel.text];
+    [self setCurrentlySelectedColorButton:self.textColorButton];
 }
 
 - (IBAction)foregroundColorButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.foregroundColorLabel.text];
+    [self setCurrentlySelectedColorButton:self.foregroundColorButton];
 }
 
 - (IBAction)foregroundColorTwoButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.foregroundColorTwoLabel.text];
+    [self setCurrentlySelectedColorButton:self.foregroundColorTwoButton];
 }
 
 - (IBAction)scoreOpenColorButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.scoreOpenColorLabel.text];
+    [self setCurrentlySelectedColorButton:self.scoreOpenColorButton];
 }
 
 - (IBAction)scoreClosedColorButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.scoreClosureColorLabel.text];
+    [self setCurrentlySelectedColorButton:self.scoreClosedColorButton];
 }
 
 - (IBAction)doneButtonTapped:(id)sender
@@ -165,7 +173,7 @@
 #pragma mark - NEOColorPicker Delegate
 - (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller didChangeColor:(UIColor *)color
 {
-    
+    [self.currentlySelectedColorButton setBackgroundColor:color];
 }
 
 - (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller didSelectColor:(UIColor *)color
@@ -200,7 +208,7 @@
 {
     if (!_colorPickerViewController) {
         _colorPickerViewController = [[NEOColorPickerViewController alloc] init];
-        _colorPickerViewController.delegate = self;
+        [_colorPickerViewController setDelegate:self];
     }
     return _colorPickerViewController;
 }

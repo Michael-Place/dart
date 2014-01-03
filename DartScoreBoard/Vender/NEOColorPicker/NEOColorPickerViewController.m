@@ -155,6 +155,11 @@
 	if (index < _colorArray.count) {
 		self.selectedColor = [_colorArray objectAtIndex:index];
 	}
+    
+    if ([self.delegate respondsToSelector:@selector(colorPickerViewController:didChangeColor:)]) {
+        [self.delegate colorPickerViewController:self didChangeColor:self.selectedColor];
+    }
+    
     [self updateSelectedColor];
 }
 
@@ -190,7 +195,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void) colorPickerViewController:(NEOColorPickerBaseViewController *) controller didChangeColor:(UIColor *)color {
+- (void)colorPickerViewController:(NEOColorPickerBaseViewController *) controller didChangeColor:(UIColor *)color {
+    if ([self.delegate respondsToSelector:@selector(colorPickerViewController:didChangeColor:)]) {
+        [self.delegate colorPickerViewController:controller didChangeColor:color];
+    }
     self.selectedColor = color;
     [self updateSelectedColor];
 }
