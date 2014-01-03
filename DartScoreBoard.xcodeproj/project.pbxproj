@@ -22,6 +22,20 @@
 		E949B7661851837B003CD01C /* DSGameActionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E949B7641851837B003CD01C /* DSGameActionTableViewController.xib */; };
 		E949B76A185183BE003CD01C /* DSGameActionItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E949B768185183BE003CD01C /* DSGameActionItemViewController.m */; };
 		E949B76B185183BE003CD01C /* DSGameActionItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E949B769185183BE003CD01C /* DSGameActionItemViewController.xib */; };
+		E95303681876650E00F30AC8 /* DSAppSkinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E95303661876650E00F30AC8 /* DSAppSkinnerViewController.m */; };
+		E95303691876650E00F30AC8 /* DSAppSkinnerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95303671876650E00F30AC8 /* DSAppSkinnerViewController.xib */; };
+		E953039E187676F500F30AC8 /* UIColor+NEOColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E953038B187676F500F30AC8 /* UIColor+NEOColor.m */; };
+		E953039F187676F500F30AC8 /* NEOColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E953038D187676F500F30AC8 /* NEOColorPickerViewController.xib */; };
+		E95303A0187676F500F30AC8 /* NEOColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E953038E187676F500F30AC8 /* NEOColorPickerViewController.m */; };
+		E95303A1187676F500F30AC8 /* NEOColorPickerHueGridViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9530390187676F500F30AC8 /* NEOColorPickerHueGridViewController.xib */; };
+		E95303A2187676F500F30AC8 /* NEOColorPickerHueGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9530391187676F500F30AC8 /* NEOColorPickerHueGridViewController.m */; };
+		E95303A3187676F500F30AC8 /* NEOColorPickerHSLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9530393187676F500F30AC8 /* NEOColorPickerHSLViewController.xib */; };
+		E95303A4187676F500F30AC8 /* NEOColorPickerHSLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9530394187676F500F30AC8 /* NEOColorPickerHSLViewController.m */; };
+		E95303A5187676F500F30AC8 /* NEOColorPickerGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9530396187676F500F30AC8 /* NEOColorPickerGradientView.m */; };
+		E95303A6187676F500F30AC8 /* NEOColorPickerFavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9530398187676F500F30AC8 /* NEOColorPickerFavoritesViewController.xib */; };
+		E95303A7187676F500F30AC8 /* NEOColorPickerFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9530399187676F500F30AC8 /* NEOColorPickerFavoritesViewController.m */; };
+		E95303A8187676F500F30AC8 /* NEOColorPickerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E953039B187676F500F30AC8 /* NEOColorPickerBaseViewController.m */; };
+		E95303A9187676F500F30AC8 /* colorPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E953039D187676F500F30AC8 /* colorPicker.bundle */; };
 		E96CF999185007DC00032DFF /* DSScoreCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96CF998185007DC00032DFF /* DSScoreCollectionView.xib */; };
 		E96CF9B11850322E00032DFF /* DSScoreCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E96CF9AF1850322E00032DFF /* DSScoreCollectionView.m */; };
 		E96CF9B31850326800032DFF /* DSScoreCollectionViewLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = E96CF9B21850326800032DFF /* DSScoreCollectionViewLandscape.xib */; };
@@ -82,6 +96,28 @@
 		E949B767185183BE003CD01C /* DSGameActionItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSGameActionItemViewController.h; path = GameActionMenu/DSGameActionItemViewController.h; sourceTree = "<group>"; };
 		E949B768185183BE003CD01C /* DSGameActionItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSGameActionItemViewController.m; path = GameActionMenu/DSGameActionItemViewController.m; sourceTree = "<group>"; };
 		E949B769185183BE003CD01C /* DSGameActionItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSGameActionItemViewController.xib; path = GameActionMenu/DSGameActionItemViewController.xib; sourceTree = "<group>"; };
+		E95303651876650E00F30AC8 /* DSAppSkinnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSAppSkinnerViewController.h; path = Utilities/DSAppSkinnerViewController.h; sourceTree = "<group>"; };
+		E95303661876650E00F30AC8 /* DSAppSkinnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSAppSkinnerViewController.m; path = Utilities/DSAppSkinnerViewController.m; sourceTree = "<group>"; };
+		E95303671876650E00F30AC8 /* DSAppSkinnerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSAppSkinnerViewController.xib; path = Utilities/DSAppSkinnerViewController.xib; sourceTree = "<group>"; };
+		E953038B187676F500F30AC8 /* UIColor+NEOColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+NEOColor.m"; path = "Vender/NEOColorPicker/UIColor+NEOColor.m"; sourceTree = "<group>"; };
+		E953038C187676F500F30AC8 /* UIColor+NEOColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+NEOColor.h"; path = "Vender/NEOColorPicker/UIColor+NEOColor.h"; sourceTree = "<group>"; };
+		E953038D187676F500F30AC8 /* NEOColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NEOColorPickerViewController.xib; path = Vender/NEOColorPicker/NEOColorPickerViewController.xib; sourceTree = "<group>"; };
+		E953038E187676F500F30AC8 /* NEOColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerViewController.m; path = Vender/NEOColorPicker/NEOColorPickerViewController.m; sourceTree = "<group>"; };
+		E953038F187676F500F30AC8 /* NEOColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerViewController.h; path = Vender/NEOColorPicker/NEOColorPickerViewController.h; sourceTree = "<group>"; };
+		E9530390187676F500F30AC8 /* NEOColorPickerHueGridViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NEOColorPickerHueGridViewController.xib; path = Vender/NEOColorPicker/NEOColorPickerHueGridViewController.xib; sourceTree = "<group>"; };
+		E9530391187676F500F30AC8 /* NEOColorPickerHueGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerHueGridViewController.m; path = Vender/NEOColorPicker/NEOColorPickerHueGridViewController.m; sourceTree = "<group>"; };
+		E9530392187676F500F30AC8 /* NEOColorPickerHueGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerHueGridViewController.h; path = Vender/NEOColorPicker/NEOColorPickerHueGridViewController.h; sourceTree = "<group>"; };
+		E9530393187676F500F30AC8 /* NEOColorPickerHSLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NEOColorPickerHSLViewController.xib; path = Vender/NEOColorPicker/NEOColorPickerHSLViewController.xib; sourceTree = "<group>"; };
+		E9530394187676F500F30AC8 /* NEOColorPickerHSLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerHSLViewController.m; path = Vender/NEOColorPicker/NEOColorPickerHSLViewController.m; sourceTree = "<group>"; };
+		E9530395187676F500F30AC8 /* NEOColorPickerHSLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerHSLViewController.h; path = Vender/NEOColorPicker/NEOColorPickerHSLViewController.h; sourceTree = "<group>"; };
+		E9530396187676F500F30AC8 /* NEOColorPickerGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerGradientView.m; path = Vender/NEOColorPicker/NEOColorPickerGradientView.m; sourceTree = "<group>"; };
+		E9530397187676F500F30AC8 /* NEOColorPickerGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerGradientView.h; path = Vender/NEOColorPicker/NEOColorPickerGradientView.h; sourceTree = "<group>"; };
+		E9530398187676F500F30AC8 /* NEOColorPickerFavoritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NEOColorPickerFavoritesViewController.xib; path = Vender/NEOColorPicker/NEOColorPickerFavoritesViewController.xib; sourceTree = "<group>"; };
+		E9530399187676F500F30AC8 /* NEOColorPickerFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerFavoritesViewController.m; path = Vender/NEOColorPicker/NEOColorPickerFavoritesViewController.m; sourceTree = "<group>"; };
+		E953039A187676F500F30AC8 /* NEOColorPickerFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerFavoritesViewController.h; path = Vender/NEOColorPicker/NEOColorPickerFavoritesViewController.h; sourceTree = "<group>"; };
+		E953039B187676F500F30AC8 /* NEOColorPickerBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NEOColorPickerBaseViewController.m; path = Vender/NEOColorPicker/NEOColorPickerBaseViewController.m; sourceTree = "<group>"; };
+		E953039C187676F500F30AC8 /* NEOColorPickerBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NEOColorPickerBaseViewController.h; path = Vender/NEOColorPicker/NEOColorPickerBaseViewController.h; sourceTree = "<group>"; };
+		E953039D187676F500F30AC8 /* colorPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = colorPicker.bundle; path = Vender/NEOColorPicker/colorPicker.bundle; sourceTree = "<group>"; };
 		E96CF998185007DC00032DFF /* DSScoreCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSScoreCollectionView.xib; path = ScoreBoard/DSScoreCollectionView.xib; sourceTree = "<group>"; };
 		E96CF9AF1850322E00032DFF /* DSScoreCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSScoreCollectionView.m; path = ScoreBoard/DSScoreCollectionView.m; sourceTree = "<group>"; };
 		E96CF9B01850322E00032DFF /* DSScoreCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSScoreCollectionView.h; path = ScoreBoard/DSScoreCollectionView.h; sourceTree = "<group>"; };
@@ -169,6 +205,40 @@
 			name = GameActionMenu;
 			sourceTree = "<group>";
 		};
+		E953036A1876766100F30AC8 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				E953036B1876766600F30AC8 /* NEOColorPicker */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		E953036B1876766600F30AC8 /* NEOColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				E953038B187676F500F30AC8 /* UIColor+NEOColor.m */,
+				E953038C187676F500F30AC8 /* UIColor+NEOColor.h */,
+				E953038D187676F500F30AC8 /* NEOColorPickerViewController.xib */,
+				E953038E187676F500F30AC8 /* NEOColorPickerViewController.m */,
+				E953038F187676F500F30AC8 /* NEOColorPickerViewController.h */,
+				E9530390187676F500F30AC8 /* NEOColorPickerHueGridViewController.xib */,
+				E9530391187676F500F30AC8 /* NEOColorPickerHueGridViewController.m */,
+				E9530392187676F500F30AC8 /* NEOColorPickerHueGridViewController.h */,
+				E9530393187676F500F30AC8 /* NEOColorPickerHSLViewController.xib */,
+				E9530394187676F500F30AC8 /* NEOColorPickerHSLViewController.m */,
+				E9530395187676F500F30AC8 /* NEOColorPickerHSLViewController.h */,
+				E9530396187676F500F30AC8 /* NEOColorPickerGradientView.m */,
+				E9530397187676F500F30AC8 /* NEOColorPickerGradientView.h */,
+				E9530398187676F500F30AC8 /* NEOColorPickerFavoritesViewController.xib */,
+				E9530399187676F500F30AC8 /* NEOColorPickerFavoritesViewController.m */,
+				E953039A187676F500F30AC8 /* NEOColorPickerFavoritesViewController.h */,
+				E953039B187676F500F30AC8 /* NEOColorPickerBaseViewController.m */,
+				E953039C187676F500F30AC8 /* NEOColorPickerBaseViewController.h */,
+				E953039D187676F500F30AC8 /* colorPicker.bundle */,
+			);
+			name = NEOColorPicker;
+			sourceTree = "<group>";
+		};
 		E98D953F184949C300A02273 /* NewGame */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +291,7 @@
 				E98D953F184949C300A02273 /* NewGame */,
 				E9C9D554184942580085BC43 /* Model */,
 				E9C9D550184941A00085BC43 /* ScoreBoard */,
+				E953036A1876766100F30AC8 /* Vendor */,
 				E9C9D52718493E790085BC43 /* DSAppDelegate.h */,
 				E9C9D52818493E790085BC43 /* DSAppDelegate.m */,
 				E9C9D52A18493E790085BC43 /* Main_iPhone.storyboard */,
@@ -312,6 +383,9 @@
 				E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */,
 				E911731D186CA71D006351AA /* DSAppSkinner.h */,
 				E911731E186CA71D006351AA /* DSAppSkinner.m */,
+				E95303651876650E00F30AC8 /* DSAppSkinnerViewController.h */,
+				E95303661876650E00F30AC8 /* DSAppSkinnerViewController.m */,
+				E95303671876650E00F30AC8 /* DSAppSkinnerViewController.xib */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -418,12 +492,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9117329186CA80B006351AA /* spotlight-icon.png in Resources */,
+				E953039F187676F500F30AC8 /* NEOColorPickerViewController.xib in Resources */,
+				E95303A3187676F500F30AC8 /* NEOColorPickerHSLViewController.xib in Resources */,
+				E95303A9187676F500F30AC8 /* colorPicker.bundle in Resources */,
 				E911732C186CA80B006351AA /* Icon-76@2x.png in Resources */,
 				E9C9D52F18493E790085BC43 /* Main_iPad.storyboard in Resources */,
 				E949B7661851837B003CD01C /* DSGameActionTableViewController.xib in Resources */,
+				E95303691876650E00F30AC8 /* DSAppSkinnerViewController.xib in Resources */,
 				E96CF999185007DC00032DFF /* DSScoreCollectionView.xib in Resources */,
 				E9117321186CA7EF006351AA /* DSNewGameViewController.xib in Resources */,
+				E95303A1187676F500F30AC8 /* NEOColorPickerHueGridViewController.xib in Resources */,
 				E96CF9B31850326800032DFF /* DSScoreCollectionViewLandscape.xib in Resources */,
+				E95303A6187676F500F30AC8 /* NEOColorPickerFavoritesViewController.xib in Resources */,
 				E9A5CC25184BF08500619D7D /* DSNewPlayerCollectionViewCell.xib in Resources */,
 				E949B76B185183BE003CD01C /* DSGameActionItemViewController.xib in Resources */,
 				E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */,
@@ -455,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9C9D553184941C60085BC43 /* DSScoreBoardCollectionViewController.m in Sources */,
+				E95303A0187676F500F30AC8 /* NEOColorPickerViewController.m in Sources */,
 				E9C9D557184942930085BC43 /* DSPlayer.m in Sources */,
 				E9C9D55D184944370085BC43 /* DSScoreBoardCollectionViewCell.m in Sources */,
 				E9ED53E1186BFDFA00AA39FE /* UIColor+HexSupport.m in Sources */,
@@ -462,13 +543,20 @@
 				E949B76A185183BE003CD01C /* DSGameActionItemViewController.m in Sources */,
 				E96CF9B11850322E00032DFF /* DSScoreCollectionView.m in Sources */,
 				E9C9D52518493E790085BC43 /* main.m in Sources */,
+				E95303A8187676F500F30AC8 /* NEOColorPickerBaseViewController.m in Sources */,
+				E95303681876650E00F30AC8 /* DSAppSkinnerViewController.m in Sources */,
 				E949B7651851837B003CD01C /* DSGameActionTableViewController.m in Sources */,
+				E953039E187676F500F30AC8 /* UIColor+NEOColor.m in Sources */,
 				E911735C186D0AAA006351AA /* DSAssetGenerator.m in Sources */,
+				E95303A2187676F500F30AC8 /* NEOColorPickerHueGridViewController.m in Sources */,
 				E92C414B18495949001CA645 /* DSPlayerScoreValueTableViewCell.m in Sources */,
+				E95303A7187676F500F30AC8 /* NEOColorPickerFavoritesViewController.m in Sources */,
 				E9C9D55A1849429D0085BC43 /* DSGame.m in Sources */,
 				E911731F186CA71D006351AA /* DSAppSkinner.m in Sources */,
 				E9C9D52918493E790085BC43 /* DSAppDelegate.m in Sources */,
 				E9A5CC23184BD49600619D7D /* DSNewPlayerCollectionViewCell.m in Sources */,
+				E95303A5187676F500F30AC8 /* NEOColorPickerGradientView.m in Sources */,
+				E95303A4187676F500F30AC8 /* NEOColorPickerHSLViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
