@@ -66,17 +66,6 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     [tapGesture setDelegate:self];
     [self.view addGestureRecognizer:tapGesture];
     
-    // Set the interface colors
-    [self.appTitleLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.gameInstructionLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.addPlayerButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
-    [self.startGameButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
-    [self.settingsButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
-
-    [self.addPlayerButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
-    [self.startGameButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
-    [self.settingsButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
-    
     //Reset DSGame
     [[DSGame sharedGame] setPlayers:[NSArray array]];
     
@@ -86,6 +75,21 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     
     [self addCollisionBoundaryForView:self.startGameButton];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // Set the interface colors
+    [self.view setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
+    [self.appTitleLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.gameInstructionLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.addPlayerButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+    [self.startGameButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+    [self.settingsButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+    
+    [self.addPlayerButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
+    [self.startGameButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
+    [self.settingsButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
 }
 
 - (void)viewDidAppear:(BOOL)animated

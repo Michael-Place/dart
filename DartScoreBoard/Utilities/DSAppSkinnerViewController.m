@@ -59,6 +59,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self setColorButtonTags];
     
     [self.view setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
     [self.settingsTitleLabel setTextColor:[DSAppSkinner newGameFontColor]];
@@ -72,12 +77,29 @@
     [self.scoreClosureColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
     
     [self.doneButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
-//    [self.doneButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+    //    [self.doneButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+    
+    [self.backgroundColorButton setBackgroundColor:[DSAppSkinner colorForColorKey:GlobalBackgroundColorKey]];
+    [self.textColorButton setBackgroundColor:[DSAppSkinner colorForColorKey:NewGameFontColorKey]];
+    [self.foregroundColorButton setBackgroundColor:[DSAppSkinner colorForColorKey:PrimaryScoreBoardForegroundColorKey]];
+    [self.foregroundColorTwoButton setBackgroundColor:[DSAppSkinner colorForColorKey:ComplimentaryScoreBoardForegroundColorKey]];
+    [self.scoreOpenColorButton setBackgroundColor:[DSAppSkinner scoreBoardTextColor]];
+    [self.scoreClosedColorButton setBackgroundColor:[DSAppSkinner scoreBoardClosedColor]];
     
     // Set the initial selected color
     [self.selectedColorLabel setText:self.textColorLabel.text];
     [self setCurrentlySelectedColorButton:self.textColorButton];
     [self setupColorPicker];
+}
+
+- (void)setColorButtonTags
+{
+    [self.backgroundColorButton setTag:DSAppColorGlobalBackgroundColor];
+    [self.textColorButton setTag:DSAppColorNewGameFontColor];
+    [self.foregroundColorButton setTag:DSAppColorPrimaryScoreBoardForegroundColor];
+    [self.foregroundColorTwoButton setTag:DSAppColorComplimentaryScoreBoardForegroundColor];
+    [self.scoreOpenColorButton setTag:DSAppColorScoreBoardTextColor];
+    [self.scoreClosedColorButton setTag:DSAppColorScoreBoardClosedColor];
 }
 
 - (void)setupColorPicker
@@ -89,102 +111,62 @@
 - (IBAction)backgroundColorButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.backgroundColorLabel.text];
-    [self setCurrentlySelectedColorButton:self.backgroundColorButton];
+    [self updateCurrentlySelectedColorButtonTo:sender];
 }
 
 - (IBAction)textColorButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.textColorLabel.text];
-    [self setCurrentlySelectedColorButton:self.textColorButton];
+    [self updateCurrentlySelectedColorButtonTo:sender];
 }
 
 - (IBAction)foregroundColorButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.foregroundColorLabel.text];
-    [self setCurrentlySelectedColorButton:self.foregroundColorButton];
+    [self updateCurrentlySelectedColorButtonTo:sender];
 }
 
 - (IBAction)foregroundColorTwoButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.foregroundColorTwoLabel.text];
-    [self setCurrentlySelectedColorButton:self.foregroundColorTwoButton];
+    [self updateCurrentlySelectedColorButtonTo:sender];
 }
 
 - (IBAction)scoreOpenColorButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.scoreOpenColorLabel.text];
-    [self setCurrentlySelectedColorButton:self.scoreOpenColorButton];
+    [self updateCurrentlySelectedColorButtonTo:sender];
 }
 
 - (IBAction)scoreClosedColorButtonTapped:(id)sender
 {
     [self.selectedColorLabel setText:self.scoreClosureColorLabel.text];
-    [self setCurrentlySelectedColorButton:self.scoreClosedColorButton];
+    [self updateCurrentlySelectedColorButtonTo:sender];
 }
 
 - (IBAction)doneButtonTapped:(id)sender
 {
+    // Save the color of the currently selected color button
+    [DSAppSkinner saveColor:self.currentlySelectedColorButton.backgroundColor  forKey:[DSAppSkinner keyForAppColor:self.currentlySelectedColorButton.tag]];
+    
     if (self.settingsDelegate && [self.settingsDelegate respondsToSelector:@selector(didFinishWithSettings)]) {
         [self.settingsDelegate didFinishWithSettings];
     }
 }
 
-#pragma mark - User Default Handling
-// Retrieves a color from NSUserDefualts given a key
-- (UIColor *)colorForColorKey:(NSString *)colorKey
+- (void)updateCurrentlySelectedColorButtonTo:(UIButton *)newlySelectedButton
 {
-    NSString *savedColorString = [[NSUserDefaults standardUserDefaults]
-                            stringForKey:colorKey];
-    UIColor *savedColor = [self colorForColorString:savedColorString];
+    // Save the color of the previously selected button
+    [DSAppSkinner saveColor:self.currentlySelectedColorButton.backgroundColor  forKey:[DSAppSkinner keyForAppColor:self.currentlySelectedColorButton.tag]];
     
-    return savedColor;
-}
-
-// Saves a color to NSUserDefualts given color and a key
-- (void)saveColor:(UIColor *)color forKey:(NSString *)colorKey
-{
-    NSString *colorToSave = [self colorStringForColor:color];
-    [[NSUserDefaults standardUserDefaults]
-     setObject:colorToSave forKey:colorKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-#pragma mark - Helpers
-// Returns a UIColor based on the its NSString representation
-- (UIColor *)colorForColorString:(NSString *)colorString
-{
-    NSArray *components = [colorString componentsSeparatedByString:@","];
-    CGFloat r = [[components objectAtIndex:0] floatValue];
-    CGFloat g = [[components objectAtIndex:1] floatValue];
-    CGFloat b = [[components objectAtIndex:2] floatValue];
-    CGFloat a = [[components objectAtIndex:3] floatValue];
-    UIColor *color = [UIColor colorWithRed:r green:g blue:b alpha:a];
-    
-    return color;
-}
-
-// Returns an NSString representation for a given UIColor
-- (NSString *)colorStringForColor:(UIColor *)color
-{
-    const CGFloat *components = CGColorGetComponents(color.CGColor);
-    NSString *colorAsString = [NSString stringWithFormat:@"%f,%f,%f,%f", components[0], components[1], components[2], components[3]];
-    return colorAsString;
+    // Set the newly selected button
+    [self setCurrentlySelectedColorButton:newlySelectedButton];
 }
 
 #pragma mark - NEOColorPicker Delegate
 - (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller didChangeColor:(UIColor *)color
 {
     [self.currentlySelectedColorButton setBackgroundColor:color];
-}
-
-- (void)colorPickerViewController:(NEOColorPickerBaseViewController *)controller didSelectColor:(UIColor *)color
-{
-    
-}
-
-- (void)colorPickerViewControllerDidCancel:(NEOColorPickerBaseViewController *)controller
-{
-    
 }
 
 #pragma mark - Getters

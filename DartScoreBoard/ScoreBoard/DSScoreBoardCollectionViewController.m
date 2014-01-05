@@ -11,7 +11,6 @@
 #import "DSScoreCollectionView.h"
 #import "DSNewGameViewController.h"
 #import "DSGameActionItemViewController.h"
-#import "DSAppDelegate.h"
 #import "DSGame.h"
 
 @interface DSScoreBoardCollectionViewController () <StartingGameDelegate, UpdatingGameState, ScoreBoardCollectionViewCellDelegate, DSGameActionDelegate>
@@ -60,6 +59,12 @@ static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderL
     }
     [self.collectionView reloadData];
     [self.view addSubview:self.gameActionItemViewController.view];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.collectionView setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

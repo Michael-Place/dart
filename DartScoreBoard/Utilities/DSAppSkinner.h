@@ -8,7 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
+enum DSAppColor {
+    DSAppColorGlobalBackgroundColor,
+    DSAppColorNewGameForegroundColor,
+    DSAppColorNewGameFontColor,
+    DSAppColorScoreBoardTextColor,
+    DSAppColorPrimaryScoreBoardForegroundColor,
+    DSAppColorComplimentaryScoreBoardForegroundColor,
+    DSAppColorScoreBoardClosedColor,
+    DSAppColorScoreBoardWinningPlayerColor
+    };
+
 @interface DSAppSkinner : NSObject
+extern NSString *const GlobalBackgroundColorKey;
+extern NSString *const NewGameForegroundColorKey;
+extern NSString *const NewGameFontColorKey;
+extern NSString *const ScoreBoardTextColorKey;
+extern NSString *const PrimaryScoreBoardForegroundColorKey;
+extern NSString *const ComplimentaryScoreBoardForegroundColorKey;
+extern NSString *const ScoreBoardClosedColorKey;
+extern NSString *const ScoreBoardWinningPlayerColorKey;
+
++ (void)initializeColorsIfNecessary;
 
 // Color for the background of the app
 + (UIColor *)globalBackgroundColor;
@@ -35,4 +56,12 @@
 
 // Color for the winning player when the game ends
 + (UIColor *)scoreBoardWinningPlayerColor;
+
+// Color Helpers
++ (UIColor *)colorForColorKey:(NSString *)colorKey;
++ (void)saveColor:(UIColor *)color forKey:(NSString *)colorKey;
++ (UIColor *)colorForColorString:(NSString *)colorString;
++ (NSString *)colorStringForColor:(UIColor *)color;
+
++ (NSString *)keyForAppColor:(enum DSAppColor)appColor;
 @end
