@@ -497,6 +497,7 @@ const int kTimeLabelWidth = 60;
     if (!_gameTimerLabel) {
         _gameTimerLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.view.frame.size.width - kTimeLabelWidth, 20, kTimeLabelWidth, 20)];
         [_gameTimerLabel setCenter:_gameTimerLabel.center];
+        [_gameTimerLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
     }
     return _gameTimerLabel;
 }
