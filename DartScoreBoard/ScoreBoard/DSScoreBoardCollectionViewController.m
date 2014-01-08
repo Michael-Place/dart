@@ -361,7 +361,7 @@ const int portraitHeightForTableView = 776;
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    self.gameTimerLabel.frame = CGRectMake(self.collectionView.frame.size.width - kTimeLabelWidth, 20, kTimeLabelWidth, 20);
+    
 }
 
 #pragma mark - Helpers
@@ -495,9 +495,10 @@ const int kTimeLabelWidth = 60;
 - (UILabel *)gameTimerLabel
 {
     if (!_gameTimerLabel) {
-        _gameTimerLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.view.frame.size.width - kTimeLabelWidth, 20, kTimeLabelWidth, 20)];
+        _gameTimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - kTimeLabelWidth, 20, kTimeLabelWidth, 20)];
         [_gameTimerLabel setCenter:_gameTimerLabel.center];
         [_gameTimerLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+        _gameTimerLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
     }
     return _gameTimerLabel;
 }
