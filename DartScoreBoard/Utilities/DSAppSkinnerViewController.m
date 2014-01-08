@@ -66,17 +66,17 @@
     [self setColorButtonTags];
     
     [self.view setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
-    [self.settingsTitleLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.selectedColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.colorSettingsTitleLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.backgroundColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.textColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.foregroundColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.foregroundColorTwoLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.scoreOpenColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.scoreClosureColorLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.settingsTitleLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.selectedColorLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.colorSettingsTitleLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.backgroundColorLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.textColorLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.foregroundColorLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.foregroundColorTwoLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.scoreOpenColorLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.scoreClosureColorLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
     
-    [self.doneButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
+    [self.doneButton setTitleColor:[DSAppSkinner newGameForegroundColor] forState:UIControlStateNormal];
     //    [self.doneButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
     
     [self.backgroundColorButton setBackgroundColor:[DSAppSkinner colorForColorKey:GlobalBackgroundColorKey]];

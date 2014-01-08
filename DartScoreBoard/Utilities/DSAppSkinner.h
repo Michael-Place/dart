@@ -60,8 +60,6 @@ extern NSString *const ScoreBoardWinningPlayerColorKey;
 // Color Helpers
 + (UIColor *)colorForColorKey:(NSString *)colorKey;
 + (void)saveColor:(UIColor *)color forKey:(NSString *)colorKey;
-+ (UIColor *)colorForColorString:(NSString *)colorString;
-+ (NSString *)colorStringForColor:(UIColor *)color;
 
 + (NSString *)keyForAppColor:(enum DSAppColor)appColor;
 @end

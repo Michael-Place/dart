@@ -57,7 +57,7 @@ const int kAppRatingAlertViewTag = 100;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
 //    [self testGameSetup];
     
     if (!self.gameIsInProgress) {
@@ -70,6 +70,8 @@ const int kAppRatingAlertViewTag = 100;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
     [self.collectionView setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
     [self.collectionView reloadData];
 }

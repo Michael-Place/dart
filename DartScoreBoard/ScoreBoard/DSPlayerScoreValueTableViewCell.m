@@ -48,13 +48,13 @@
         self.incrementScoreLabel.text = @"+";
         self.decrementScoreLabel.text = @"-";
         
-        [self.strikeImageView setImage:[UIImage imageNamed:@""]];
+        [self.strikeImageView setImage:nil];
     }
     else if (self.score < 4) {
         
         switch (self.score) {
             case 0: {
-                [self.strikeImageView setImage:[UIImage imageNamed:@""]];
+                [self.strikeImageView setImage:nil];
                 break;
             }
             case 1: {
@@ -97,7 +97,7 @@
         
         switch (self.score) {
             case 0: {
-                [self.strikeImageView setImage:[UIImage imageNamed:@""]];
+                [self.strikeImageView setImage:nil];
                 break;
             }
             case 1: {

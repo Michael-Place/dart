@@ -25,10 +25,10 @@
 @protocol NEOColorPickerViewControllerDelegate <NSObject>
 
 @required
-- (void) colorPickerViewController:(NEOColorPickerBaseViewController *) controller didSelectColor:(UIColor *)color;
-- (void) colorPickerViewControllerDidCancel:(NEOColorPickerBaseViewController *)controller;
 @optional
 - (void) colorPickerViewController:(NEOColorPickerBaseViewController *) controller didChangeColor:(UIColor *)color;
+- (void) colorPickerViewControllerDidCancel:(NEOColorPickerBaseViewController *)controller;
+- (void) colorPickerViewController:(NEOColorPickerBaseViewController *) controller didSelectColor:(UIColor *)color;
 
 @end
 

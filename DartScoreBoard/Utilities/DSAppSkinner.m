@@ -21,13 +21,13 @@ NSString *const ScoreBoardWinningPlayerColorKey = @"ScoreBoardWinningPlayerColor
 + (void)initializeColorsIfNecessary
 {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:GlobalBackgroundColorKey] == nil) {
-        [self saveColor:[UIColor blueColor] forKey:GlobalBackgroundColorKey];
-        [self saveColor:[UIColor greenColor] forKey:NewGameForegroundColorKey];
-        [self saveColor:[UIColor purpleColor] forKey:NewGameFontColorKey];
-        [self saveColor:[UIColor blueColor] forKey:ScoreBoardTextColorKey];
-        [self saveColor:[UIColor yellowColor] forKey:PrimaryScoreBoardForegroundColorKey];
-        [self saveColor:[UIColor redColor] forKey:ComplimentaryScoreBoardForegroundColorKey];
-        [self saveColor:[UIColor orangeColor] forKey:ScoreBoardClosedColorKey];
+        [self saveColor:[UIColor blackColor] forKey:GlobalBackgroundColorKey];
+        [self saveColor:[UIColor whiteColor] forKey:NewGameForegroundColorKey];
+        [self saveColor:[UIColor blackColor] forKey:NewGameFontColorKey];
+        [self saveColor:[UIColor whiteColor] forKey:ScoreBoardTextColorKey];
+        [self saveColor:[UIColor clearColor] forKey:PrimaryScoreBoardForegroundColorKey];
+        [self saveColor:[UIColor clearColor] forKey:ComplimentaryScoreBoardForegroundColorKey];
+        [self saveColor:[UIColor grayColor] forKey:ScoreBoardClosedColorKey];
         [self saveColor:[UIColor blueColor] forKey:ScoreBoardWinningPlayerColorKey];
     }
 }
@@ -82,9 +82,9 @@ NSString *const ScoreBoardWinningPlayerColorKey = @"ScoreBoardWinningPlayerColor
 // Retrieves a color from NSUserDefualts given a key
 + (UIColor *)colorForColorKey:(NSString *)colorKey
 {
-    NSString *savedColorString = [[NSUserDefaults standardUserDefaults]
-                                  stringForKey:colorKey];
-    UIColor *savedColor = [self colorForColorString:savedColorString];
+    NSData *savedColorData = [[NSUserDefaults standardUserDefaults]
+                                  dataForKey:colorKey];
+    UIColor *savedColor = [NSKeyedUnarchiver unarchiveObjectWithData:savedColorData];
     
     return savedColor;
 }
@@ -92,38 +92,11 @@ NSString *const ScoreBoardWinningPlayerColorKey = @"ScoreBoardWinningPlayerColor
 // Saves a color to NSUserDefualts given color and a key
 + (void)saveColor:(UIColor *)color forKey:(NSString *)colorKey
 {
-    NSString *colorToSave = [self colorStringForColor:color];
+    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:color];
+
     [[NSUserDefaults standardUserDefaults]
-     setObject:colorToSave forKey:colorKey];
+     setObject:colorData forKey:colorKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-#pragma mark - Helpers
-// Returns a UIColor based on the its NSString representation
-+ (UIColor *)colorForColorString:(NSString *)colorString
-{
-    NSArray *components = [colorString componentsSeparatedByString:@","];
-    CGFloat r = [[components objectAtIndex:0] floatValue];
-    CGFloat g = [[components objectAtIndex:1] floatValue];
-    CGFloat b = [[components objectAtIndex:2] floatValue];
-    CGFloat a = [[components objectAtIndex:3] floatValue];
-    
-    // Prevent invisible UI elements
-    if (a == 0) {
-        a = 1;
-    }
-    
-    UIColor *color = [UIColor colorWithRed:r green:g blue:b alpha:a];
-    
-    return color;
-}
-
-// Returns an NSString representation for a given UIColor
-+ (NSString *)colorStringForColor:(UIColor *)color
-{
-    const CGFloat *components = CGColorGetComponents(color.CGColor);
-    NSString *colorAsString = [NSString stringWithFormat:@"%f,%f,%f,%f", components[0], components[1], components[2], components[3]];
-    return colorAsString;
 }
 
 + (NSString *)keyForAppColor:(enum DSAppColor)appColor
