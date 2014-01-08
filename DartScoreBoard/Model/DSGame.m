@@ -33,6 +33,7 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     dispatch_once(&onceToken, ^{
         sharedGame = [[self alloc] init];
         sharedGame.players = [NSMutableArray array];
+        sharedGame.gameStartTime = [NSDate date];
     });
     return sharedGame;
 }
@@ -74,7 +75,7 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
 {
     self.winner = nil;
     self.gameStatusPointValueDictionary = nil;
-
+    self.gameStartTime = [NSDate date];
     for (DSPlayer *player in self.players) {
         [player setPlayerStatistics:nil];
     }

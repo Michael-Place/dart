@@ -20,6 +20,10 @@
 @property (nonatomic, strong) DSGameActionItemViewController *gameActionItemViewController;
 @property (nonatomic, strong) DSNewGameViewController *newGameViewController;
 @property (nonatomic, strong) NSMutableArray *headerViews;
+
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) UILabel *gameTimerLabel;
+
 @end
 
 @implementation DSScoreBoardCollectionViewController
@@ -61,6 +65,7 @@ const int kAppRatingAlertViewTag = 100;
     }
     [self.collectionView reloadData];
     [self.view addSubview:self.gameActionItemViewController.view];
+    [self.view addSubview:self.gameTimerLabel];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -85,6 +90,8 @@ const int kAppRatingAlertViewTag = 100;
 {
     self.gameIsInProgress = YES;
     [self dismissViewControllerAnimated:YES completion:nil];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateGameTimeLabel) userInfo:[NSDate date] repeats:YES];
+
 }
 
 #pragma mark - Update Game State Delegate
@@ -93,8 +100,11 @@ const int kAppRatingAlertViewTag = 100;
     [self.scoreBoardCollectionView reloadData];
     [self reloadSectionHeaders];
     
-    if ([DSGame sharedGame].winner && [DSGame sharedGame].winner.length > 0 && [DSHelper shouldRequestRating]) {
-        [self showRateUsAlertView];
+    if ([DSGame sharedGame].winner && [DSGame sharedGame].winner.length > 0) {
+        [self.timer invalidate];
+        if ([DSHelper shouldRequestRating]) {
+            [self showRateUsAlertView];
+        }
     }
 }
 
@@ -324,10 +334,32 @@ const int portraitHeightForTableView = 776;
     return NO;
 }
 
+#pragma mark - Game Timer functions
+- (void)updateGameTimeLabel
+{
+    // Get the start date, and the time that has passed since
+    NSDate *startDate = [DSGame sharedGame].gameStartTime;
+    NSTimeInterval timePassed = [[NSDate date] timeIntervalSinceDate:startDate];
+    
+    // Convert interval in seconds to hours, minutes and seconds
+    int hours = timePassed / (60 * 60);
+    int minutes = ((int)timePassed % (60 * 60)) / 60;
+    int seconds = (((int)timePassed % (60 * 60)) % 60);
+    NSString *time = [NSString stringWithFormat:@"%i:%i:%i", hours, minutes, seconds];
+    
+    self.gameTimerLabel.text = time;
+    
+}
+
 #pragma mark - Rotation
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [self.collectionView reloadData];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    self.gameTimerLabel.frame = CGRectMake(self.collectionView.frame.size.width - kTimeLabelWidth, 20, kTimeLabelWidth, 20);
 }
 
 #pragma mark - Helpers
@@ -382,6 +414,8 @@ const int portraitHeightForTableView = 776;
     
     [self reloadSectionHeaders];
     [self.collectionView reloadData];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateGameTimeLabel) userInfo:[NSDate date] repeats:YES];
+
 }
 
 - (void)startNewGameWithSamePlayers
@@ -453,6 +487,16 @@ const int GameActionButtonPadding = 0;
         [_gameActionItemViewController setGameActionDelegate:self];
     }
     return _gameActionItemViewController;
+}
+
+const int kTimeLabelWidth = 60;
+- (UILabel *)gameTimerLabel
+{
+    if (!_gameTimerLabel) {
+        _gameTimerLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.view.frame.size.width - kTimeLabelWidth, 20, kTimeLabelWidth, 20)];
+        [_gameTimerLabel setCenter:_gameTimerLabel.center];
+    }
+    return _gameTimerLabel;
 }
 
 #pragma mark - Test Code

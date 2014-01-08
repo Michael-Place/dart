@@ -38,6 +38,7 @@ extern NSString *const CricketScoreStringFifteen;
 @property (nonatomic, strong) NSMutableDictionary *gameStatusPointValueDictionary;
 @property (nonatomic, weak) id <UpdatingGameState> delegate;
 @property (nonatomic, strong) NSString *winner;
+@property (nonatomic, strong) NSDate *gameStartTime;
 
 // Shared instance
 + (DSGame *)sharedGame;
