@@ -63,6 +63,7 @@
 		E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */; };
 		E9ED53E1186BFDFA00AA39FE /* UIColor+HexSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */; };
 		ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */; };
+		EDF51051187CE1DF001CAF14 /* DSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF51050187CE1DF001CAF14 /* DSHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,8 @@
 		E9ED53DF186BFDFA00AA39FE /* UIColor+HexSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexSupport.h"; path = "Utilities/UIColor+HexSupport.h"; sourceTree = "<group>"; };
 		E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexSupport.m"; path = "Utilities/UIColor+HexSupport.m"; sourceTree = "<group>"; };
 		ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CricketScoreValueList.plist; sourceTree = "<group>"; };
+		EDF5104F187CE1DF001CAF14 /* DSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSHelper.h; sourceTree = "<group>"; };
+		EDF51050187CE1DF001CAF14 /* DSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +382,8 @@
 		E9ED53DB186BF30800AA39FE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EDF5104F187CE1DF001CAF14 /* DSHelper.h */,
+				EDF51050187CE1DF001CAF14 /* DSHelper.m */,
 				E9ED53DF186BFDFA00AA39FE /* UIColor+HexSupport.h */,
 				E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */,
 				E911731D186CA71D006351AA /* DSAppSkinner.h */,
@@ -546,6 +551,7 @@
 				E95303A8187676F500F30AC8 /* NEOColorPickerBaseViewController.m in Sources */,
 				E95303681876650E00F30AC8 /* DSAppSkinnerViewController.m in Sources */,
 				E949B7651851837B003CD01C /* DSGameActionTableViewController.m in Sources */,
+				EDF51051187CE1DF001CAF14 /* DSHelper.m in Sources */,
 				E953039E187676F500F30AC8 /* UIColor+NEOColor.m in Sources */,
 				E911735C186D0AAA006351AA /* DSAssetGenerator.m in Sources */,
 				E95303A2187676F500F30AC8 /* NEOColorPickerHueGridViewController.m in Sources */,

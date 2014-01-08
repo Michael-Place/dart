@@ -12,6 +12,7 @@
 #import "DSNewGameViewController.h"
 #import "DSGameActionItemViewController.h"
 #import "DSGame.h"
+#import "DSHelper.h"
 
 @interface DSScoreBoardCollectionViewController () <StartingGameDelegate, UpdatingGameState, ScoreBoardCollectionViewCellDelegate, DSGameActionDelegate>
 @property BOOL gameIsInProgress;
@@ -25,6 +26,7 @@
 static NSString *const ScoreBoardCollectionViewCellIdentifier = @"ScoreBoardCollectionViewCellIdentifier";
 static NSString *const ScoreBoardHeaderIdentifier = @"ScoreBoardHeaderIdentifier";
 static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderLandscapeIdentifier";
+const int kAppRatingAlertViewTag = 100;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -90,6 +92,10 @@ static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderL
 {
     [self.scoreBoardCollectionView reloadData];
     [self reloadSectionHeaders];
+    
+    if ([DSGame sharedGame].winner && [DSGame sharedGame].winner.length > 0 && [DSHelper shouldRequestRating]) {
+        [self showRateUsAlertView];
+    }
 }
 
 - (void)reloadSectionHeaders
@@ -401,6 +407,31 @@ const int portraitHeightForTableView = 776;
     
     [self reloadSectionHeaders];
     [self.collectionView reloadData];
+}
+
+#pragma mark - Rate Us functions
+- (void)showRateUsAlertView
+{
+    UIAlertView *ratingRequestAlertView = [[UIAlertView alloc]initWithTitle:[NSString string] message:@"Please help us by rating our app.  Thank you!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Rate Now", nil];
+    ratingRequestAlertView.tag = kAppRatingAlertViewTag;
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDidRequestRatingForVersionKey];
+    
+    [ratingRequestAlertView show];
+}
+
+- (void)rateGame
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=409954448"]];
+}
+
+#pragma mark - AlerView Delegate
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == kAppRatingAlertViewTag) {
+        if (buttonIndex == 1) {
+            [self rateGame];
+        }
+    }
 }
 
 #pragma mark - Getters
