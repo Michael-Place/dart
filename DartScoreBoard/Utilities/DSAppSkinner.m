@@ -21,13 +21,13 @@ NSString *const ScoreBoardWinningPlayerColorKey = @"ScoreBoardWinningPlayerColor
 + (void)initializeColorsIfNecessary
 {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:GlobalBackgroundColorKey] == nil) {
-        [self saveColor:[UIColor blueColor] forKey:GlobalBackgroundColorKey];
-        [self saveColor:[UIColor greenColor] forKey:NewGameForegroundColorKey];
-        [self saveColor:[UIColor purpleColor] forKey:NewGameFontColorKey];
-        [self saveColor:[UIColor blueColor] forKey:ScoreBoardTextColorKey];
-        [self saveColor:[UIColor yellowColor] forKey:PrimaryScoreBoardForegroundColorKey];
-        [self saveColor:[UIColor redColor] forKey:ComplimentaryScoreBoardForegroundColorKey];
-        [self saveColor:[UIColor orangeColor] forKey:ScoreBoardClosedColorKey];
+        [self saveColor:[UIColor blackColor] forKey:GlobalBackgroundColorKey];
+        [self saveColor:[UIColor whiteColor] forKey:NewGameForegroundColorKey];
+        [self saveColor:[UIColor blackColor] forKey:NewGameFontColorKey];
+        [self saveColor:[UIColor whiteColor] forKey:ScoreBoardTextColorKey];
+        [self saveColor:[UIColor clearColor] forKey:PrimaryScoreBoardForegroundColorKey];
+        [self saveColor:[UIColor clearColor] forKey:ComplimentaryScoreBoardForegroundColorKey];
+        [self saveColor:[UIColor grayColor] forKey:ScoreBoardClosedColorKey];
         [self saveColor:[UIColor blueColor] forKey:ScoreBoardWinningPlayerColorKey];
     }
 }

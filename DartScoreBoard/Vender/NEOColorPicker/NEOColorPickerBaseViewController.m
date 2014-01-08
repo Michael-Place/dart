@@ -99,7 +99,7 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:self action:@selector(buttonPressDone:)];
     [self.navigationController.navigationBar setBarTintColor:self.view.backgroundColor];
 
-    self.contentSizeForViewInPopover = CGSizeMake(320.0f, 460.0f);
+    self.preferredContentSize = CGSizeMake(320.0f, 460.0f);
 
     if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0f)
     {

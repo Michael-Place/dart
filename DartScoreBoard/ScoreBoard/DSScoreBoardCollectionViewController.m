@@ -51,7 +51,7 @@ static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderL
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
 //    [self testGameSetup];
     
     if (!self.gameIsInProgress) {
@@ -63,6 +63,8 @@ static NSString *const ScoreBoardHeaderLandscapeIdentifier = @"ScoreBoardHeaderL
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
     [self.collectionView setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
     [self.collectionView reloadData];
 }

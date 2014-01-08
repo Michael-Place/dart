@@ -12,9 +12,9 @@
 #import "DSAssetGenerator.h"
 #import "DSGame.h"
 
-const int kDefaultNumberOfPlayers = 4;
-const int kMaxNumberOfPlayers = 8;
-const int kDartGap = 60;
+const int DefaultNumberOfPlayers = 4;
+const int MaxNumberOfPlayers = 8;
+const int DartGap = 60;
 
 @interface DSNewGameViewController () <NewPlayerCellDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
@@ -79,10 +79,12 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
     // Set the interface colors
     [self.view setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
-    [self.appTitleLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [self.gameInstructionLabel setTextColor:[DSAppSkinner newGameFontColor]];
+    [self.appTitleLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+    [self.gameInstructionLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
     [self.addPlayerButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
     [self.startGameButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
     [self.settingsButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
@@ -112,6 +114,8 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardDidShowNotification
                                                   object:nil];
@@ -196,7 +200,7 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     [self newPlayerAddedWithName:newPlayer.playerName];
     
     // Dont allow more than the max players
-    if (self.newPlayers.count == kMaxNumberOfPlayers) {
+    if (self.newPlayers.count == MaxNumberOfPlayers) {
         [self.addPlayerButton setEnabled:NO];
     }
 }
@@ -240,7 +244,7 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     NSLog(@"New Player Added!! Throw Dart");
     
     UIImageView *dartView;
-    if (self.darts.count + 1 <= kMaxNumberOfPlayers/2) {
+    if (self.darts.count + 1 <= MaxNumberOfPlayers/2) {
         dartView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150, 50)];
         [dartView setImage:[DSAssetGenerator imageForDartWithFrame:dartView.frame]];
     }
@@ -259,14 +263,14 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     int yOffset;
     
     CGPoint endPoint;
-    if (self.darts.count <= kMaxNumberOfPlayers/2) {
+    if (self.darts.count <= MaxNumberOfPlayers/2) {
         currentDart = (int)self.darts.count - 1;
-        yOffset = minY + (currentDart * kDartGap);
+        yOffset = minY + (currentDart * DartGap);
         endPoint = CGPointMake(self.view.bounds.size.width - 55, yOffset);
     }
     else {
-        currentDart = abs(kMaxNumberOfPlayers/2 - (int)self.darts.count + 1);
-        yOffset = minY + (currentDart * kDartGap);
+        currentDart = abs(MaxNumberOfPlayers/2 - (int)self.darts.count + 1);
+        yOffset = minY + (currentDart * DartGap);
         endPoint = CGPointMake(self.view.bounds.origin.y + 55, yOffset);
     }
 
@@ -282,7 +286,7 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
         UIView *dartView = [self.darts lastObject];
         UIImageView *dropDart = [[UIImageView alloc] initWithFrame:dartView.frame];
         
-        if (self.darts.count <= kMaxNumberOfPlayers/2) {
+        if (self.darts.count <= MaxNumberOfPlayers/2) {
             [dropDart setImage:[DSAssetGenerator imageForDartWithFrame:dartView.frame]];
         }
         else {
@@ -488,7 +492,7 @@ static float playerNameAnimationDuration = 1.0;
     
     [self newPlayerRemoved];
     
-    if (self.newPlayers.count < kMaxNumberOfPlayers) {
+    if (self.newPlayers.count < MaxNumberOfPlayers) {
         [self.addPlayerButton setEnabled:YES];
     }
     
@@ -516,7 +520,9 @@ static float playerNameAnimationDuration = 1.0;
 #pragma mark - Settings Delegate
 - (void)didFinishWithSettings
 {
+    [self resetDartDynamics];
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self throwDartsForCurrentPlayers];
 }
 
 #pragma mark - Rotation
@@ -622,7 +628,7 @@ static float playerNameAnimationDuration = 1.0;
 
 - (NSString *)defaultNameForNewPlayer
 {
-    return [NSString stringWithFormat:@"Player %u", (self.newPlayers.count + 1)];
+    return [NSString stringWithFormat:@"Player %lu", (self.newPlayers.count + 1)];
 }
 
 - (BOOL)indexPathIsBackedByData:(NSIndexPath *)indexPath
