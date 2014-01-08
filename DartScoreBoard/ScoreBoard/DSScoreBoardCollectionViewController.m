@@ -359,11 +359,6 @@ const int portraitHeightForTableView = 776;
     [self.collectionView reloadData];
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    
-}
-
 #pragma mark - Helpers
 - (DSScoreBoardCollectionViewCell *)loadScoreBoardCollectionViewCellFromNib
 {
@@ -495,8 +490,7 @@ const int kTimeLabelWidth = 60;
 - (UILabel *)gameTimerLabel
 {
     if (!_gameTimerLabel) {
-        _gameTimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - kTimeLabelWidth, 20, kTimeLabelWidth, 20)];
-        [_gameTimerLabel setCenter:_gameTimerLabel.center];
+        _gameTimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.collectionView.frame.size.width - kTimeLabelWidth, 20, kTimeLabelWidth, 20)];
         [_gameTimerLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
         _gameTimerLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
     }
