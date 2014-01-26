@@ -348,7 +348,23 @@ const int portraitHeightForTableView = 776;
     int hours = timePassed / (60 * 60);
     int minutes = ((int)timePassed % (60 * 60)) / 60;
     int seconds = (((int)timePassed % (60 * 60)) % 60);
-    NSString *time = [NSString stringWithFormat:@"%i:%i:%i", hours, minutes, seconds];
+    
+    
+    NSString *secondString = [NSString stringWithFormat:@"%i", seconds];
+    NSString *minuteString = [NSString stringWithFormat:@"%i", minutes];
+    NSString *hourString = [NSString stringWithFormat:@"%i", hours];
+    
+    if (secondString.length == 1) {
+        secondString = [NSString stringWithFormat:@"0%@",secondString];
+    }
+    if (minuteString.length == 1) {
+        minuteString = [NSString stringWithFormat:@"0%@",minuteString];
+    }
+    if (hourString.length == 1) {
+        hourString = [NSString stringWithFormat:@"0%@",hourString];
+    }
+    
+    NSString *time = [NSString stringWithFormat:@"%@:%@:%@", hourString, minuteString, secondString];
     
     self.gameTimerLabel.text = time;
     
@@ -451,6 +467,8 @@ const int portraitHeightForTableView = 776;
     [ratingRequestAlertView show];
 }
 
+
+#warning NEED TO UPDATE URL TO POINT TO OUR APP!!!!!!!!!
 - (void)rateGame
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=409954448"]];
@@ -487,10 +505,11 @@ const int GameActionButtonPadding = 0;
     return _gameActionItemViewController;
 }
 
-const int kTimeLabelWidth = 60;
+const int kTimeLabelWidth = 80;
 - (UILabel *)gameTimerLabel
 {
     if (!_gameTimerLabel) {
+        [_gameTimerLabel setFont:[UIFont fontWithName:@"Helvetica" size:25.0]];
         _gameTimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.collectionView.frame.size.width - kTimeLabelWidth, 20, kTimeLabelWidth, 20)];
         [_gameTimerLabel setTextColor:[DSAppSkinner globalTextColor]];
         _gameTimerLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;

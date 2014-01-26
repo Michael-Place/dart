@@ -648,7 +648,7 @@ static float playerNameAnimationDuration = 1.0;
 
 - (NSString *)defaultNameForNewPlayer
 {
-    return [NSString stringWithFormat:@"Player %lu", (self.newPlayers.count + 1)];
+    return [NSString stringWithFormat:@"Player %u", (self.newPlayers.count + 1)];
 }
 
 - (BOOL)indexPathIsBackedByData:(NSIndexPath *)indexPath
