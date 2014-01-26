@@ -182,6 +182,7 @@ enum AlertTag {
                                                                      delegate:self
                                                             cancelButtonTitle:@"Cancel"
                                                             otherButtonTitles:@"Revert", nil];
+    resetColorDefaultsAlert.tag = AlertTagRevertToDefaultColors;
     [resetColorDefaultsAlert show];
 }
 
