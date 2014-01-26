@@ -49,6 +49,7 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 {
     self.newPlayers = nil;
     [self.newPlayers addObjectsFromArray:players];
+    [self performSelector:@selector(throwDartsForCurrentPlayers) withObject:nil afterDelay:0.5];
 }
 
 - (void)viewDidLoad
@@ -72,9 +73,7 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     //UIDynamics
     self.darts = [NSMutableArray array];
     self.droppedDarts = [NSMutableArray array];
-    
-    [self addCollisionBoundaryForView:self.startGameButton];
-    
+        
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -308,6 +307,11 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
         [self addGravityForView:dropDart];
         [self addCollisionForView:dropDart];
     }
+    
+    [self.collision removeAllBoundaries];
+    [self addCollisionBoundaryForView:self.startGameButton];
+    [self addCollisionBoundaryForView:self.addPlayerButton];
+    [self addCollisionBoundaryForView:self.settingsButton];
 }
 
 #pragma mark - UIDynamic helpers
@@ -389,8 +393,6 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     self.darts = [NSMutableArray array];
     self.droppedDarts = [NSMutableArray array];
     
-    [self addCollisionBoundaryForView:self.startGameButton];
-    [self addCollisionBoundaryForView:self.addPlayerButton];
 }
 
 - (void)throwDartsForCurrentPlayers
