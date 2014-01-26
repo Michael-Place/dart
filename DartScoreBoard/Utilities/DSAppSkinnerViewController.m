@@ -8,6 +8,7 @@
 
 #import "DSAppSkinnerViewController.h"
 #import "NEOColorPickerViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface DSAppSkinnerViewController () <NEOColorPickerViewControllerDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *settingsTitleLabel;
@@ -99,6 +100,21 @@ enum AlertTag {
     [self.scoreOpenColorButton setBackgroundColor:[DSAppSkinner scoreBoardTextColor]];
     [self.scoreClosedColorButton setBackgroundColor:[DSAppSkinner scoreBoardClosedColor]];
     [self.scoreDividerColorButton setBackgroundColor:[DSAppSkinner scoreBoardDividerColor]];
+    
+    [self.scoreDividerColorButton.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.scoreDividerColorButton.layer setBorderWidth:1.0];
+    
+    [self.oddPlayerColorButton.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.oddPlayerColorButton.layer setBorderWidth:1.0];
+    
+    [self.evenPlayerColorButton.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.evenPlayerColorButton.layer setBorderWidth:1.0];
+    
+    [self.scoreOpenColorButton.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.scoreOpenColorButton.layer setBorderWidth:1.0];
+    
+    [self.scoreClosedColorButton.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.scoreClosedColorButton.layer setBorderWidth:1.0];
 
 }
 

@@ -48,8 +48,22 @@
     if (cell == nil) {
         cell = [self loadPlayerScoreValueCellFromNib];
     }
-    [self.playerNameLabel setTextColor:[DSAppSkinner globalTextColor]];
-    [self.totalScoreLabel setTextColor:[DSAppSkinner globalTextColor]];
+    
+    if ([DSGame sharedGame].winner && [DSGame sharedGame].winner.length > 0) {
+        if ([[DSGame sharedGame].winner isEqualToString:self.player.playerName]) {
+            [self.playerNameLabel setTextColor:[DSAppSkinner globalTextColor]];
+            [self.totalScoreLabel setTextColor:[DSAppSkinner globalTextColor]];
+        }
+        else {
+            [self.playerNameLabel setTextColor:[DSAppSkinner scoreBoardClosedColor]];
+            [self.totalScoreLabel setTextColor:[DSAppSkinner scoreBoardClosedColor]];
+        }
+    }
+    else {
+        [self.playerNameLabel setTextColor:[DSAppSkinner globalTextColor]];
+        [self.totalScoreLabel setTextColor:[DSAppSkinner globalTextColor]];
+    }
+    
     
     cell.playerName = self.player.playerName;
     cell.scoreValue = [DSGame scoreValueForIndex:indexPath.row];

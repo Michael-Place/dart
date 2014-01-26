@@ -166,12 +166,15 @@ const int DefaultPlayersPerSection = 2;
     [scoreBoardCell.totalScoreLabel setText:[NSString stringWithFormat:@"%d", playerForCell.totalPointsEarned]];
     [scoreBoardCell.playerScoreTableView reloadData];
 
-    
-    if ([DSGame sharedGame].winner && [[DSGame sharedGame].winner isEqualToString:playerForCell.playerName]) {
-        [scoreBoardCell setBackgroundColor:[DSAppSkinner scoreBoardWinningPlayerColor]];
-    } else {
-        [scoreBoardCell setBackgroundColor:[UIColor clearColor]];
-    }
+    [scoreBoardCell setBackgroundColor:[UIColor clearColor]];
+
+
+    // Winner highlighting
+//    if ([DSGame sharedGame].winner && [[DSGame sharedGame].winner isEqualToString:playerForCell.playerName]) {
+//        [scoreBoardCell setBackgroundColor:[DSAppSkinner scoreBoardWinningPlayerColor]];
+//    } else {
+//        [scoreBoardCell setBackgroundColor:[UIColor clearColor]];
+//    }
     
     return scoreBoardCell;
 
