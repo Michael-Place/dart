@@ -83,15 +83,17 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 
     // Set the interface colors
     [self.view setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
-    [self.appTitleLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
-    [self.gameInstructionLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
-    [self.addPlayerButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
-    [self.startGameButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
-    [self.settingsButton setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+    [self.appTitleLabel setTextColor:[DSAppSkinner globalTextColor]];
+    [self.gameInstructionLabel setTextColor:[DSAppSkinner globalTextColor]];
+    [self.addPlayerButton setBackgroundColor:[DSAppSkinner globalTextColor]];
+    [self.startGameButton setBackgroundColor:[DSAppSkinner globalTextColor]];
+    [self.settingsButton setBackgroundColor:[DSAppSkinner globalTextColor]];
     
-    [self.addPlayerButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
-    [self.startGameButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
-    [self.settingsButton setTitleColor:[DSAppSkinner newGameFontColor] forState:UIControlStateNormal];
+    [self.addPlayerButton setTitleColor:[DSAppSkinner globalBackgroundColor] forState:UIControlStateNormal];
+    [self.startGameButton setTitleColor:[DSAppSkinner globalBackgroundColor] forState:UIControlStateNormal];
+    [self.settingsButton setTitleColor:[DSAppSkinner globalBackgroundColor] forState:UIControlStateNormal];
+    
+    [self.collectionView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -422,11 +424,27 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
     DSPlayer *playerForIndexPath = [self.newPlayers objectAtIndex:indexPath.row];
     
     // Set the interface colors
-    [newPlayerCell.backgroundColorView setBackgroundColor:[DSAppSkinner newGameForegroundColor]];
+    if (indexPath.row % 2 == 0) {
+        if ([DSAppSkinner globalBackgroundColor] != [DSAppSkinner evenPlayerScoreBoardColor]) {
+            [newPlayerCell.backgroundColorView setBackgroundColor:[DSAppSkinner evenPlayerScoreBoardColor]];
+        }
+        else {
+            [newPlayerCell.backgroundColorView setBackgroundColor:[DSAppSkinner globalTextColor]];
+        }
+    }
+    else {
+        if ([DSAppSkinner globalBackgroundColor] != [DSAppSkinner oddPlayerScoreboardColor]) {
+            [newPlayerCell.backgroundColorView setBackgroundColor:[DSAppSkinner oddPlayerScoreboardColor]];
+        }
+        else {
+            [newPlayerCell.backgroundColorView setBackgroundColor:[DSAppSkinner globalTextColor]];
+        }
+    }
+    
     [newPlayerCell.playerNameTextField setText:playerForIndexPath.playerName];
     [newPlayerCell.playerNameLabel setText:playerForIndexPath.playerName];
-    [newPlayerCell.playerNameLabel setTextColor:[DSAppSkinner newGameFontColor]];
-    [newPlayerCell.playerNameTextField setTextColor:[DSAppSkinner newGameFontColor]];
+    [newPlayerCell.playerNameLabel setTextColor:[DSAppSkinner globalBackgroundColor]];
+    [newPlayerCell.playerNameTextField setTextColor:[DSAppSkinner globalBackgroundColor]];
     
     // First two players can't be deleted
     [newPlayerCell.deletePlayerButton setHidden:(indexPath.row < 2) ? YES : NO];

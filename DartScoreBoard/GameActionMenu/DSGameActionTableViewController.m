@@ -13,9 +13,9 @@
 @end
 
 @implementation DSGameActionTableViewController
-static NSString *const ResetGameActionString = @"Reset Game";
-static NSString *const NewGameWithSamePlayersActionString = @"Start New Game";
-static NSString *const NavigateBackToNewGameViewActionString = @"Back to Menu";
+static NSString *const ResetGameActionString = @"Clear Scores";
+static NSString *const NewGameWithSamePlayersActionString = @"Modify Game";
+static NSString *const NavigateBackToNewGameViewActionString = @"Start New Game";
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -88,7 +88,7 @@ static NSString *const NavigateBackToNewGameViewActionString = @"Back to Menu";
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    enum DSGameAction selectedAction = (int)indexPath.row;
+    enum DSGameAction selectedAction = (int)[self.tableView cellForRowAtIndexPath:indexPath].tag;
     
     if ([self.gameActionDelegate respondsToSelector:@selector(didSelectGameAction:)]) {
         [self.gameActionDelegate didSelectGameAction:selectedAction];
@@ -101,8 +101,8 @@ static NSString *const NavigateBackToNewGameViewActionString = @"Back to Menu";
     if (!_gameActionOptions) {
         // Order here dictates order in the user interface
         _gameActionOptions = @{ResetGameActionString : [NSNumber numberWithInt:DSGameActionResetGame],
-                               NewGameWithSamePlayersActionString : [NSNumber numberWithInt:DSGameActionResetGame],
-                               NavigateBackToNewGameViewActionString : [NSNumber numberWithInt:DSGameActionResetGame]};
+                               NewGameWithSamePlayersActionString : [NSNumber numberWithInt:DSGameActionStartNewGameWithSamePlayers],
+                               NavigateBackToNewGameViewActionString : [NSNumber numberWithInt:DSGameActionNavigateBackToNewGameView]};
     }
     
     return _gameActionOptions;

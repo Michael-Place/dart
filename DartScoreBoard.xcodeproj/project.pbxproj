@@ -61,7 +61,6 @@
 		E9C9D55A1849429D0085BC43 /* DSGame.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C9D5591849429D0085BC43 /* DSGame.m */; };
 		E9C9D55D184944370085BC43 /* DSScoreBoardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */; };
 		E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */; };
-		E9ED53E1186BFDFA00AA39FE /* UIColor+HexSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */; };
 		ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */; };
 		EDF51051187CE1DF001CAF14 /* DSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF51050187CE1DF001CAF14 /* DSHelper.m */; };
 /* End PBXBuildFile section */
@@ -155,8 +154,6 @@
 		E9C9D55B184944370085BC43 /* DSScoreBoardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSScoreBoardCollectionViewCell.h; path = ScoreBoard/DSScoreBoardCollectionViewCell.h; sourceTree = "<group>"; };
 		E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSScoreBoardCollectionViewCell.m; path = ScoreBoard/DSScoreBoardCollectionViewCell.m; sourceTree = "<group>"; };
 		E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSScoreBoardCollectionViewCell.xib; path = ScoreBoard/DSScoreBoardCollectionViewCell.xib; sourceTree = "<group>"; };
-		E9ED53DF186BFDFA00AA39FE /* UIColor+HexSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexSupport.h"; path = "Utilities/UIColor+HexSupport.h"; sourceTree = "<group>"; };
-		E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexSupport.m"; path = "Utilities/UIColor+HexSupport.m"; sourceTree = "<group>"; };
 		ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CricketScoreValueList.plist; sourceTree = "<group>"; };
 		EDF5104F187CE1DF001CAF14 /* DSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSHelper.h; sourceTree = "<group>"; };
 		EDF51050187CE1DF001CAF14 /* DSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSHelper.m; sourceTree = "<group>"; };
@@ -384,8 +381,6 @@
 			children = (
 				EDF5104F187CE1DF001CAF14 /* DSHelper.h */,
 				EDF51050187CE1DF001CAF14 /* DSHelper.m */,
-				E9ED53DF186BFDFA00AA39FE /* UIColor+HexSupport.h */,
-				E9ED53E0186BFDFA00AA39FE /* UIColor+HexSupport.m */,
 				E911731D186CA71D006351AA /* DSAppSkinner.h */,
 				E911731E186CA71D006351AA /* DSAppSkinner.m */,
 				E95303651876650E00F30AC8 /* DSAppSkinnerViewController.h */,
@@ -546,7 +541,6 @@
 				E95303A0187676F500F30AC8 /* NEOColorPickerViewController.m in Sources */,
 				E9C9D557184942930085BC43 /* DSPlayer.m in Sources */,
 				E9C9D55D184944370085BC43 /* DSScoreBoardCollectionViewCell.m in Sources */,
-				E9ED53E1186BFDFA00AA39FE /* UIColor+HexSupport.m in Sources */,
 				E98D954318494A0900A02273 /* DSNewGameViewController.m in Sources */,
 				E949B76A185183BE003CD01C /* DSGameActionItemViewController.m in Sources */,
 				E96CF9B11850322E00032DFF /* DSScoreCollectionView.m in Sources */,

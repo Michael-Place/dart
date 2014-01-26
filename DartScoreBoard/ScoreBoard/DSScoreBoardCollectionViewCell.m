@@ -48,6 +48,8 @@
     if (cell == nil) {
         cell = [self loadPlayerScoreValueCellFromNib];
     }
+    [self.playerNameLabel setTextColor:[DSAppSkinner globalTextColor]];
+    [self.totalScoreLabel setTextColor:[DSAppSkinner globalTextColor]];
     
     cell.playerName = self.player.playerName;
     cell.scoreValue = [DSGame scoreValueForIndex:indexPath.row];

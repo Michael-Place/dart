@@ -32,9 +32,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     // Set interface colors
-    [self.menuButton setTitleColor:[DSAppSkinner scoreBoardTextColor] forState:UIControlStateNormal];
+    [self.menuButton setTitleColor:[DSAppSkinner globalTextColor] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning

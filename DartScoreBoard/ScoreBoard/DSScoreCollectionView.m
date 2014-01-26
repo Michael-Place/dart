@@ -13,6 +13,7 @@
 @interface DSScoreCollectionView() <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *scoreList;
+@property (weak, nonatomic) IBOutlet UIView *backgroundColorView;
 
 @end
 
@@ -53,9 +54,9 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.backgroundColor = [UIColor clearColor];
-
-    cell.textLabel.textColor = [UIColor whiteColor];
+    [self.backgroundColorView setBackgroundColor:[DSAppSkinner scoreBoardDividerColor]];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    
     [cell.textLabel setFont:[UIFont systemFontOfSize:60]];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", self.scoreList[indexPath.row]];
     [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
@@ -66,7 +67,7 @@
     if (shouldClose || [[DSGame sharedGame] winner].length) {
         [cell.textLabel setTextColor:[DSAppSkinner scoreBoardClosedColor]];
     } else {
-        [cell.textLabel setTextColor:[DSAppSkinner scoreBoardTextColor]];
+        [cell.textLabel setTextColor:[DSAppSkinner globalTextColor]];
     }
     
     return cell;

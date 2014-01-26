@@ -182,7 +182,7 @@ enum DSStrikeState {
 - (void)drawDeleteNewPlayer
 {
     //// Color Declarations
-    UIColor* strokeColor = [DSAppSkinner newGameForegroundColor];
+    UIColor* strokeColor = [DSAppSkinner globalTextColor];
     
     //// Bezier 2 Drawing
     UIBezierPath* bezier2Path = [UIBezierPath bezierPath];
@@ -209,10 +209,10 @@ enum DSStrikeState {
 - (void)drawDart
 {
     //// Color Declarations
-    UIColor* strokeColor = [UIColor whiteColor];
+    UIColor* strokeColor = [DSAppSkinner globalTextColor];
     
-    UIColor *dartGripColor = [DSAppSkinner newGameForegroundColor];
-    UIColor *dartFlightColor = [DSAppSkinner newGameForegroundColor];
+    UIColor *dartGripColor = [DSAppSkinner globalTextColor];
+    UIColor *dartFlightColor = [DSAppSkinner globalTextColor];
     
     //// Bezier Drawing
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];

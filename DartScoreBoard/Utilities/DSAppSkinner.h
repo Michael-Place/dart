@@ -9,47 +9,49 @@
 #import <Foundation/Foundation.h>
 
 enum DSAppColor {
-    DSAppColorGlobalBackgroundColor,
-    DSAppColorNewGameForegroundColor,
-    DSAppColorNewGameFontColor,
     DSAppColorScoreBoardTextColor,
-    DSAppColorPrimaryScoreBoardForegroundColor,
-    DSAppColorComplimentaryScoreBoardForegroundColor,
+    DSAppColorOddPlayerScoreBoardColor,
+    DSAppColorEvenPlayerScoreBoardColor,
     DSAppColorScoreBoardClosedColor,
-    DSAppColorScoreBoardWinningPlayerColor
+    DSAppColorScoreBoardWinningPlayerColor,
+    DSAppColorScoreBoardDividerColor
+    };
+
+enum DSTheme {
+    DSThemeNightMode,
+    DSThemeDayMode
     };
 
 @interface DSAppSkinner : NSObject
-extern NSString *const GlobalBackgroundColorKey;
-extern NSString *const NewGameForegroundColorKey;
-extern NSString *const NewGameFontColorKey;
 extern NSString *const ScoreBoardTextColorKey;
-extern NSString *const PrimaryScoreBoardForegroundColorKey;
-extern NSString *const ComplimentaryScoreBoardForegroundColorKey;
+extern NSString *const OddPlayerScoreBoardColorKey;
+extern NSString *const EvenPlayerScoreBoardColorKey;
 extern NSString *const ScoreBoardClosedColorKey;
 extern NSString *const ScoreBoardWinningPlayerColorKey;
+extern NSString *const ScoreBoardDividerColorKey;
 
-+ (void)initializeColorsIfNecessary;
++ (void)initializeColorsIfNecessaryOverride:(BOOL)override;
+
+// Theme value for the app
++ (enum DSTheme)appTheme;
 
 // Color for the background of the app
 + (UIColor *)globalBackgroundColor;
 
+// Color for the app text
++ (UIColor *)globalTextColor;
 
-// Color for the foreground elements on the new game view
-+ (UIColor *)newGameForegroundColor;
+// Color for the player cell. (Alternates with the complimentary foreground color)
++ (UIColor *)oddPlayerScoreboardColor;
 
-// Text color for the new game view
-+ (UIColor *)newGameFontColor;
+// Color for the player cell. (Alternates with the primary foreground color)
++ (UIColor *)evenPlayerScoreBoardColor;
 
+// Color for the score dividers on the score board.
++ (UIColor *)scoreBoardDividerColor;
 
 // Text color for the score board
 + (UIColor *)scoreBoardTextColor;
-
-// Color for the player cell. (Alternates with the complimentary foreground color)
-+ (UIColor *)primaryScoreBoardForegroundColor;
-
-// Color for the player cell. (Alternates with the primary foreground color)
-+ (UIColor *)complimentaryScoreBoardForegroundColor;
 
 // Text color for the score board when a score has been closed
 + (UIColor *)scoreBoardClosedColor;
@@ -62,4 +64,8 @@ extern NSString *const ScoreBoardWinningPlayerColorKey;
 + (void)saveColor:(UIColor *)color forKey:(NSString *)colorKey;
 
 + (NSString *)keyForAppColor:(enum DSAppColor)appColor;
+
+// Update the app theme value
++ (void)setAppTheme:(enum DSTheme)theme;
+
 @end

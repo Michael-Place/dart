@@ -34,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *selectedColorLabel;
 @property (nonatomic, strong) NSString* favoritesTitle;
 
+- (void) updateSelectedColor;
+
 - (IBAction)buttonPressHue:(id)sender;
 - (IBAction)buttonPressHueGrid:(id)sender;
 - (IBAction)buttonPressAddFavorite:(id)sender;

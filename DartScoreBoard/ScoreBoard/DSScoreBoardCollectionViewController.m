@@ -74,6 +74,7 @@ const int kAppRatingAlertViewTag = 100;
 
     [self.collectionView setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
     [self.collectionView reloadData];
+    [self reloadSectionHeaders];
 }
 
 - (void)didReceiveMemoryWarning
@@ -180,18 +181,18 @@ const int DefaultPlayersPerSection = 2;
 {
     if ([[[DSGame sharedGame] players] count] <= 3) {
         if (indexPath.section % 2 == 0) {
-            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner primaryScoreBoardForegroundColor]];
+            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner oddPlayerScoreboardColor]];
         }
         else {
-            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner complimentaryScoreBoardForegroundColor]];
+            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner evenPlayerScoreBoardColor]];
         }
     }
     else {
         if ((indexPath.row % 2 == 0)) {
-            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner primaryScoreBoardForegroundColor]];
+            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner oddPlayerScoreboardColor]];
         }
         else {
-            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner complimentaryScoreBoardForegroundColor]];
+            [scoreBoardCell.colorView setBackgroundColor:[DSAppSkinner evenPlayerScoreBoardColor]];
         }
     }
 }
@@ -491,7 +492,7 @@ const int kTimeLabelWidth = 60;
 {
     if (!_gameTimerLabel) {
         _gameTimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.collectionView.frame.size.width - kTimeLabelWidth, 20, kTimeLabelWidth, 20)];
-        [_gameTimerLabel setTextColor:[DSAppSkinner newGameForegroundColor]];
+        [_gameTimerLabel setTextColor:[DSAppSkinner globalTextColor]];
         _gameTimerLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
     }
     return _gameTimerLabel;
