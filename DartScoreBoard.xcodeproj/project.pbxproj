@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		E911731F186CA71D006351AA /* DSAppSkinner.m in Sources */ = {isa = PBXBuildFile; fileRef = E911731E186CA71D006351AA /* DSAppSkinner.m */; };
 		E9117321186CA7EF006351AA /* DSNewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9117320186CA7EF006351AA /* DSNewGameViewController.xib */; };
-		E9117328186CA80B006351AA /* spotlight-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117322186CA80B006351AA /* spotlight-icon@2x.png */; };
-		E9117329186CA80B006351AA /* spotlight-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117323186CA80B006351AA /* spotlight-icon.png */; };
-		E911732A186CA80B006351AA /* settings-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117324186CA80B006351AA /* settings-icon@2x.png */; };
-		E911732B186CA80B006351AA /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117325186CA80B006351AA /* settings-icon.png */; };
-		E911732C186CA80B006351AA /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117326186CA80B006351AA /* Icon-76@2x.png */; };
-		E911732D186CA80B006351AA /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = E9117327186CA80B006351AA /* icon-76.png */; };
 		E92C414B18495949001CA645 /* DSPlayerScoreValueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */; };
 		E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */; };
 		E949B7651851837B003CD01C /* DSGameActionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E949B7631851837B003CD01C /* DSGameActionTableViewController.m */; };
@@ -61,6 +55,18 @@
 		E9C9D55A1849429D0085BC43 /* DSGame.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C9D5591849429D0085BC43 /* DSGame.m */; };
 		E9C9D55D184944370085BC43 /* DSScoreBoardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */; };
 		E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */; };
+		E9E711951895E0A8004A0FD1 /* spotlight-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E7118F1895E0A8004A0FD1 /* spotlight-icon@2x.png */; };
+		E9E711961895E0A8004A0FD1 /* spotlight-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E7118F1895E0A8004A0FD1 /* spotlight-icon@2x.png */; };
+		E9E711971895E0A8004A0FD1 /* spotlight-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E711901895E0A8004A0FD1 /* spotlight-icon.png */; };
+		E9E711981895E0A8004A0FD1 /* spotlight-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E711901895E0A8004A0FD1 /* spotlight-icon.png */; };
+		E9E711991895E0A8004A0FD1 /* settings-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E711911895E0A8004A0FD1 /* settings-icon@2x.png */; };
+		E9E7119A1895E0A8004A0FD1 /* settings-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E711911895E0A8004A0FD1 /* settings-icon@2x.png */; };
+		E9E7119B1895E0A8004A0FD1 /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E711921895E0A8004A0FD1 /* settings-icon.png */; };
+		E9E7119C1895E0A8004A0FD1 /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E711921895E0A8004A0FD1 /* settings-icon.png */; };
+		E9E7119D1895E0A8004A0FD1 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E711931895E0A8004A0FD1 /* Icon-76@2x.png */; };
+		E9E7119E1895E0A8004A0FD1 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E711931895E0A8004A0FD1 /* Icon-76@2x.png */; };
+		E9E7119F1895E0A8004A0FD1 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E711941895E0A8004A0FD1 /* Icon-76.png */; };
+		E9E711A01895E0A8004A0FD1 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E711941895E0A8004A0FD1 /* Icon-76.png */; };
 		ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */; };
 		EDF51051187CE1DF001CAF14 /* DSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF51050187CE1DF001CAF14 /* DSHelper.m */; };
 /* End PBXBuildFile section */
@@ -79,12 +85,6 @@
 		E911731D186CA71D006351AA /* DSAppSkinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSAppSkinner.h; path = Utilities/DSAppSkinner.h; sourceTree = "<group>"; };
 		E911731E186CA71D006351AA /* DSAppSkinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSAppSkinner.m; path = Utilities/DSAppSkinner.m; sourceTree = "<group>"; };
 		E9117320186CA7EF006351AA /* DSNewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSNewGameViewController.xib; path = NewGame/DSNewGameViewController.xib; sourceTree = "<group>"; };
-		E9117322186CA80B006351AA /* spotlight-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spotlight-icon@2x.png"; path = "Assets/Icon/spotlight-icon@2x.png"; sourceTree = "<group>"; };
-		E9117323186CA80B006351AA /* spotlight-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spotlight-icon.png"; path = "Assets/Icon/spotlight-icon.png"; sourceTree = "<group>"; };
-		E9117324186CA80B006351AA /* settings-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-icon@2x.png"; path = "Assets/Icon/settings-icon@2x.png"; sourceTree = "<group>"; };
-		E9117325186CA80B006351AA /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-icon.png"; path = "Assets/Icon/settings-icon.png"; sourceTree = "<group>"; };
-		E9117326186CA80B006351AA /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Assets/Icon/Icon-76@2x.png"; sourceTree = "<group>"; };
-		E9117327186CA80B006351AA /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-76.png"; path = "Assets/Icon/icon-76.png"; sourceTree = "<group>"; };
 		E92C414918495949001CA645 /* DSPlayerScoreValueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSPlayerScoreValueTableViewCell.h; path = ScoreBoard/DSPlayerScoreValueTableViewCell.h; sourceTree = "<group>"; };
 		E92C414A18495949001CA645 /* DSPlayerScoreValueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSPlayerScoreValueTableViewCell.m; path = ScoreBoard/DSPlayerScoreValueTableViewCell.m; sourceTree = "<group>"; };
 		E92C414C18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSPlayerScoreValueTableViewCell.xib; path = ScoreBoard/DSPlayerScoreValueTableViewCell.xib; sourceTree = "<group>"; };
@@ -154,6 +154,12 @@
 		E9C9D55B184944370085BC43 /* DSScoreBoardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSScoreBoardCollectionViewCell.h; path = ScoreBoard/DSScoreBoardCollectionViewCell.h; sourceTree = "<group>"; };
 		E9C9D55C184944370085BC43 /* DSScoreBoardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSScoreBoardCollectionViewCell.m; path = ScoreBoard/DSScoreBoardCollectionViewCell.m; sourceTree = "<group>"; };
 		E9C9D55E184944450085BC43 /* DSScoreBoardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DSScoreBoardCollectionViewCell.xib; path = ScoreBoard/DSScoreBoardCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9E7118F1895E0A8004A0FD1 /* spotlight-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spotlight-icon@2x.png"; path = "Assets/Icon/spotlight-icon@2x.png"; sourceTree = "<group>"; };
+		E9E711901895E0A8004A0FD1 /* spotlight-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spotlight-icon.png"; path = "Assets/Icon/spotlight-icon.png"; sourceTree = "<group>"; };
+		E9E711911895E0A8004A0FD1 /* settings-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-icon@2x.png"; path = "Assets/Icon/settings-icon@2x.png"; sourceTree = "<group>"; };
+		E9E711921895E0A8004A0FD1 /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-icon.png"; path = "Assets/Icon/settings-icon.png"; sourceTree = "<group>"; };
+		E9E711931895E0A8004A0FD1 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Assets/Icon/Icon-76@2x.png"; sourceTree = "<group>"; };
+		E9E711941895E0A8004A0FD1 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "Assets/Icon/Icon-76.png"; sourceTree = "<group>"; };
 		ED378D2C184A4EC500B762A0 /* CricketScoreValueList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CricketScoreValueList.plist; sourceTree = "<group>"; };
 		EDF5104F187CE1DF001CAF14 /* DSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSHelper.h; sourceTree = "<group>"; };
 		EDF51050187CE1DF001CAF14 /* DSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSHelper.m; sourceTree = "<group>"; };
@@ -366,12 +372,12 @@
 		E9E8C18C18526752002DD5C3 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
-				E9117322186CA80B006351AA /* spotlight-icon@2x.png */,
-				E9117323186CA80B006351AA /* spotlight-icon.png */,
-				E9117324186CA80B006351AA /* settings-icon@2x.png */,
-				E9117325186CA80B006351AA /* settings-icon.png */,
-				E9117326186CA80B006351AA /* Icon-76@2x.png */,
-				E9117327186CA80B006351AA /* icon-76.png */,
+				E9E7118F1895E0A8004A0FD1 /* spotlight-icon@2x.png */,
+				E9E711901895E0A8004A0FD1 /* spotlight-icon.png */,
+				E9E711911895E0A8004A0FD1 /* settings-icon@2x.png */,
+				E9E711921895E0A8004A0FD1 /* settings-icon.png */,
+				E9E711931895E0A8004A0FD1 /* Icon-76@2x.png */,
+				E9E711941895E0A8004A0FD1 /* Icon-76.png */,
 			);
 			name = Icon;
 			sourceTree = "<group>";
@@ -494,14 +500,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9117329186CA80B006351AA /* spotlight-icon.png in Resources */,
 				E953039F187676F500F30AC8 /* NEOColorPickerViewController.xib in Resources */,
 				E95303A3187676F500F30AC8 /* NEOColorPickerHSLViewController.xib in Resources */,
 				E95303A9187676F500F30AC8 /* colorPicker.bundle in Resources */,
-				E911732C186CA80B006351AA /* Icon-76@2x.png in Resources */,
 				E9C9D52F18493E790085BC43 /* Main_iPad.storyboard in Resources */,
 				E949B7661851837B003CD01C /* DSGameActionTableViewController.xib in Resources */,
 				E95303691876650E00F30AC8 /* DSAppSkinnerViewController.xib in Resources */,
+				E9E711951895E0A8004A0FD1 /* spotlight-icon@2x.png in Resources */,
 				E96CF999185007DC00032DFF /* DSScoreCollectionView.xib in Resources */,
 				E9117321186CA7EF006351AA /* DSNewGameViewController.xib in Resources */,
 				E95303A1187676F500F30AC8 /* NEOColorPickerHueGridViewController.xib in Resources */,
@@ -509,16 +514,17 @@
 				E95303A6187676F500F30AC8 /* NEOColorPickerFavoritesViewController.xib in Resources */,
 				E9A5CC25184BF08500619D7D /* DSNewPlayerCollectionViewCell.xib in Resources */,
 				E949B76B185183BE003CD01C /* DSGameActionItemViewController.xib in Resources */,
+				E9E711991895E0A8004A0FD1 /* settings-icon@2x.png in Resources */,
 				E9C9D55F184944450085BC43 /* DSScoreBoardCollectionViewCell.xib in Resources */,
-				E911732B186CA80B006351AA /* settings-icon.png in Resources */,
+				E9E711971895E0A8004A0FD1 /* spotlight-icon.png in Resources */,
 				E92C414D18495965001CA645 /* DSPlayerScoreValueTableViewCell.xib in Resources */,
+				E9E7119B1895E0A8004A0FD1 /* settings-icon.png in Resources */,
 				E9C9D53418493E790085BC43 /* Images.xcassets in Resources */,
-				E9117328186CA80B006351AA /* spotlight-icon@2x.png in Resources */,
 				ED378D2D184A4EC500B762A0 /* CricketScoreValueList.plist in Resources */,
-				E911732A186CA80B006351AA /* settings-icon@2x.png in Resources */,
 				E9C9D52C18493E790085BC43 /* Main_iPhone.storyboard in Resources */,
+				E9E7119F1895E0A8004A0FD1 /* Icon-76.png in Resources */,
+				E9E7119D1895E0A8004A0FD1 /* Icon-76@2x.png in Resources */,
 				E9C9D52318493E790085BC43 /* InfoPlist.strings in Resources */,
-				E911732D186CA80B006351AA /* icon-76.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +532,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E7119A1895E0A8004A0FD1 /* settings-icon@2x.png in Resources */,
+				E9E711981895E0A8004A0FD1 /* spotlight-icon.png in Resources */,
+				E9E711961895E0A8004A0FD1 /* spotlight-icon@2x.png in Resources */,
+				E9E711A01895E0A8004A0FD1 /* Icon-76.png in Resources */,
+				E9E7119C1895E0A8004A0FD1 /* settings-icon.png in Resources */,
+				E9E7119E1895E0A8004A0FD1 /* Icon-76@2x.png in Resources */,
 				E9C9D54518493E790085BC43 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,7 +715,8 @@
 				INFOPLIST_FILE = "DartScoreBoard/DartScoreBoard-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4EF77940-9667-4266-88E4-C1728A791B2C";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -712,15 +725,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Place (Z2FNFL3X73)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Place (Z2FNFL3X73)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DartScoreBoard/DartScoreBoard-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				INFOPLIST_FILE = "DartScoreBoard/DartScoreBoard-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "CB1EBEB3-F76D-49A3-964A-C9FC72E6104F";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

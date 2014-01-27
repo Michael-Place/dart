@@ -470,11 +470,9 @@ const int portraitHeightForTableView = 776;
     [ratingRequestAlertView show];
 }
 
-
-#warning NEED TO UPDATE URL TO POINT TO OUR APP!!!!!!!!!
 - (void)rateGame
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=409954448"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=807259884"]];
 }
 
 #pragma mark - AlerView Delegate
