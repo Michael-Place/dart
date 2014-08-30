@@ -9,6 +9,9 @@
 #import "DSAppSkinnerViewController.h"
 #import "NEOColorPickerViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DSGoogleAnalytics.h"
+#import "DSGAConstants.h"
+
 
 @interface DSAppSkinnerViewController () <NEOColorPickerViewControllerDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *settingsTitleLabel;
@@ -61,14 +64,11 @@ enum AlertTag {
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    [DSGoogleAnalytics trackPage:kDSGAScreenNameSettingsView withDictionary:nil];
+    
     [self setColorButtonTags];
     
     [self initializeInterfaceColors];
@@ -175,6 +175,11 @@ enum AlertTag {
 
 - (IBAction)doneButtonTapped:(id)sender
 {
+    [DSGoogleAnalytics trackEventWithCategory:kDSGAEventCategoryUserEvent
+                                        label:kDSGAEventLabelDoneButton
+                                       action:kDSGAEventActionClickAction
+                                        value:nil
+                                   dicitonary:nil];
     if (self.settingsDelegate && [self.settingsDelegate respondsToSelector:@selector(didFinishWithSettings)]) {
         [self.settingsDelegate didFinishWithSettings];
     }
@@ -193,6 +198,11 @@ enum AlertTag {
 
 - (IBAction)resetColorDefaultsButtonTapped:(id)sender
 {
+    [DSGoogleAnalytics trackEventWithCategory:kDSGAEventCategoryUserEvent
+                                        label:kDSGAEventLabelRevertToDefaultButton
+                                       action:kDSGAEventActionClickAction
+                                        value:nil
+                                   dicitonary:nil];
     UIAlertView *resetColorDefaultsAlert = [[UIAlertView alloc] initWithTitle:@"Revert to Default Colors"
                                                                       message:@"Are you sure you want to revert to the default color scheme?"
                                                                      delegate:self

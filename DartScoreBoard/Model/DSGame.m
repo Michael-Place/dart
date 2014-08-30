@@ -8,6 +8,8 @@
 
 #import "DSGame.h"
 #import "DSPlayer.h"
+#import "DSGoogleAnalytics.h"
+#import "DSGAConstants.h"
 
 @interface DSGame ()
 @property (nonatomic, strong) NSDictionary *scoreValueDictionary;
@@ -79,6 +81,11 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     for (DSPlayer *player in self.players) {
         [player setPlayerStatistics:nil];
     }
+    [DSGoogleAnalytics trackEventWithCategory:kDSGAEventCategoryGameEvent
+                                        label:kDSGAEventLabelNewGame
+                                       action:nil
+                                        value:@(self.players.count)
+                                   dicitonary:nil];
 }
 
 #pragma mark - Game state updater
@@ -139,6 +146,13 @@ NSString *const CricketScoreStringFifteen = @"Fifteen";
     
     if ([possibleWinner hasClosedAllScoreValues] && [possibleWinner totalPointsEarned] > 0) {
         self.winner = possibleWinner.playerName;
+        
+        NSNumber *gameTime = [NSNumber numberWithDouble:[self.gameStartTime timeIntervalSinceNow] * -1.0];
+        [DSGoogleAnalytics trackEventWithCategory:kDSGAEventCategoryGameEvent
+                                            label:kDSGAEventLabelGameFinished
+                                           action:nil
+                                            value:gameTime
+                                       dicitonary:nil];
     } else {
         self.winner = [NSString string];
     }
