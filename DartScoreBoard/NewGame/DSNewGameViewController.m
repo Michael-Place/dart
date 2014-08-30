@@ -196,6 +196,11 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 
 - (IBAction)addPlayerButtonTapped:(id)sender
 {
+    [DSGoogleAnalytics trackEventWithCategory:kDSGAEventCategoryUserEvent
+                                        label:kDSGAEventLabelAddPlayerButton
+                                       action:kDSGAEventActionClickAction
+                                        value:nil
+                                   dicitonary:nil];
     DSPlayer *newPlayer = [[DSPlayer alloc] initWithPlayerName:[self defaultNameForNewPlayer]];
     [self.newPlayers addObject:newPlayer];
     [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.newPlayers.count - 1  inSection:0]]];
@@ -210,14 +215,29 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 
 - (IBAction)startGameTapped:(id)sender
 {
+    [DSGoogleAnalytics trackEventWithCategory:kDSGAEventCategoryUserEvent
+                                        label:kDSGAEventLabelStartGameButton
+                                       action:kDSGAEventActionClickAction
+                                        value:nil
+                                   dicitonary:nil];
     if (self.newPlayers.count > 1) {
         [[DSGame sharedGame] setPlayers:[NSArray arrayWithArray:[self.newPlayers copy]]];
         [self.delegate startGame];
+        [DSGoogleAnalytics trackEventWithCategory:kDSGAEventCategoryGameEvent
+                                            label:kDSGAEventLabelNewGame
+                                           action:nil
+                                            value:@(self.newPlayers.count)
+                                       dicitonary:nil];
     }
 }
 
 - (IBAction)settingsButtonTapped:(id)sender
 {
+    [DSGoogleAnalytics trackEventWithCategory:kDSGAEventCategoryUserEvent
+                                        label:kDSGAEventLabelSettingsButton
+                                       action:kDSGAEventActionClickAction
+                                        value:nil
+                                   dicitonary:nil];
     [self presentViewController:self.settingsViewController animated:YES completion:nil];
 }
 

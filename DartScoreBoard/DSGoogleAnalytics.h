@@ -17,5 +17,14 @@
  */
 + (void)trackPage:(NSString *)pageName withDictionary:(NSDictionary *)dictionary;
 
+/*
+ * Used for tracking Events
+ * param eventCategory       Category of the event being tracked
+ * param eventLabel          Label for the event being tracked
+ * param eventAction         Action for the event being tracked
+ * param eventValue          Value for event being tracked
+ * param dictionary          Dictionary of possible custom dimensions
+ */
++ (void)trackEventWithCategory:(NSString *)eventCategory label:(NSString *)eventLabel action:(NSString *)eventAction value:(NSNumber *)eventValue dicitonary:(NSDictionary *)dictionary;
 
 @end

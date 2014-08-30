@@ -11,6 +11,7 @@
 #import "GAIDictionaryBuilder.h"
 #import "GAITracker.h"
 #import "GAIFields.h"
+#import "DSGAConstants.h"
 
 
 @implementation DSGoogleAnalytics
@@ -44,8 +45,20 @@
 
 + (void)trackPage:(NSString *)pageName withDictionary:(NSDictionary *)dictionary
 {
-    [[self GAITracker] set:kGAIScreenName value:pageName];
-    [[self GAITracker] send:[[GAIDictionaryBuilder createScreenView] build]];
+    if (pageName) {
+        [[self GAITracker] set:kGAIScreenName value:pageName];
+        [[self GAITracker] send:[[GAIDictionaryBuilder createScreenView] build]];
+    }
+}
+
++ (void)trackEventWithCategory:(NSString *)eventCategory label:(NSString *)eventLabel action:(NSString *)eventAction value:(NSNumber *)eventValue dicitonary:(NSDictionary *)dictionary
+{
+    
+    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createEventWithCategory:eventCategory?eventCategory:kDSGAEventNilCategory
+                                                                           action:eventAction?eventAction:kDSGAEventLabelNil
+                                                                            label:eventLabel
+                                                                            value:eventValue];
+    [[self GAITracker] send:[builder build]];
 }
 
 @end

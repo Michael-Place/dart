@@ -175,6 +175,11 @@ enum AlertTag {
 
 - (IBAction)doneButtonTapped:(id)sender
 {
+    [DSGoogleAnalytics trackEventWithCategory:kDSGAEventCategoryUserEvent
+                                        label:kDSGAEventLabelDoneButton
+                                       action:kDSGAEventActionClickAction
+                                        value:nil
+                                   dicitonary:nil];
     if (self.settingsDelegate && [self.settingsDelegate respondsToSelector:@selector(didFinishWithSettings)]) {
         [self.settingsDelegate didFinishWithSettings];
     }
@@ -193,6 +198,11 @@ enum AlertTag {
 
 - (IBAction)resetColorDefaultsButtonTapped:(id)sender
 {
+    [DSGoogleAnalytics trackEventWithCategory:kDSGAEventCategoryUserEvent
+                                        label:kDSGAEventLabelRevertToDefaultButton
+                                       action:kDSGAEventActionClickAction
+                                        value:nil
+                                   dicitonary:nil];
     UIAlertView *resetColorDefaultsAlert = [[UIAlertView alloc] initWithTitle:@"Revert to Default Colors"
                                                                       message:@"Are you sure you want to revert to the default color scheme?"
                                                                      delegate:self
