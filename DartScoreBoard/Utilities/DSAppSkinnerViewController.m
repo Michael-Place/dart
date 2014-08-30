@@ -9,6 +9,9 @@
 #import "DSAppSkinnerViewController.h"
 #import "NEOColorPickerViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DSGoogleAnalytics.h"
+#import "DSGAConstants.h"
+
 
 @interface DSAppSkinnerViewController () <NEOColorPickerViewControllerDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *settingsTitleLabel;
@@ -61,14 +64,11 @@ enum AlertTag {
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    [DSGoogleAnalytics trackPage:kDSGAScreenNameSettingsView withDictionary:nil];
+    
     [self setColorButtonTags];
     
     [self initializeInterfaceColors];

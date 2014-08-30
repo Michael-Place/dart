@@ -11,6 +11,8 @@
 #import "DSNewPlayerCollectionViewCell.h"
 #import "DSAssetGenerator.h"
 #import "DSGame.h"
+#import "DSGoogleAnalytics.h"
+#import "DSGAConstants.h"
 
 const int DefaultNumberOfPlayers = 4;
 const int MaxNumberOfPlayers = 8;
@@ -79,7 +81,7 @@ static NSString *const NewPlayerCollectionViewCellIdentifier = @"NewPlayerCollec
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    [DSGoogleAnalytics trackPage:kDSGAScreenNameNewGameView withDictionary:nil];
     // Set the interface colors
     [self.view setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
     [self.appTitleLabel setTextColor:[DSAppSkinner globalTextColor]];

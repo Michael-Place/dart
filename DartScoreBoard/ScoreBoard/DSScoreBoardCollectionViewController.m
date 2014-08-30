@@ -13,6 +13,8 @@
 #import "DSGameActionItemViewController.h"
 #import "DSGame.h"
 #import "DSHelper.h"
+#import "DSGoogleAnalytics.h"
+#import "DSGAConstants.h"
 
 @interface DSScoreBoardCollectionViewController () <StartingGameDelegate, UpdatingGameState, ScoreBoardCollectionViewCellDelegate, DSGameActionDelegate>
 @property BOOL gameIsInProgress;
@@ -71,7 +73,7 @@ const int kAppRatingAlertViewTag = 100;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    [DSGoogleAnalytics trackPage:kDSGAScreenNameScoreboardView withDictionary:nil];
     [self.collectionView setBackgroundColor:[DSAppSkinner globalBackgroundColor]];
     [self.collectionView reloadData];
     [self reloadSectionHeaders];
